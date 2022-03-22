@@ -1,4 +1,5 @@
-CREATE ecommerce_db;
+DROP DATABASE IF EXISTS ecommerce_db;
+CREATE DATABASE ecommerce_db;
 USE ecommerce_db;
 
 CREATE table shopping_session (
@@ -79,18 +80,18 @@ CREATE TABLE user_payment (
 );
 
 CREATE TABLE user (
-    id INT NOT NULL AUTO_INCREMENT,
+    id INTEGER NOT NULL AUTO_INCREMENT,
     email VARCHAR(32),
     firstname VARCHAR(32),
     lastname VARCHAR(32),
     username VARCHAR(32) NOT NULL,
     pswd VARCHAR(255) NOT NULL,
     path_to_logo VARCHAR(32),
-    payment_id INT,
-    usertype_id INT NOT NULL,
-    session_id INT,
-    coins INT NOT NULL DEFAULT 200,
-    high_score INT,
+    payment_id INTEGER,
+    usertype_id INTEGER NOT NULL,
+    session_id INTEGER,
+    coins INTEGER NOT NULL DEFAULT 200,
+    high_score INTEGER,
     subscribed BOOLEAN NOT NULL DEFAULT 1,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -113,7 +114,7 @@ CREATE TABLE inventory (
 CREATE TABLE order_details(
     id INTEGER NOT NULL AUTO_INCREMENT,
     user_id INTEGER NOT NULL,
-    total INT,
+    total INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES user(id)
@@ -121,14 +122,14 @@ CREATE TABLE order_details(
 
 CREATE TABLE order_items (
     id INTEGER NOT NULL AUTO_INCREMENT,
-    quantity INT,
+    quantity INTEGER NOT NULL,
     item_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
     order_id INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (item_id) REFERENCES item(id),
-    FOREIGN KEY (order_id) REFERENCES order_detailes(id),
+    FOREIGN KEY (order_id) REFERENCES order_details(id),
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
@@ -140,5 +141,6 @@ CREATE TABLE cart_item (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
-    FOREIGN KEY (item_id) REFERENCES item(id)
+    FOREIGN KEY (item_id) REFERENCES item(id),
+    FOREIGN KEY (session_id) REFERENCES shopping_session(id)
 );
