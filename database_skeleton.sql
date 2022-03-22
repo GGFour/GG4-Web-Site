@@ -26,7 +26,7 @@ INSERT INTO item_category (name, description) VALUES ('food', '');
 INSERT INTO item_category (name, description) VALUES ('other', '');
 
 
-CREATE table items_inventory (
+CREATE table item_inventory (
     id INTEGER NOT NULL AUTO_INCREMENT,
     quantity INTEGER NOT NULL DEFAULT 100,
     modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
