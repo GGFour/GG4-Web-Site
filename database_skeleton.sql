@@ -1,103 +1,137 @@
-USE GAME_DB;
+CREATE ecommerce_db;
+USE ecommerce_db;
 
 CREATE table shopping_session (
-    id INTEGER PRIMARY KEY,
-    total integer,
-    created_at timestamp,
-    modified_at timestamp
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    total INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
 );
 
 CREATE table item_category (
-    id INTEGER PRIMARY KEY,
-    name VARCHAR(32),
-    description text,
-    created_at timestamp,
-    modified_at timestamp
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    name VARCHAR(32) NOT NULL,
+    description TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
 );
 
+INSERT INTO item_category (name, description) VALUES ('weapon', '');
+INSERT INTO item_category (name, description) VALUES ('armor', '');
+INSERT INTO item_category (name, description) VALUES ('potion', '');
+INSERT INTO item_category (name, description) VALUES ('seed', '');
+INSERT INTO item_category (name, description) VALUES ('food', '');
+INSERT INTO item_category (name, description) VALUES ('other', '');
+
+
 CREATE table items_inventory (
-    id INTEGER PRIMARY KEY,
-    quantity integer,
-    modified_at timestamp
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    quantity INTEGER NOT NULL DEFAULT 100,
+    modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
 );
 
 CREATE table discount (
-    id INTEGER PRIMARY KEY,
+    id INTEGER NOT NULL AUTO_INCREMENT,
     name VARCHAR(32),
-    description text,
-    active boolean,
-    starts_at timestamp,
-    modified_at timestamp
+    description TEXT,
+    active BOOLEAN,
+    starts_at TIMESTAMP,
+    ends_at TIMESTAMP,
+    PRIMARY KEY (id)
 );
 
-CREATE TABLE user_type (id INTEGER PRIMARY KEY, name VARCHAR(32));
+CREATE TABLE user_type (
+    id INTEGER NOT NULL AUTO_INCREMENT, 
+    name VARCHAR(32),
+    PRIMARY KEY (id)
+);
+INSERT INTO user_type (name) VALUES ('user');
+INSERT INTO user_type (name) VALUES ('admin');
+INSERT INTO user_type (name) VALUES ('developer');
+
 
 CREATE TABLE user_payment (
-    id INTEGER PRIMARY KEY,
+    id INTEGER NOT NULL AUTO_INCREMENT,
     payment_types VARCHAR(32),
     provider VARCHAR(32),
     account_number INTEGER,
-    expiry VARCHAR(32)
+    expiry VARCHAR(5),
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE user (
-    id INT PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT,
     email VARCHAR(32),
     firstname VARCHAR(32),
     lastname VARCHAR(32),
-    username VARCHAR(32),
-    password VARCHAR(32),
-    FOREIGN KEY (payment_id) REFERENCES user_payment(id),
-    FOREIGN KEY (type_id) REFERENCES user_type(id),
-    FOREIGN KEY (session_id) REFERENCES shopping_session(id),
+    username VARCHAR(32) NOT NULL,
+    pswd VARCHAR(255) NOT NULL,
     path_to_logo VARCHAR(32),
-    subscribed BOOLEAN,
-    coins INT,
+    payment_id INT,
+    usertype_id INT NOT NULL,
+    session_id INT,
+    coins INT NOT NULL DEFAULT 200,
     high_score INT,
-    created_at TIMESTAMP,
-    modified_at TIMESTAMP
+    subscribed BOOLEAN NOT NULL DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    FOREIGN KEY (payment_id) REFERENCES user_payment(id),
+    FOREIGN KEY (usertype_id) REFERENCES user_type(id),
+    FOREIGN KEY (session_id) REFERENCES shopping_session(id)
 );
 
 CREATE TABLE inventory (
-    id INTEGER PRIMARY KEY,
-    quantity INT,
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    user_id INTEGER NOT NULL,
+    item_id INTEGER NOT NULL,
+    quantity INTEGER NOT NULL,
+    PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES user(id),
     FOREIGN KEY (item_id) REFERENCES item(id)
 );
 
 CREATE TABLE order_details(
-    id INTEGER PRIMARY KEY,
-    FOREIGN KEY (user_id) REFERENCES user(id),
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    user_id INTEGER NOT NULL,
     total INT,
-    created_at TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE order_items (
-    id INTEGER PRIMARY KEY,
+    id INTEGER NOT NULL AUTO_INCREMENT,
     quantity INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
     FOREIGN KEY (item_id) REFERENCES item(id),
     FOREIGN KEY (order_id) REFERENCES order_detailes(id),
-    FOREIGN KEY (user_id) REFERENCES user(id),
-    created_at TIMESTAMP
+    FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE cart_item (
-    id INTEGER PRIMARY KEY,
+    id INTEGER NOT NULL AUTO_INCREMENT,
     session_id INT,
-    FOREIGN KEY (item_id) REFERENCES item(id),
     quantity INT,
-    modified_at TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    FOREIGN KEY (item_id) REFERENCES item(id)
 );
 
 CREATE TABLE item(
-    id INTEGER PRIMARY KEY,
+    id INTEGER NOT NULL AUTO_INCREMENT,
     name VARCHAR(32),
     description TEXT(32),
     path_to_image TEXT(32),
     price INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
     FOREIGN KEY (category_id) REFERENCES item_category(id),
     FOREIGN KEY (inventory_id) REFERENCES item_inventory(id),
-    FOREIGN KEY (discount_id) REFERENCES discount(id),
-    created_at TIMESTAMP,
-    modified_at TIMESTAMP
+    FOREIGN KEY (discount_id) REFERENCES discount(id)
 );
