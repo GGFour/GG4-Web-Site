@@ -42,6 +42,23 @@ CREATE table discount (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE item(
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    category_id INTEGER NOT NULL,
+    inventory_id INTEGER NOT NULL,
+    discount_id INTEGER,
+    name VARCHAR(32),
+    description TEXT,
+    path_to_image VARCHAR(255),
+    price INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    FOREIGN KEY (category_id) REFERENCES item_category(id),
+    FOREIGN KEY (inventory_id) REFERENCES item_inventory(id),
+    FOREIGN KEY (discount_id) REFERENCES discount(id)
+);
+
 CREATE TABLE user_type (
     id INTEGER NOT NULL AUTO_INCREMENT, 
     name VARCHAR(32),
@@ -105,6 +122,9 @@ CREATE TABLE order_details(
 CREATE TABLE order_items (
     id INTEGER NOT NULL AUTO_INCREMENT,
     quantity INT,
+    item_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    order_id INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (item_id) REFERENCES item(id),
@@ -114,24 +134,11 @@ CREATE TABLE order_items (
 
 CREATE TABLE cart_item (
     id INTEGER NOT NULL AUTO_INCREMENT,
-    session_id INT,
-    quantity INT,
+    session_id INTEGER NOT NULL,
+    item_id INTEGER NOT NULL,
+    quantity INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (item_id) REFERENCES item(id)
-);
-
-CREATE TABLE item(
-    id INTEGER NOT NULL AUTO_INCREMENT,
-    name VARCHAR(32),
-    description TEXT(32),
-    path_to_image TEXT(32),
-    price INT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (id),
-    FOREIGN KEY (category_id) REFERENCES item_category(id),
-    FOREIGN KEY (inventory_id) REFERENCES item_inventory(id),
-    FOREIGN KEY (discount_id) REFERENCES discount(id)
 );
