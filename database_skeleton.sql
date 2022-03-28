@@ -144,3 +144,4 @@ CREATE TABLE cart_item (
     FOREIGN KEY (item_id) REFERENCES item(id),
     FOREIGN KEY (session_id) REFERENCES shopping_session(id)
 );
+
