@@ -9,6 +9,11 @@ var debug = require('debug')('gg4website:server');
 var http = require('http');
 
 /**
+ * Loading environment variables
+ */
+require('dotenv').config();
+
+/**
  * Get port from environment and store in Express.
  */
 
