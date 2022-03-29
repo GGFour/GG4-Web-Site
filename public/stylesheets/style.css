@@ -37,13 +37,7 @@ a {
   size: 40px;
   padding-top: 10px;
 }
-header ul {
-  display: flex;
-  flex-direction: row;
-}
-header ul .right-icons {
-  justify-content: flex-end;
-}
+
 .left-icons,
 .right-icons {
   padding-top: 10px;
