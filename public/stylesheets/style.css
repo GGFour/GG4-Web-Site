@@ -1,9 +1,83 @@
-body {
-  padding: 50px;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto Mono', monospace;
 }
 
+/*body {
+  display: grid;
+  grid-template-rows: 100px 1fr 300px;
+}
+*/
+
+p {
+  font-weight: 100;
+}
+
+li,
 a {
-  color: #00b7ff;
-  background-color: none;
+  text-decoration: none;
+  list-style-type: none;
+}
+.logo-img {
+  width: 78px;
+  height: 93px;
+}
+.social-media-icons img {
+  width: 38px;
+  height: 38px;
+}
+.burger-menu-btn {
+  width: 25px;
+  height: 25px;
+  visibility: hidden;
+}
+.fa-shopping-cart {
+  size: 40px;
+  padding-top: 10px;
+}
+header ul {
+  display: flex;
+  flex-direction: row;
+}
+header ul .right-icons {
+  justify-content: flex-end;
+}
+.left-icons,
+.right-icons {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  gap: 30px;
+  font-size: 15px;
+}
+
+header {
+  width: 100%;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+header a {
+  font-weight: bold;
+  color: black;
+}
+
+footer {
+  background: #111;
+  height: auto;
+  width: 100vw;
+  padding-top: 40px;
+  color: #fff;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
