@@ -47,12 +47,11 @@ header {
   flex-direction: row;
   gap: 20px;
 }
-header div {
+.nav-btns {
   display: flex;
-  gap: 20px;
 }
 .right-nav-btns {
-  float: right;
+  margin-left: auto;
 }
 header a {
   font-weight: bold;
@@ -74,3 +73,5 @@ footer {
   flex-direction: column;
   text-align: center;
 }
+
+/* Hi Quyen !!!!*/
