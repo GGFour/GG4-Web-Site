@@ -2,12 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
 }
 
 body {
   display: grid;
-  grid-template-rows: 100px 1fr 200px;
+  grid-template-rows: auto 1fr auto;
+  background-color: #eaeded;
+  min-height: 100vh;
 }
 
 p {
@@ -18,10 +20,11 @@ li,
 a {
   text-decoration: none;
   list-style-type: none;
+  display: block;
 }
 .logo-img {
   width: 78px;
-  height: 93px;
+  height: 116px;
 }
 .social-media-icons img {
   width: 38px;
@@ -30,20 +33,35 @@ a {
 .burger-menu-btn {
   width: 25px;
   height: 25px;
-  visibility: hidden;
+}
+
+.a-burger-menu-btn {
+  display: none;
 }
 .fa-shopping-cart {
   padding-top: 3px;
+  /*padding-right: 8px;*/
 }
 
 header {
   border: 1px solid red;
-  width: 100vw;
-  padding-top: 10px;
+  background-color: #eaeded;
+  /* height: fit-content; */
+}
+.header-items {
+  /*padding-top: 10px;*/
+  padding: 25px 25px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
+/* .header-items .left-nav-btns {
+  background-image: url(./images/logo.png);
+  background-position: left center;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+} */
 .right-nav-btns,
 .left-nav-btns {
   display: flex;
@@ -54,20 +72,30 @@ header a {
   font-weight: bold;
   color: black;
 }
-container {
-  width: 100%;
+.container {
+  border: 1px solid blue;
 }
-.body-img {
-  margin: auto;
-  display: block;
+
+.body-desktop-img {
+  display: unset;
+  max-width: 100%;
+  height: auto;
+  display: table;
+  margin: 0 auto;
 }
+
+.body-mobile-img {
+  display: none;
+}
+
 footer {
+  border: 1px solid green;
   display: flex;
   flex-direction: column;
   gap: 30px;
   background: #111;
-  height: auto;
-  width: 100vw;
+  /* height: auto; */
+
   padding: 30px 0;
   color: #fff;
 }
@@ -89,4 +117,33 @@ footer a {
 .footer-copyright {
   text-align: center;
 }
-/* Hi Quyen !!!!*/
+
+@media all and (max-width: 710px) {
+  body {
+    height: 100vh;
+  }
+  .left-nav-btns a,
+  .right-nav-btns a {
+    visibility: hidden;
+  }
+  .a-burger-menu-btn {
+    display: unset;
+  }
+
+  .body-desktop-img {
+    display: none;
+  }
+
+  .footer-texts {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .body-mobile-img {
+    display: unset;
+    max-width: 100%;
+    height: auto;
+    display: table;
+    margin: 0 auto;
+  }
+}
