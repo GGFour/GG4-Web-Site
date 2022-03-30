@@ -1,4 +1,4 @@
-version: '0.1'
+version: '3'
 services:
   mysql:
     image: mysql
@@ -9,3 +9,9 @@ services:
       MYSQL_DATABASE: $DATABASE
       MYSQL_USER: $DB_USER
       MYSQL_PASSWORD: $DB_USER_PSSWD
+    volumes:
+     - gg4mysql-data:/var/lib/mysql
+
+volumes:
+  gg4mysql-data:
+    driver: local
