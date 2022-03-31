@@ -29,6 +29,7 @@ INSERT INTO item_category (name, description) VALUES ('other', '');
 CREATE TABLE game (
     id INTEGER NOT NULL AUTO_INCREMENT,
     name VARCHAR(32) NOT NULL,
+    description TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 );
