@@ -1,4 +1,4 @@
-const connection = require('./connection')
+const connection = require('./queries')
 
 class Database {
     constructor(connection) {
