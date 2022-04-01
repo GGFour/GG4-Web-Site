@@ -30,24 +30,25 @@ class Database {
         where
             item.category_id = item_category.id
         ;`,
-      function (err, result, field) {
+      function (err, result, fields) {
         if (err) {
           console.log(err.message);
         }
-        response(err, result, field);
+        response(err, result, fields);
       }
     );
   }
-  getPassword(login) {
+  getPassword(email, response) {
     this.connection.query(
-      `
-            SELECT pswd FROM user WHERE email=${login};
-            `,
-      function (err, result, field) {
+      "SELECT * FROM user WHERE email = :email",
+      {
+        email: email,
+      },
+      (err, result, fields) => {
         if (err) {
-          console.log(err.message);
+          console.log(error.message);
         }
-        response(err, result, field);
+        response(err, result, fields);
       }
     );
   }
