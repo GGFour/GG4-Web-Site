@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="stylesheets/style.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="stylesheets/style.css">
+<link rel="stylesheet" href="stylesheets/signUp.css">
     <title>GG4 Landing Page</title>
   </head>
   <body>
@@ -23,15 +24,14 @@
             <a href="about.html">ABOUT</a>
             <a href="game.html">GAME</a>
           </div>
-           </div>
-            <div class="closeMenu"><i class="fa fa-times"></i></div>
-           <!-- <div class="empty-div"></div> -->
+            </div>
+            <div class="empty-div"></div>
         <div class="right-navbar">
           <div class="right-nav-btns">
             <a href="signUp.html" >SIGN UP</a>
             <a href="log.html" >LOG IN</a>
-             </div>
-             
+              </div>
+              
           <div><i class="fa fa-shopping-cart" value="8" ><a href="#" class="shopping-cart-icon"></a> </i></div>
           <div><a href=""  class="a-burger-menu-btn"><img src="images/burger-menu.png" alt="" class="burger-menu-btn"></a></div>
             <!-- <div><i class="fa fa-shopping-cart" value="8" ><a href="" class="shopping-cart-icon"></a> </i></div>
@@ -41,11 +41,38 @@
       
 
     </header>
-    <container class="container">
-      <div class="body-effect">
-        <img src="images/web-landing-img.png" alt="" class="body-desktop-img">
-        <img src="images/mob-landing-img.png" alt="" class="body-mobile-img">
+    <container class="account-container">   
+      <div class="acc-text">
+        <h1 class="acc-maintext">Create an account.</h1>
+        <p class="acc-subtext">Sign up to receive exclusive updates, member-only perks and discounts.</p>
+      </div>  
+      <div class="acc-form">
+
+        <label for="username"><b>Username</b></label>
+        <input id="input-group" type="text" placeholder="joe.doe" name="username" required>
+
+        <label for="fname"><b>Firt Name</b></label>
+        <input id="input-group" type="text" placeholder="Joe" name="fname" required>
+        
+        <label for="lname"><b>Last Name</b></label>
+        <input id="input-group" type="text" placeholder="Doe" name="lname" required>
+        
+        <label for="email"><b>Email</b></label>
+        <input id="input-group" type="text" placeholder="joe.doe@email.com" name="email" required>
+        
+        <label for="pwd"><b>Password</b></label>
+        <input id="input-group" type="text" placeholder="********" name="pwd" required>
+        
+        <label for="pwd-repeat"><b>Re-enter new password</b></label>
+        <input id="input-group" type="text" placeholder="********" name="pwd-repeat" required>
+
+        <div class="arrow-btn">
+          <button><i class='fa fa-angle-double-right'></i></button>
+        </div>
+      
+
       </div>
+
     </container>
     <footer>
       <div class="social-media-icons">
@@ -71,4 +98,5 @@
     ></script>
     <script src="jquery.js"></script>
   </body>
+  
 </html>
