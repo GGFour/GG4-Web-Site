@@ -1,4 +1,8 @@
+// DEPRECATED
+
 const database = require('./connection');
+
+
 
 database.getItems = function () {
     database.query(
