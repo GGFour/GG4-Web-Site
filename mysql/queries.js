@@ -1,13 +1,12 @@
-const connection = require('./queries')
+// DEPRECATED
 
-class Database {
-    constructor(connection) {
-        this.connection = connection;
-    }
-    
-    getItems(response){
-        this.connection.query(
-            `select
+const database = require('./connection');
+
+
+
+database.getItems = function () {
+    database.query(
+        `select
             item.id,
             item_category.name as 'category',
             item.name, 
@@ -16,8 +15,6 @@ class Database {
             item_inventory.quantity,
             discount.name as 'discount_name',
             discount.description as 'discount_desc',
-        #    discount.value as 'discount_value',
-        #    discount.percentage as 'discount_percentage',
             discount.active as 'discount_active',
             game.name as 'Game name',
             item.path_to_image
@@ -30,16 +27,11 @@ class Database {
         where
             item.category_id = item_category.id
         ;`,
-        function(err, result, field){
-            if (err){
-                console.log(err.message);
-            }
-            response(err, result, field)
-        });
-    }
-}
-
-
-let database = new Database(connection);
+        function(err, results, fields) {
+          console.log(results); // results contains rows returned by server
+          console.log(fields); // fields contains extra meta data about results, if available
+        }
+      );
+};
 
 module.exports = database;
