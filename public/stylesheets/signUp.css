@@ -1,0 +1,10 @@
+.account-container {
+  padding: 25px 25px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.acc-form {
+  display: flex;
+  flex-direction: column;
+}
