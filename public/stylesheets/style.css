@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 }
 
 body {
@@ -51,7 +51,7 @@ header {
 }
 header a {
   font-weight: bold;
-  color: red;
+  color: black;
 }
 .left-nav-btns,
 .right-nav-btns {
@@ -113,9 +113,10 @@ footer a {
 .footer-copyright {
   text-align: center;
 }
-<<<<<<< HEAD
 /* Hi weekend !!!!*/
-=======
+.closeMenu {
+  display: none;
+}
 
 @media all and (max-width: 760px) {
   body {
@@ -123,9 +124,6 @@ footer a {
     flex-direction: column;
   }
 
-  .closeMenu {
-    display: none;
-  }
   /* .empty-div {
     display: unset;
   } */
@@ -176,37 +174,4 @@ footer a {
   }
 }
 
-/*   test */
-
-/* 
-.a-burger-menu-btn {
-  display: block;
-}
-.left-nav-btns {
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 10;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #000;
-  transition: top 1s ease;
-  display: none;
-} */
-/* 
-.left-nav-btns,
-.closeMenu {
-   display: block; 
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-.closeMenu {
-  font-size: 2rem;
-  color: red;
-  cursor: pointer;
-} */
->>>>>>> 22abfcfc47bbf0bdf0d1ee3a038e66fc66d08490
+/* test  */
