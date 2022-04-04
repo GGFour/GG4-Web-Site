@@ -30,8 +30,14 @@ function showDetailView(item, index) {
     `;
   newElement.className = "detailedItem";
   newElement.id = index;
+
   document
     .getElementsByClassName("products-grid")[0]
     .getElementById(index)
     .appendChild(newElement);
+  document.addEventListener("click", function (event) {
+    if (!event.target.closest(".detailedItem")) {
+      document.getElementsByClassName("detailedItem")[0].remove();
+    }
+  });
 }
