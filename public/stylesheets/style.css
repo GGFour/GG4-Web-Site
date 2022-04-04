@@ -71,9 +71,9 @@ header a {
   width: 25px;
   height: 25px;
 }
-.container {
-  border: 1px solid blue;
-}
+/* .container {
+   border: 1px solid blue; 
+} */
 
 .body-desktop-img {
   display: unset;
