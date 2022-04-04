@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
 }
 
 body {
@@ -34,7 +34,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* border: 1px solid red; */
+  border: 1px solid red;
   background-color: #eaeded;
 }
 .left-navbar {
