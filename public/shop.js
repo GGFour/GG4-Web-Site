@@ -27,6 +27,7 @@ function showDetailView(item, index) {
     <div class="name">${item.name}</div>
     <div class="price">69€</div>
     <div class="description">${item.description}</div>
+    <button class="btn btn-primary shop-item-add" type="button" id=${index}>Add to cart</button>
     `;
   newElement.className = "detailedItem";
   newElement.id = index;
