@@ -1,59 +1,45 @@
-const connection = require("./queries");
+/**
+ * This file responds for communicating with the database.
+ * Could be splited into different files according to 
+ * functionality later.
+ */
 
-class Database {
-  constructor(connection) {
-    this.connection = connection;
-  }
+const pool = require("./pool");
+const queries = require("./queries");
 
-  getItems(response) {
-    this.connection.query(
-      `select
-            item.id,
-            item_category.name as 'category',
-            item.name, 
-            item.description,
-            item.price,
-            item_inventory.quantity,
-            discount.name as 'discount_name',
-            discount.description as 'discount_desc',
-        #    discount.value as 'discount_value',
-        #    discount.percentage as 'discount_percentage',
-            discount.active as 'discount_active',
-            game.name as 'Game name',
-            item.path_to_image
-        from 
-            ((item 
-            inner join item_inventory on item.inventory_id = item_inventory.id)
-            left join discount on item.discount_id = discount.id), 
-            item_category,
-            game
-        where
-            item.category_id = item_category.id
-        ;`,
-      function (err, result, fields) {
-        if (err) {
-          console.log(err.message);
-        }
-        response(err, result, fields);
+
+/**
+ * Gets all items from db and passes them to response collback.
+ * @param { function } response - callback function takes (err, result, fields)
+ */
+exports.getItems = (response) => {
+  pool.query(
+    queries.getItems,
+    function (err, result, fields) {
+      if (err) {
+        console.log(err.message);
       }
-    );
-  }
-  getPassword(email, response) {
-    this.connection.query(
-      "SELECT * FROM user WHERE email = :email",
-      {
-        email: email,
-      },
-      (err, result, fields) => {
-        if (err) {
-          console.log(error.message);
-        }
-        response(err, result, fields);
-      }
-    );
-  }
+      response(err, result, fields);
+    }
+  );
 }
 
-let database = new Database(connection);
-
-module.exports = database;
+/**
+ * Gets user pswd by given email and passes it to response callback.
+ * @param { String } email - email of requested user
+ * @param { function } response - callback function takes (err, result, fields)
+ */
+exports.getPassword = (email, response) => {
+  pool.query(
+    "SELECT * FROM user WHERE email = :email",
+    {
+      email: email,
+    },
+    (err, result, fields) => {
+      if (err) {
+        console.log(error.message);
+      }
+      response(err, result, fields);
+    }
+  );
+}

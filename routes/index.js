@@ -1,5 +1,11 @@
-var express = require('express');
-var path = require('path');
+/**
+ * This file routes '/' requests.
+ */
+
+const express = require('express');
+const path = require('path');
+const controller = require('../controllers/indexController');
+
 var router = express.Router();
 
 /* GET home page compiled from views. */
@@ -7,15 +13,16 @@ var router = express.Router();
 //   res.render('index', { title: 'Express' });
 // });
 
-/* GET home page from static .html. */
-router.get('/', function(req, res, next) {
-  res.status(200).sendFile(path.join(__dirname,'../public/index.html'));
-});
+/* GET home page from static .html */
+router.get('/', controller.sendIndex);
 
-router.get('/about', function(req, res, next) {
-  res.status(200).sendFile(path.join(__dirname,'../public/about.html'));
-});
+/* GET about page from static .html */
+router.get('/about', controller.sendAbout);
 
+/**
+ * Returns shopt page 
+ * - may be it would make sence to move this functionality to separate router
+ */
 router.get('/shop', function(req, res, next) {
   res.status(200).sendFile(path.join(__dirname,'../public/shop.html'));
 });
