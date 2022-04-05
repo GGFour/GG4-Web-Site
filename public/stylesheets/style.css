@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 }
 
 body {
@@ -42,7 +42,8 @@ header {
   flex-direction: row;
   gap: 40px;
 }
-.right-navbar {
+.right-navbar,
+.left-nav-btns {
   display: flex;
   flex-direction: row;
   gap: 40px;
