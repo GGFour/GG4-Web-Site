@@ -15,59 +15,66 @@
   </head>
   <body>
     <header class="navbar"> 
-        <!-- <div ><img src="images/logo.png" alt="" class="logo-img" /></div> -->
-        <div class="left-navbar">
+       <div class="left-navbar" >
           <div><img src="images/logo.png" alt="" class="logo-img" /></div>
-          <div class="left-nav-btns"> 
+           <div class="hamburger-icon" id="myNav">
+          <div class="left-nav-btns"  > 
             <a href="index.html">HOME</a> 
             <a href="shop.html">SHOP</a>
             <a href="about.html">ABOUT</a>
             <a href="game.html">GAME</a>
           </div>
-            </div>
-            <div class="empty-div"></div>
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+             </div>
+           </div>
         <div class="right-navbar">
           <div class="right-nav-btns">
             <a href="signUp.html" >SIGN UP</a>
             <a href="log.html" >LOG IN</a>
-              </div>
-              
-          <div><i class="fa fa-shopping-cart" value="8" ><a href="#" class="shopping-cart-icon"></a> </i></div>
-          <div><a href=""  class="a-burger-menu-btn"><img src="images/burger-menu.png" alt="" class="burger-menu-btn"></a></div>
-            <!-- <div><i class="fa fa-shopping-cart" value="8" ><a href="" class="shopping-cart-icon"></a> </i></div>
-            <div><a href=""  class="a-burger-menu-btn"><img src="images/burger-menu.png" alt="" class="burger-menu-btn"></a></div> --> 
-        
-          </div>
-      
-
+             </div>
+               <div><i class="fa fa-shopping-cart" value="8" ><a href="#" class="shopping-cart-icon"></a> </i></div>
+             <div> <img src="images/burger-menu.png" alt="" class="burger-menu-btn" onclick="openNav()"></div>
     </header>
-    <container class="account-container">   
+    <container class="container">   
+      
       <div class="acc-text">
-        <h1 class="acc-maintext">Create an account.</h1>
-        <p class="acc-subtext">Sign up to receive exclusive updates, member-only perks and discounts.</p>
+        <h1 class="acc-maintext">Create an</h1> <h1 class="acc-maintext"><span>account.</span></h1>
+        <p class="acc-subtext">Sign up to receive exclusive updates, </p><p class="acc-subtext"><span>member-only perks and discounts.</span></p>
       </div>  
+
       <div class="acc-form">
+        <div class="block-input">
+          <label class="acc-label" for="username"><b>Username</b></label>
+          <input id="input-group" type="text" placeholder="joe.doe" name="username" required>
+        </div>
 
-        <label for="username"><b>Username</b></label>
-        <input id="input-group" type="text" placeholder="joe.doe" name="username" required>
-
-        <label for="fname"><b>Firt Name</b></label>
+        <div class="block-input">
+        <label class="acc-label" for="fname"><b>First Name</b></label>
         <input id="input-group" type="text" placeholder="Joe" name="fname" required>
-        
-        <label for="lname"><b>Last Name</b></label>
-        <input id="input-group" type="text" placeholder="Doe" name="lname" required>
-        
-        <label for="email"><b>Email</b></label>
-        <input id="input-group" type="text" placeholder="joe.doe@email.com" name="email" required>
-        
-        <label for="pwd"><b>Password</b></label>
-        <input id="input-group" type="text" placeholder="********" name="pwd" required>
-        
-        <label for="pwd-repeat"><b>Re-enter new password</b></label>
-        <input id="input-group" type="text" placeholder="********" name="pwd-repeat" required>
+        </div>
 
-        <div class="arrow-btn">
-          <button><i class='fa fa-angle-double-right'></i></button>
+        <div class="block-input">
+          <label class="acc-label" for="lname"><b>Last Name</b></label>
+          <input id="input-group" type="text" placeholder="Doe" name="lname" required>
+        </div>
+
+        <div class="block-input">
+          <label class="acc-label" for="email"><b>Email</b></label>
+          <input id="input-group" type="text" placeholder="joe.doe@email.com" name="email" required>
+        </div>
+
+        <div class="block-input">
+          <label class="acc-label" for="pwd"><b>Password</b></label>
+          <input id="input-group" type="text" placeholder="Password" name="pwd" required>
+        </div>
+
+        <div class="block-input">
+          <label class="acc-label" for="pwd-repeat"><b>Re-enter new password</b></label>
+          <input id="input-group" type="text" placeholder="Password" name="pwd-repeat" required>
+        </div> 
+        
+          <div class="button-content">
+          <button class="btn-arrow"><i class='fa fa-angle-double-right'></i></button>
         </div>
       
 
