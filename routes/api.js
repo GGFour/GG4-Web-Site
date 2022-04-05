@@ -1,19 +1,13 @@
-var express = require('express');
-var path = require('path');
-var database = require('../mysql/mysql.js')
+/**
+ * This file routes the '/api/' requests.
+ */
+
+const express = require('express');
+const path = require('path');
+const controller = require('../controllers/apiController');
 
 var router = express.Router();
 
-router.get('/items', (req, res, next) => {
-    database.getItems(function (err, result, fields) {
-        if (err) {
-            res.status(500);
-            res.send('Whoops');
-        } else {
-            res.status(200);
-            res.json(result);
-        }
-    }); 
-});
+router.get('/items', controller.getItems);
 
 module.exports = router;
