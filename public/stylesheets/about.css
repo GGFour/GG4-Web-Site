@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
 }
 
 body {
@@ -209,7 +209,9 @@ hr {
   }
 
   /*ends here*/
-
+  header {
+    justify-content: flex-end;
+  }
   .openbtn,
   .closebtn,
   .left-nav-btns {

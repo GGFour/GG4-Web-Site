@@ -1,5 +1,5 @@
 .account-container {
-  padding: 25px 25px 0;
+  width: 100vw;
   display: flex;
   justify-content: space-around;
 }
@@ -10,7 +10,7 @@
 }
 
 .acc-maintext {
-  font-size: 4rem;
+  font-size: 7rem;
 }
 
 .acc-subtext {
@@ -46,9 +46,11 @@
   background-color: #f9e805;
   border: none;
   border-radius: 50%;
-  height: 55px;
-  width: 55px;
-  font-size: 2rem;
+  height: 35px;
+  width: 35px;
+  font-size: 1.2rem;
+  justify-content: center;
+  align-self: center;
 }
 
 @media all and (max-width: 760px) {
