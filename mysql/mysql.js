@@ -1,13 +1,13 @@
-const connection = require('./queries')
+const connection = require("./queries");
 
 class Database {
-    constructor(connection) {
-        this.connection = connection;
-    }
-    
-    getItems(response){
-        this.connection.query(
-            `select
+  constructor(connection) {
+    this.connection = connection;
+  }
+
+  getItems(response) {
+    this.connection.query(
+      `select
             item.id,
             item_category.name as 'category',
             item.name, 
@@ -30,15 +30,29 @@ class Database {
         where
             item.category_id = item_category.id
         ;`,
-        function(err, result, field){
-            if (err){
-                console.log(err.message);
-            }
-            response(err, result, field)
-        });
-    }
+      function (err, result, fields) {
+        if (err) {
+          console.log(err.message);
+        }
+        response(err, result, fields);
+      }
+    );
+  }
+  getPassword(email, response) {
+    this.connection.query(
+      "SELECT * FROM user WHERE email = :email",
+      {
+        email: email,
+      },
+      (err, result, fields) => {
+        if (err) {
+          console.log(error.message);
+        }
+        response(err, result, fields);
+      }
+    );
+  }
 }
-
 
 let database = new Database(connection);
 
