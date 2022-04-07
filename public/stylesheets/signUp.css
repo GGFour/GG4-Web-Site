@@ -3,9 +3,9 @@
   justify-content: space-around;
   align-items: center;
 }
-.container div {
+/* .container div {
   border: 1px solid black;
-}
+} */
 .acc-form {
   width: 30%;
   font-size: 1.5rem;
@@ -22,7 +22,7 @@
 }
 
 .acc-subtext {
-  font-size: 2vw;
+  font-size: 1.8vw;
 }
 
 .acc-label {
