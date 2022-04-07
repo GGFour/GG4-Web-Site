@@ -1,23 +1,45 @@
 const fs = require("fs");
 const path = require("path");
 let scriptfile = path.join(__dirname, "fillin.sql");
+
+fs.writeFileSync(scriptfile,"");
 let categories = [
   { id: 1, name: "armor", description: "" },
   { id: 2, name: "weapon", description: "" },
   { id: 3, name: "key", description: "" },
   { id: 4, name: "wand", description: "" },
+  { id: 5, name: "potion", description: ""},
+  { id: 6, name: "other", description: ""}
 ];
 for (let i = 0; i < categories.length; i++) {
   let curr = categories[i];
   let resultString = `INSERT INTO item_category (name, description) VALUES ("${curr.name}", "${curr.description}");\n`;
   fs.appendFileSync(scriptfile, resultString);
 }
+
 let games = [{ name: "pixel dungeon" }];
+for (let i = 0; i < games.length; i++) {
+  let curr = games[i];
+  let resultString = `INSERT INTO game (name) VALUES ("${curr.name}");\n`;
+  fs.appendFileSync(scriptfile, resultString);
+}
+
+let user_types = [
+  {name: "user"},
+  {name: "admin"},
+  {name: "developer"}
+];
+for (let i = 0; i < user_types.length; i++) {
+  let curr = user_types[i];
+  let resultString = `INSERT INTO user_type (name) VALUES ("${curr.name}");\n`;
+  fs.appendFileSync(scriptfile, resultString);
+}
+
 let items = [
   {
     class: 2,
     name: "battle axe",
-    descrpition:
+    description:
       "This is a crude and heavy weapon. It's specifically designed todeal devastating blows to your enemies.",
     imgId: 23,
     tier: 4,
@@ -26,7 +48,7 @@ let items = [
   {
     class: 2,
     name: "dagger",
-    descrpition:
+    description:
       "A well balanced dagger. Sharp and short for dealing fast and effective blows to unsuspecting foes.",
     imgId: 20,
     tier: 1,
@@ -35,7 +57,7 @@ let items = [
   {
     class: 2,
     name: "glaive",
-    descrpition:
+    description:
       "A bladed staff weapon. This long weapon is an effective tool for keeping your foes in a distance and deal slashing hits.",
     imgId: 31,
     tier: 5,
@@ -262,4 +284,13 @@ let items = [
     imgId: 72,
   },
 ];
+
+for (let i = 0; i < items.length; i++) {
+  let curr = items[i];
+  var inventoryString = `INSERT INTO item_inventory (quantity) VALUES (100);\n`;
+  let resultString = `INSERT INTO item (name, description, category_id, game_id, inventory_id, path_to_image, price) VALUES ("${curr.name}","${curr.description}", ${curr.class}, 1, ${i+1}, ${curr.imgId}, ${curr.tier*10 || curr.class*10});\n`;
+  fs.appendFileSync(scriptfile, inventoryString);
+  fs.appendFileSync(scriptfile, resultString);
+}
+
 module.exports = { items };
