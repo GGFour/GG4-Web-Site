@@ -1,6 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 let scriptfile = path.join(__dirname, "fillin.sql");
+
+fs.writeFileSync(scriptfile,"");
 let categories = [
   { id: 1, name: "armor", description: "" },
   { id: 2, name: "weapon", description: "" },
@@ -14,11 +16,22 @@ for (let i = 0; i < categories.length; i++) {
   let resultString = `INSERT INTO item_category (name, description) VALUES ("${curr.name}", "${curr.description}");\n`;
   fs.appendFileSync(scriptfile, resultString);
 }
-let games = [{ name: "pixel dungeon" }];
 
+let games = [{ name: "pixel dungeon" }];
 for (let i = 0; i < games.length; i++) {
   let curr = games[i];
   let resultString = `INSERT INTO game (name) VALUES ("${curr.name}");\n`;
+  fs.appendFileSync(scriptfile, resultString);
+}
+
+let user_types = [
+  {name: "user"},
+  {name: "admin"},
+  {name: "developer"}
+];
+for (let i = 0; i < user_types.length; i++) {
+  let curr = user_types[i];
+  let resultString = `INSERT INTO user_type (name) VALUES ("${curr.name}");\n`;
   fs.appendFileSync(scriptfile, resultString);
 }
 
