@@ -43,3 +43,24 @@ exports.getPassword = (email, response) => {
     }
   );
 }
+
+/**
+ * Adds user to database.
+ * @param { Object } credentials 
+ * @param { function } response - callback function
+ */
+exports.createUser = (credentials, response) => {
+  pool.query(queries.createUser, [
+    credentials.email,
+    credentials.username,
+    credentials.firstname,
+    credentials.lastname,
+    credentials.password
+  ],
+  (err, result, field) => {
+    if (err) {
+      console.log(err);
+    }
+    response(err, result, field);
+  });
+}

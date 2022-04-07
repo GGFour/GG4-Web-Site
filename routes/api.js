@@ -10,4 +10,6 @@ var router = express.Router();
 
 router.get('/items', controller.getItems);
 
+router.post('/signup', controller.signUp);
+
 module.exports = router;
