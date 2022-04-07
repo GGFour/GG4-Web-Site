@@ -53,6 +53,7 @@
 .button-content {
   padding: 10px 0;
   cursor: pointer;
+  width: fit-content;
 }
 .btn-arrow {
   background-color: #f9e805;
