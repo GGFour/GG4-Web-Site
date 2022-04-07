@@ -18,14 +18,6 @@ CREATE TABLE item_category (
     PRIMARY KEY (id)
 );
 
-INSERT INTO item_category (name, description) VALUES ('weapon', '');
-INSERT INTO item_category (name, description) VALUES ('armor', '');
-INSERT INTO item_category (name, description) VALUES ('potion', '');
-INSERT INTO item_category (name, description) VALUES ('seed', '');
-INSERT INTO item_category (name, description) VALUES ('food', '');
-INSERT INTO item_category (name, description) VALUES ('other', '');
-
-
 CREATE TABLE game (
     id INTEGER NOT NULL AUTO_INCREMENT,
     name VARCHAR(32) NOT NULL,
@@ -74,10 +66,6 @@ CREATE TABLE user_type (
     name VARCHAR(32),
     PRIMARY KEY (id)
 );
-INSERT INTO user_type (name) VALUES ('user');
-INSERT INTO user_type (name) VALUES ('admin');
-INSERT INTO user_type (name) VALUES ('developer');
-
 
 CREATE TABLE user_payment (
     id INTEGER NOT NULL AUTO_INCREMENT,
@@ -90,14 +78,14 @@ CREATE TABLE user_payment (
 
 CREATE TABLE user (
     id INTEGER NOT NULL AUTO_INCREMENT,
-    email VARCHAR(32),
-    firstname VARCHAR(32),
-    lastname VARCHAR(32),
-    username VARCHAR(32) NOT NULL,
+    email VARCHAR(32) UNIQUE NOT NULL,
+    firstname VARCHAR(32) UNIQUE NOT NULL,
+    lastname VARCHAR(32) UNIQUE NOT NULL,
+    username VARCHAR(32) UNIQUE NOT NULL,
     pswd VARCHAR(255) NOT NULL,
     path_to_logo VARCHAR(32),
     payment_id INTEGER,
-    usertype_id INTEGER NOT NULL,
+    usertype_id INTEGER NOT NULL DEFAULT 1,
     session_id INTEGER,
     coins INTEGER NOT NULL DEFAULT 200,
     high_score INTEGER,
@@ -133,13 +121,11 @@ CREATE TABLE order_items (
     id INTEGER NOT NULL AUTO_INCREMENT,
     quantity INTEGER NOT NULL,
     item_id INTEGER NOT NULL,
-    user_id INTEGER NOT NULL,
     order_id INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (item_id) REFERENCES item(id),
-    FOREIGN KEY (order_id) REFERENCES order_details(id),
-    FOREIGN KEY (user_id) REFERENCES user(id)
+    FOREIGN KEY (order_id) REFERENCES order_details(id)
 );
 
 CREATE TABLE cart_item (

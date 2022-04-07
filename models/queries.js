@@ -26,3 +26,19 @@ exports.getItems = `select
     where
     item.category_id = item_category.id
     ;`;
+
+exports.createUser = `
+        INSERT INTO user (
+            email,
+            username,
+            firstname,
+            lastname,
+            pswd
+        ) VALUES (
+            ?,
+            ?,
+            ?,
+            ?,
+            ?
+        );
+`;

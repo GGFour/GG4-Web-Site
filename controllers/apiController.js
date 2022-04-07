@@ -3,6 +3,7 @@
  */
 
 const database = require('../models/mysql');
+const bcrypt = require('bcrypt')
 
 // Returns json containing all items in database.
 exports.getItems = (req, res, next) => {
@@ -15,4 +16,26 @@ exports.getItems = (req, res, next) => {
             res.json(result);
         }
     }); 
+}
+
+exports.signUp = async (req, res, next) => {
+    let credentials = req.body.credentials;
+    if (!credentials.email || !credentials.password || !credentials.username || !credentials.firstname || !credentials.lastname) {
+        res
+        .status(406)
+        .send('Bad credentials');
+    }
+    credentials.password = await bcrypt.hash(credentials.password, 10);
+    database.createUser(credentials, (err, rows, fields) => {
+        if (err) {
+            res
+            .status(406)
+            .send('Bad credentials');
+            return;
+        }
+
+        res
+        .status(200)
+        .send('OK');
+    });
 }
