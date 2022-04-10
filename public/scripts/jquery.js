@@ -17,6 +17,15 @@ function windowClicked(event) {
     showDetailPopup();
   }
 }
-
 clickableImg.addEventListener("click", showDetailPopup);
 window.addEventListener("click", windowClicked);
+
+// const Cart = document.getElementById("myCart");
+// function openCart() {
+//   document.getElementById("myCart").style.width = "50%";
+// }
+
+function openCart() {
+  const Cart = document.getElementById("myCart");
+  Cart.classList.toggle("show-main-container");
+}
