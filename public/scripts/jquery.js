@@ -27,5 +27,7 @@ window.addEventListener("click", windowClicked);
 
 function openCart() {
   const Cart = document.getElementById("myCart");
+  const inner = document.querySelector(".inner-container");
   Cart.classList.toggle("show-main-container");
+  inner.classList.toggle("show-inner-container");
 }
