@@ -47,6 +47,7 @@ header {
 header a {
   font-weight: bold;
 }
+
 .social-media-icons img {
   width: 38px;
   height: 38px;
@@ -63,7 +64,7 @@ header a {
 }
 
 /* .container {
-   border: 1px solid blue; 
+   border: 1px solid blue;
 } */
 
 .body-desktop-img {
@@ -108,6 +109,101 @@ footer a {
 .closebtn {
   display: none;
 }
+/* beginnig of shopping cart css */
+.fa-shopping-cart {
+  position: relative;
+  cursor: pointer;
+}
+
+.inner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 1rem;
+  width: 0;
+  float: right;
+  height: 100vh;
+  overflow-x: hidden;
+  transition: 0.4s;
+  z-index: 1;
+}
+.main-container {
+  transition: 0.4s;
+  z-index: 1;
+  position: absolute;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0;
+}
+.show-main-container {
+  width: 100%;
+  backdrop-filter: blur(20px);
+}
+.show-inner-container {
+  width: 30rem;
+}
+.cart-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* border: 1px solid blue; */
+  padding: 0 2.5rem;
+}
+.mycart-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  /* border: 1px solid red; */
+  padding: 2rem 0;
+}
+.inner-container img {
+  width: 80px;
+  margin-right: 10px;
+}
+.total {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+.checkout-btn button {
+  background-color: #f9e805;
+  border-radius: 0.5rem;
+  width: 10rem;
+  height: 2rem;
+  font-weight: bold;
+  border: none;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.inner-container h1 {
+  color: #764b17;
+}
+.cart-header,
+.mycart-content {
+  border-bottom: 1px solid #bbbbbb;
+}
+.cart-header p {
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #764b17;
+}
+.remove-btn {
+  color: red;
+  cursor: pointer;
+}
+.product-quantity {
+  width: 2.5rem;
+  height: 1.5rem;
+}
+
+/* end of shopping css */
 
 @media all and (max-width: 760px) {
   body {
@@ -138,8 +234,6 @@ footer a {
     height: auto;
     display: unset;
   }
-
-  /* hamburger-iconburger implementation*/
   .hamburger-icon {
     height: 0%;
     width: 100%;
@@ -216,5 +310,11 @@ footer a {
     align-items: center;
     justify-content: center;
     height: 100%;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .show-inner-container {
+    width: 100%;
   }
 }

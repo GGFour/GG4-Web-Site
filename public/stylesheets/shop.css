@@ -104,7 +104,8 @@
 .product-details {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
+  gap: 1rem;
 }
 .popup-content img:hover {
   transform: none;
