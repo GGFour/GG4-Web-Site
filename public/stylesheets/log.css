@@ -37,3 +37,12 @@
   display: flex;
   align-self: center;
 }
+
+@media all and (max-width: 760px) {
+  .acc-maintext {
+    font-size: 8vw;
+  }
+  .acc-form-log {
+    width: 50%;
+  }
+}
