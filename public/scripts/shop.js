@@ -1,7 +1,24 @@
-const items = require("./items");
-for (let i = 0; i < items.items.length; i++) {
-  addItem(i);
-}
+// const items = require("./items");
+const itemTemplate = document.querySelector("[item-template]");
+console.log(itemTemplate);
+//dunno why there are `[]`, saw it on youtube, cool video
+fetch("/api/items")
+  .then((res) => res.json())
+  .then((data) => {
+    data.forEach((item) => {
+      const itemElement = itemTemplate.content.cloneNode(true).children[0];
+      console.log(itemElement);
+      const name = itemElement.querySelector(".name");
+      console.log(name);
+      const price = itemElement.querySelector(".price");
+
+      name.textContent = item.name;
+      price.textContent = item.price;
+      console.log(document.querySelector(".products-grid"));
+      document.querySelector(".products-grid").append(itemElement);
+    });
+  });
+
 function leaveOneCategory(category) {
   for (let i = 0; i < items.categories.length; i) {
     if (category !== items.categories[i]) {

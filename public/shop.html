@@ -13,6 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./stylesheets/style.css">
     <link rel="stylesheet" href="./stylesheets/shop.css">
+    <!-- Just testing stuff, won't need items.js later-->
+    <!-- <script src="scripts/items.js"></script> -->
+    <script src="scripts/shop.js" defer></script>
     <title>GG4 Landing Page</title>
     </head>
     <body>
@@ -102,7 +105,8 @@
     </form>
     </div>
             <div class="products-grid">
-                <div  class="grid-div">
+
+                <!-- <div  class="grid-div">
                     <img src="./images/cat.jpg" alt="">
                     <p> P.name</p>
                     <p>P.Price</p>
@@ -124,47 +128,15 @@
                         </div>
                     </div>
                     </div>
+                </div> -->
+                <template item-template>
+                  <div  class="grid-div">
+                    <img class="image" src="./images/cat.jpg" alt="">
+                    <p class="name"></p>
+                    <p class="price"></p>
                 </div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-            </div>
+                </template>
+                </div>
         </div>
     </container>
     <footer>
