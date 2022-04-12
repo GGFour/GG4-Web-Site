@@ -1,7 +1,24 @@
 const items = require("./items");
-console.log();
 for (let i = 0; i < items.items.length; i++) {
   addItem(i);
+}
+function leaveOneCategory(category) {
+  for (let i = 0; i < items.categories.length; i) {
+    if (category !== items.categories[i]) {
+      hideCategory(items.categories[i]);
+    } else {
+      showCategory(items.categories[i]);
+    }
+  }
+}
+function showAll() {
+  document.getElementsByClassName("item").classlist.remove("js-is-hidden"); //not sure about that, maybe need to use for loop
+}
+function hideCategory(category) {
+  document.getElementsByClassName("category").classlist.add("js-is-hidden");
+}
+function showCategory(category) {
+  document.getElementsByClassName("category").classlist.remove("js-is-hidden");
 }
 function addItem(index) {
   ///just adding items in detail view using data from variable
@@ -13,7 +30,7 @@ function addItem(index) {
     <div class="name">${items.items[index].name}</div>
     <div class="price">69€</div>
   `;
-  newElement.className = "item";
+  newElement.className = `item ${items.items[index].category}`; ///here we should edit to make class and category match, the hell i just typed
   newElement.id = index;
   newElement.onclick = () => showDetailView(items.items[index], index);
   document.getElementsByClassName("products-grid")[0].appendChild(newElement);
