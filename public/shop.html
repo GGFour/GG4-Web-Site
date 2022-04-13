@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="./stylesheets/shop.css">
     <!-- Just testing stuff, won't need items.js later-->
     <!-- <script src="scripts/items.js"></script> -->
+    <!-- <script src="scripts/jquery.js" defer></script> -->
     <script src="scripts/shop.js" defer></script>
+   
     <title>GG4 Landing Page</title>
     </head>
     <body>
@@ -131,9 +133,22 @@
                 </div> -->
                 <template item-template>
                   <div  class="grid-div">
-                    <img class="image" src="./images/cat.jpg" alt="">
+                    <img class="clickable-img" src="./images/cat.jpg" alt="" >
                     <p class="name"></p>
                     <p class="price"></p>
+                    <div class="detail-popup">
+                      <div class="popup-content">
+                          <div class="imgdiv">
+                          <img src="./images/cat.jpg" alt="">
+                          </div>
+                          <div class="product-details">
+                              <h1 class="name-popup"></h1>
+                              <p class="description-popup"></p>
+                            <h2 class="price-popup"></h2> 
+                            <button>ADD TO CART</button> 
+                          </div>
+                      </div>
+                      </div>
                 </div>
                 </template>
                 </div>
@@ -161,6 +176,6 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
-    <script src="scripts/jquery.js"></script>
+    
   </body>
 </html>
