@@ -42,10 +42,10 @@ fetch("/api/items")
 // }
 console.log(document.getElementById(detailPopupId), detailPopupId);
 window.addEventListener("click", function (event) {
-  console.log(document.getElementById(detailPopupId));
+  // console.log(document.getElementById(detailPopupId));
   if (event.target == document.getElementById(detailPopupId)) {
     {
-      console.log(detailPopupId);
+      // console.log(detailPopupId);
       document
         .getElementById(detailPopupId)
         .classList.remove("show-detail-popup");
