@@ -64,3 +64,18 @@ exports.createUser = (credentials, response) => {
     response(err, result, field);
   });
 }
+
+exports.getPersonalInfo = (userId, response) => {
+  pool.query(
+    queries.personalInfo,
+    [
+      userId
+    ],
+    (err, result, fields) => {
+      if (err) {
+        console.log(err.message);
+      }
+      response(err, result, fields);
+    }
+  );
+}
