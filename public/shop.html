@@ -13,115 +13,83 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./stylesheets/style.css">
     <link rel="stylesheet" href="./stylesheets/shop.css">
+    <!-- Just testing stuff, won't need items.js later-->
+    <!-- <script src="scripts/items.js"></script> -->
+    <!-- <script src="scripts/jquery.js" defer></script> -->
+    <script src="scripts/shop.js" defer></script>
+   
     <title>GG4 Landing Page</title>
     </head>
     <body>
-    <header class="navbar"> 
-<div class="left-navbar" >
-          <div><img src="images/logo.png" alt="" class="logo-img" /></div>
-           <div class="hamburger-icon" id="myNav">
-          <div class="left-nav-btns"  > 
-            <a href="index.html">HOME</a> 
-            <a href="shop.html">SHOP</a>
-            <a href="about.html">ABOUT</a>
-            <a href="game.html">GAME</a>
-          </div>
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-             </div>
-           </div>
-        <div class="right-navbar">
-          <div class="right-nav-btns">
-            <a href="signUp.html" >SIGN UP</a>
-            <a href="log.html" >LOG IN</a>
-             </div>
-               <div><i class="fa fa-shopping-cart" value="8" ><a href="#" class="shopping-cart-icon" onclick="openCart()"></a> </i></div>
-             <div> <img src="images/burger-menu.png" alt="" class="burger-menu-btn" onclick="openNav()"></div>
-             </div>
-    </header>
-    <container class="shop-container">
-        <div class="category-side">
-    <h1>CATEGORY</h1>
-    <ul>
-        <li><a href="">WEAPONS</a></li>
-        <li><a href="">ARMORS</a></li>
-        <li><a href="">POTIONS</a></li>
-        <li><a href="">SEEDS</a></li>
-        <li><a href="">FOOD</a></li>
-        <li><a href="">OTHER ITEMS</a></li>
-    </ul>
+        <header class="navbar"> 
+            <div class="left-navbar" >
+                <div><img src="images/logo.png" alt="" class="logo-img" /></div>
+                <div class="hamburger-icon" id="myNav">
+                    <div class="left-nav-btns"  > 
+                    <a href="index.html">HOME</a> 
+                    <a href="shop.html">SHOP</a>
+                    <a href="about.html">ABOUT</a>
+                    <a href="game.html">GAME</a>
+                    </div>
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                </div>
+            </div>
+            <div class="right-navbar">
+                <div class="right-nav-btns">
+                    <a href="signUp.html" >SIGN UP</a>
+                    <a href="log.html" >LOG IN</a>
+                </div>
+                <div><i class="fa fa-shopping-cart" value="8" ><a href="#" class="shopping-cart-icon" onclick="openCart()"></a> </i></div>
+                <div> <img src="images/burger-menu.png" alt="" class="burger-menu-btn" onclick="openNav()"></div>
+            </div>
+        </header>
+        <container class="shop-container">
+            <div class="category-side">
+                <h1>CATEGORY</h1>
+                    <ul>
+                        <li><a href="">WEAPONS</a></li>
+                        <li><a href="">ARMORS</a></li>
+                        <li><a href="">POTIONS</a></li>
+                        <li><a href="">SEEDS</a></li>
+                        <li><a href="">FOOD</a></li>
+                        <li><a href="">OTHER ITEMS</a></li>
+                    </ul>
             </div>
             <div class="products-side">
                 <div class="products-tile">
-                <h1>PRODUCTS</h1>
-    <form action="">
-        <input type="text" placeholder="Search...">
-        <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-    </div>
-            <div class="products-grid">
-                <div  class="grid-div">
-                    <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p>
-                </div>
-                <div  class="grid-div">
-                    <img src="./images/cat.jpg" alt="" class="clickable-img">
-                    <p> P.name</p>
-                    <p>P.Price</p>
+                    <h1>PRODUCTS</h1>
+                    <!-- <form action="">
+                        <input type="text" placeholder="Search...">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form> -->
+                    <div class="search-container">
+                        <input class="search-input" type="text" placeholder="Search...">
+                    </div>
+                </div> --!>
+                
+                <div class="products-grid">
+                    
+                <template item-template>
+                  <div  class="grid-div">
+                    <img class="clickable-img" src="./images/cat.jpg" alt="" >
+                    <p class="name"></p>
+                    <p class="price"></p>
                     <div class="detail-popup">
-                    <div class="popup-content">
-                        <div class="imgdiv">
-                        <img src="./images/cat.jpg" alt="">
-                        </div>
-                        <div class="product-details">
-                            <h1>Product name</h1>
-                            <p>Lorem ipsum dolor sit, consectetur adipiscing elit. Sed dignissim rhoncus faucibus. eros interdum laoreet. Donec condimentum rutrum purus. Aenean tincidunt, nunc sed porttitor vehicula, orci leo lacinia purus, a tincidunt est ex et velit. Nullam ligula massa, pretium ut nulla pharetra, suscipit varius felis. Quisque at arcu sit amet magna scelerisque porttitor.</p>
-                          <h2>$99.00</h2> 
-                          <button>ADD TO CART</button> 
-                        </div>
-                    </div>
-                    </div>
+                      <div class="popup-content">
+                          <div class="imgdiv">
+                          <img src="./images/cat.jpg" alt="">
+                          </div>
+                          <div class="product-details">
+                              <h1 class="name-popup"></h1>
+                              <p class="description-popup"></p>
+                            <h2 class="price-popup"></h2> 
+                            <button>ADD TO CART</button> 
+                          </div>
+                      </div>
+                      </div>
                 </div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-                <div class="grid-div"> <img src="./images/cat.jpg" alt="">
-                    <p> P.name</p>
-                    <p>P.Price</p></div>
-            </div>
+                </template>
+                </div>
         </div>
     </container>
     <footer>
@@ -146,6 +114,6 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
-    <script src="scripts/jquery.js"></script>
+    
   </body>
 </html>

@@ -31,13 +31,13 @@ exports.getItems = (response) => {
  */
 exports.getPassword = (email, response) => {
   pool.query(
-    "SELECT * FROM user WHERE email = :email",
-    {
-      email: email,
-    },
+    "SELECT user.id, user.path_to_logo, user.pswd, user_type.name as 'type' FROM user, user_type WHERE user.email = ? AND user.usertype_id = user_type.id",
+    [
+      email
+    ],
     (err, result, fields) => {
       if (err) {
-        console.log(error.message);
+        console.log(err.message);
       }
       response(err, result, fields);
     }
