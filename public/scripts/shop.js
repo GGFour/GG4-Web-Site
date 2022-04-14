@@ -79,23 +79,22 @@ function leaveOneCategory(category) {
   document.querySelectorAll(`.grid-div`).forEach(function (el) {
     // console.log(el);
     el.style.visibility = "hidden";
+    el.style.order = 2;
+    //order is putting the elements in order, from 1 to 2 so elements with order 2 are lower and elements with order 1 are higher
   });
   document.querySelectorAll(`.${category}`).forEach(function (el) {
     console.log(el);
     el.style.visibility = "visible";
+    el.style.order = 1;
   });
 }
 function showAll() {
-  document.getElementsByClassName("item").classlist.remove("js-is-hidden");
+  document.querySelectorAll(`.grid-div`).forEach(function (el) {
+    // console.log(el);
+    el.style.visibility = "visible";
+    el.style.order = 1;
+  });
   //not sure about that, maybe need to use for loop
-}
-function hideCategory(category) {
-  document.getElementsByClassName(`${category}`).classlist.add("js-is-hidden");
-}
-function showCategory(category) {
-  document
-    .getElementsByClassName(`${category}`)
-    .classlist.remove("js-is-hidden");
 }
 // function addItem(index) {
 //   ///just adding items in detail view using data from variable
