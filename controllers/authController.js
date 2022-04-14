@@ -95,3 +95,8 @@ exports.logIn = async (req, res, next) => {
         });
 }
 
+exports.logout = function(req, res, next) {
+    return res
+    .clearCookie("access_token")
+    .redirect('/')
+}

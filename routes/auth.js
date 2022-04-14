@@ -1,5 +1,6 @@
 const express = require('express');
 const { body } = require('express-validator');
+const authenticated = require('../middlewares/authenticated');
 
 const controller = require('../controllers/authController');
 
@@ -17,5 +18,7 @@ router.post('/login',
     body('email', 'Bad email format').isEmail().normalizeEmail(),
     body('password', 'Password should be from 8 to 24 characters!').isLength({min: 8, max: 24}).isAscii(),
     controller.logIn);
+
+router.get('/logout', authenticated, controller.logout);
 
 module.exports = router;

@@ -16,3 +16,16 @@ exports.getItems = (req, res, next) => {
         }
     }); 
 }
+
+exports.getPersonalInfo = (req, res, next) => {
+    let userId = req.user.id;
+    database.getPersonalInfo(userId, function (err, result, fields) {
+        if (err) {
+            res.status(500);
+            res.send('Whoops');
+        } else {
+            res.status(200);
+            res.json(result);
+        }
+    }); 
+}

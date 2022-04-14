@@ -5,6 +5,8 @@
 const express = require('express');
 const path = require('path');
 const controller = require('../controllers/indexController');
+const authenticated = require('../middlewares/authenticated');
+const redirectAuthed = require('../middlewares/redirectFromLogin')
 
 var router = express.Router();
 
@@ -20,11 +22,18 @@ router.get('/', controller.sendIndex);
 router.get('/about', controller.sendAbout);
 
 /**
- * Returns shopt page 
+ * Returns shop page 
  * - may be it would make sence to move this functionality to separate router
  */
-router.get('/shop', function(req, res, next) {
-  res.status(200).sendFile(path.join(__dirname,'../public/shop.html'));
-});
+router.get('/shop', controller.sendShop);
+
+/* Returns login page*/
+router.get('/login', redirectAuthed, controller.sendLogin);
+
+/* Returns signup page */
+router.get('/signup', redirectAuthed, controller.sendSignup);
+
+/* Returns game page */
+router.get('/game',  controller.sendGame);
 
 module.exports = router;
