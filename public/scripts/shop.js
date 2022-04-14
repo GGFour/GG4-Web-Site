@@ -79,20 +79,25 @@ function leaveOneCategory(category) {
   document.querySelectorAll(`.grid-div`).forEach(function (el) {
     // console.log(el);
     el.style.visibility = "hidden";
-    el.style.order = 2;
+    el.querySelector(`.clickable-img`).style.transitionDuration = "0s";
+    el.style.top = "0";
+    el.style.left = "0";
+    el.style.position = "absolute";
+
     //order is putting the elements in order, from 1 to 2 so elements with order 2 are lower and elements with order 1 are higher
   });
   document.querySelectorAll(`.${category}`).forEach(function (el) {
     console.log(el);
+    el.style.position = "initial";
     el.style.visibility = "visible";
-    el.style.order = 1;
+    el.querySelector(`.clickable-img`).style.transitionDuration = "0.3s";
   });
 }
 function showAll() {
   document.querySelectorAll(`.grid-div`).forEach(function (el) {
     // console.log(el);
     el.style.visibility = "visible";
-    el.style.order = 1;
+    el.style.position = "initial";
   });
   //not sure about that, maybe need to use for loop
 }
