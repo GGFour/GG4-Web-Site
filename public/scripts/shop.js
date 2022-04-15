@@ -140,3 +140,43 @@ function showAll() {
 //   }
 // });
 // }
+
+$("#category-header").click(function () {
+  $("#all-categories").slideToggle("slow");
+});
+
+// implementing add-to-cart functionality
+let addToCartButton = document.getElementsByClassName("add-to-cart");
+for (let i = 0; i < addToCartButton.length; i++) {
+  let button = addToCartButton[i];
+  button.addEventListener("click", AddToCartClicked);
+}
+
+function AddToCartClicked(event) {
+  let button = event.target;
+  let shopItem = button.parentElement.parentElement.parentElement.parentElement;
+  let title = shopItem.getElementsByClassName("product-name")[0].innerText;
+  AddItemToCart(title);
+  console.log(addToCartButton.length);
+}
+
+function AddItemToCart(name) {
+  let CartElement = document.createElement("div");
+  CartElement.classList.add("mycart-content");
+  let cartItems = document.getElementsByClassName("inner-container")[0];
+  let CartElementContent = `
+          <div>
+              <img src="./images/cat.jpg">
+            <p class="product-name">${name}</p>
+          </div>
+          <div>
+            <input type="number" value="1" class="product-quantity" />
+            <p class="remove-btn">Remove</p>
+          </div>
+          <div>
+            <p class="product-price">P.price</p>
+          </div>
+  `;
+  CartElement.innerHTML = CartElementContent;
+  cartItems.append(CartElement);
+}
