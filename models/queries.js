@@ -43,3 +43,7 @@ exports.createUser = `
             ?
         );
 `;
+
+exports.personalInfo = `
+select id, email, firstname, lastname, username, coins, high_score FROM user WHERE id = ?;
+`
