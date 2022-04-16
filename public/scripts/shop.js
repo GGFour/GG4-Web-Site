@@ -141,11 +141,14 @@ function showAll() {
 // });
 // }
 
+// showing a slidedown for mobile categories
 $("#category-header").click(function () {
   $("#all-categories").slideToggle("slow");
 });
 
 // implementing add-to-cart functionality
+
+// click event for adding to the shopping cart.
 let addToCartButton = document.getElementsByClassName("add-to-cart");
 for (let i = 0; i < addToCartButton.length; i++) {
   let button = addToCartButton[i];
@@ -153,11 +156,12 @@ for (let i = 0; i < addToCartButton.length; i++) {
 }
 
 function AddToCartClicked(event) {
+  // you can add the price and the img src as parameters here
   let button = event.target;
   let shopItem = button.parentElement.parentElement.parentElement.parentElement;
-  let title = shopItem.getElementsByClassName("product-name")[0].innerText;
-  AddItemToCart(title);
-  console.log(addToCartButton.length);
+  let name = shopItem.getElementsByClassName("product-name")[0].innerText;
+  AddItemToCart(name);
+  UpdateCartTotal();
 }
 
 function AddItemToCart(name) {
@@ -179,4 +183,57 @@ function AddItemToCart(name) {
   `;
   CartElement.innerHTML = CartElementContent;
   cartItems.append(CartElement);
+  CartElement.getElementsByClassName("remove-btn")[0].addEventListener(
+    "click",
+    RemoveCartItem
+  );
+  CartElement.getElementsByClassName("product-quantity")[0].addEventListener(
+    "change",
+    quantityChanged
+  );
+}
+
+// click event for removing from the shopping cart
+let RemoveItem = document.getElementsByClassName("remove-btn");
+for (let i = 0; i < RemoveItem.length; i++) {
+  let button = RemoveItem[i];
+  button.addEventListener("click", RemoveCartItem);
+}
+// function for removing the targeted item.
+function RemoveCartItem(event) {
+  buttonclicked = event.target;
+  buttonclicked.parentElement.parentElement.remove();
+  UpdateCartTotal();
+}
+// change event to quantitiy input.
+let quantityInputs = document.getElementsByClassName("product-quantity");
+for (let i = 0; i < quantityInputs.length; i++) {
+  let input = quantityInputs[i];
+  input.addEventListener("change", quantityChanged);
+}
+
+// fucntion to let the item quantity increase no less than one
+function quantityChanged(event) {
+  let input = event.target;
+  if (isNaN(input.value) || input.value <= 0) {
+    input.value = 1;
+  }
+  UpdateCartTotal();
+}
+
+// function for updating the total price.
+function UpdateCartTotal() {
+  let AddedItemContent = document.getElementsByClassName("mycart-content");
+  let total = 0;
+  for (let i = 0; i < AddedItemContent.length; i++) {
+    let singleItem = AddedItemContent[i];
+    let priceElement = singleItem.getElementsByClassName("product-price")[0];
+    let quantityElement =
+      singleItem.getElementsByClassName("product-quantity")[0];
+    let price = parseFloat(priceElement.innerText.replace("ø", ""));
+    let quantity = quantityElement.value;
+    total = total + price * quantity;
+  }
+  total = Math.round(total * 100) / 100;
+  document.getElementsByClassName("sum-price")[0].innerText = "ø" + total;
 }
