@@ -95,7 +95,9 @@ CREATE TABLE user (
     PRIMARY KEY (id),
     FOREIGN KEY (payment_id) REFERENCES user_payment(id),
     FOREIGN KEY (usertype_id) REFERENCES user_type(id),
-    FOREIGN KEY (session_id) REFERENCES shopping_session(id)
+    FOREIGN KEY (session_id) REFERENCES shopping_session(id),
+    CHECK (coins >= 0),
+    CHECK (high_score >= 0)
 );
 
 CREATE TABLE inventory (

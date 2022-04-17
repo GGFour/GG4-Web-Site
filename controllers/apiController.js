@@ -29,3 +29,14 @@ exports.getPersonalInfo = (req, res, next) => {
         }
     }); 
 }
+
+// exports.placeOrder = (req, res, next) => {
+//     let user = req.user;
+//     let items = req.body.items;
+
+//     if (!items || items.length == 0) {
+//         return res.status(400).json({message: "Cart is empty"});
+//     }
+
+    
+// }

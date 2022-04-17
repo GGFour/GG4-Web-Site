@@ -6,7 +6,8 @@ const express = require('express');
 const path = require('path');
 const controller = require('../controllers/indexController');
 const authenticated = require('../middlewares/authenticated');
-const redirectAuthed = require('../middlewares/redirectFromLogin')
+const redirectAuthed = require('../middlewares/redirectIfAuth');
+const redirectUnauthed = require('../middlewares/redirectIfUnauth');
 
 var router = express.Router();
 
@@ -28,10 +29,18 @@ router.get('/about', controller.sendAbout);
 router.get('/shop', controller.sendShop);
 
 /* Returns login page*/
-router.get('/login', redirectAuthed, controller.sendLogin);
+router.get('/login', 
+    authenticated, 
+    redirectAuthed(), 
+    controller.sendLogin
+);
 
 /* Returns signup page */
-router.get('/signup', redirectAuthed, controller.sendSignup);
+router.get('/signup', 
+    authenticated, 
+    redirectAuthed(), 
+    controller.sendSignup
+);
 
 /* Returns game page */
 router.get('/game',  controller.sendGame);

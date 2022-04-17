@@ -2,7 +2,7 @@
 
 ## How to run:
 
-1. Execute `npm init` to install all dependencies.
+1. Execute `npm install` to install all dependencies.
 
 2. Create copy of `.env.example` file and name it `.env` set your own values for variables.
 
