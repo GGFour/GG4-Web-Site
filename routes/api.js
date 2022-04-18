@@ -18,10 +18,10 @@ router.get('/personalInfo',
     controller.getPersonalInfo
 );
 
-// router.post('/placeOrder', 
-//     authenticated,
-//     protected,
-//     controller.placeOrder
-// );
+router.post('/placeOrder', 
+    authenticated,
+    protected,
+    controller.placeOrder
+);
 
 module.exports = router;
