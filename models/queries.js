@@ -25,7 +25,8 @@ exports.getItems = `select
     game
     where
     item.category_id = item_category.id
-    ;`;
+    ;
+`;
 
 // Statement to add user;
 exports.createUser = `
@@ -44,6 +45,7 @@ exports.createUser = `
         );
 `;
 
+// Statement to get user info.
 exports.personalInfo = `
 select id, email, firstname, lastname, username, coins, high_score FROM user WHERE id = ?;
-`
+`;
