@@ -179,10 +179,16 @@
   cursor: pointer;
   margin-top: auto;
 }
+.popup-content button:active {
+  transform: translateY(4px);
+}
 .show-detail-popup {
   opacity: 1;
   visibility: visible;
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.all-items {
+  width: 100%;
 }
 @media all and (max-width: 1200px) {
   .products-grid {
@@ -222,7 +228,7 @@
     display: none;
   }
   .category-side h1:hover:before {
-    content: 'Click!';
+    content: "Click!";
   }
   .category-side ul {
     display: none;
