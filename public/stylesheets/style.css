@@ -281,7 +281,9 @@ footer a {
     height: auto;
     display: unset;
   }
-
+  .cart-header h1 {
+    margin: 1rem 0;
+  }
   /* end of navbar design*/
   .body-desktop-img {
     display: none;

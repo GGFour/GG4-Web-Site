@@ -211,8 +211,14 @@
   }
 
   .category-side h1 {
-    border: none;
+    /* border: none; */
     cursor: pointer;
+  }
+  .category-side h1:hover span {
+    display: none;
+  }
+  .category-side h1:hover:before {
+    content: "Click!";
   }
   .category-side ul {
     display: none;
@@ -227,7 +233,7 @@
 
   .popup-content {
     flex-direction: column;
-    max-width: 40%;
+    max-width: 50%;
     min-width: unset;
   }
   .popup-content img {
