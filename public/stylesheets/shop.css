@@ -114,6 +114,10 @@
   object-position: center;
   object-fit: cover;
   transition-duration: 0.3s;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 .products-grid img:hover {
   transform: scale(1.1);
