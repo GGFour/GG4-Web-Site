@@ -176,7 +176,7 @@ function bindAddToCart() {
     button.addEventListener("click", addToCartClicked);
   }
 }
-function addToLocalStorage(id) {
+function addToLocalStorageCart(id) {
   let cart = JSON.parse(localStorage.getItem("cart"));
   console.log(cart);
   if (cart == null) {
@@ -197,8 +197,29 @@ function addToCartClicked(event) {
   let shopItem = button.parentElement.parentElement.parentElement.parentElement;
   console.log(shopItem);
   addItemToCart(shopItem);
-  addToLocalStorage(shopItem.id);
   updateCartTotal();
+  addToLocalStorageCart(shopItem.id);
+  addItemToLocalStorage(shopItem);
+}
+function addItemToLocalStorage(item) {
+  //write a function which will push item item details to local storage
+  if (
+    localStorage.getItem("items") == undefined ||
+    localStorage.getItem("items") == null
+  ) {
+    console.log("Не туда вставляешь!");
+    let items = [];
+    localStorage.setItem("items", JSON.stringify(items));
+  }
+  let items = JSON.parse(localStorage.getItem("items"));
+  console.log(items);
+  items.push({
+    id: item.id,
+    name: item.querySelector(".name").innerText,
+    price: item.querySelector(".price").innerText,
+    img: item.querySelector(".clickable-img").src,
+  });
+  localStorage.setItem("items", JSON.stringify(items));
 }
 // here i work with localStorage and with array containing all items added to cart
 
@@ -250,6 +271,7 @@ function addItemToCart(item, quantity) {
     quantityChanged
   );
   countUp();
+  updateCartTotal();
 }
 
 // click event for removing from the shopping cart

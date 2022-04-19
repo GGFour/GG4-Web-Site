@@ -64,28 +64,31 @@
     </div>  
 
     <div class="acc-form-log">
+      <form id="myForm">
+
         <div class="block-input">
-          <label class="acc-label" for="email"><b>Email</b></label>
-          <input id="input-group" type="text" placeholder="joe.doe@email.com" name="email" required>
+            <label class="acc-label" for="email"><b>Email</b></label>
+            <input id="input-group" type="email" placeholder="joe.doe@email.com" name="email" required>
         </div>
 
         <div class="block-input">
-          <label class="acc-label" for="pwd"><b>Password</b></label>
-          <input id="input-group" type="text" placeholder="Password" name="pwd" required>
+            <label class="acc-label" for="pwd"><b>Password</b></label>
+            <input id="input-group" type="password" placeholder="Password" name="password" required>
         </div>
 
         <div class="remember-forgot">
           <label>
-            <input type="checkbox" checked="checked" name="remember"> <p class="remember-text">Remember for 30 days</p>
+              <input type="checkbox" checked="checked" name="remember"> <p class="remember-text">Remember for 30 days</p>
 
-        </label>
+          </label>
+            
+        </div>
+
           
-        </div>
-
-        
-        <div class="button-content">
-          <button class="btn-arrow"><i class='fa fa-angle-double-right'></i></button>
-        </div>
+          <div class="button-content">
+            <button type="submit" class="btn-arrow"><i class='fa fa-angle-double-right'></i></button>
+          </div>
+      </form>    
 
         <div class="sub-createAcc">
           <p>Don't have an account?</p><a href="signUp.html"> Sign up for free</a>
@@ -113,6 +116,35 @@
     <div class="footer-copyright"><span></span>©GG4 Inc.</span>
     </div>
     </footer>
+
+    <script>
+
+      const myForm = document.getElementById('myForm');
+
+      myForm.addEventListener('submit', function(e) {
+        
+        e.preventDefault();
+
+        const formData = new FormData(this);
+
+        fetch('/auth/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({'email' : formData.get('email'), 'password' : formData.get('password')})
+        }).then(function (response) {
+            return response.text();
+        }).then(function (text) {
+            console.log(text);
+        }).catch(function (error){
+            console.error(error);
+        })
+
+
+      });
+
+    </script>
 
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
