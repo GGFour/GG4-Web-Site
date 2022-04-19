@@ -168,20 +168,20 @@ function bindAddToCart() {
   let addToCartButton = document.getElementsByClassName("add-to-cart");
   for (let i = 0; i < addToCartButton.length; i++) {
     let button = addToCartButton[i];
-    button.addEventListener("click", AddToCartClicked);
+    button.addEventListener("click", addToCartClicked);
   }
 }
 
-function AddToCartClicked(event) {
+function addToCartClicked(event) {
   // you can add the price and the img src as parameters here
   let button = event.target;
   let shopItem = button.parentElement.parentElement.parentElement.parentElement;
   console.log(shopItem);
-  AddItemToCart(shopItem);
-  UpdateCartTotal();
+  addItemToCart(shopItem);
+  updateCartTotal();
 }
 
-function AddItemToCart(item) {
+function addItemToCart(item) {
   let name = item.getElementsByClassName("name")[0].innerText;
   let price = item.getElementsByClassName("price")[0].innerText;
   //just copipasted iamgeSrc, it works
@@ -203,28 +203,36 @@ function AddItemToCart(item) {
           </div>
   `;
   CartElement.innerHTML = CartElementContent;
+  // let cartItemsNames = item.getElementsByClassName("name");
+  // for (let i = 0; i < cartItemsNames.length; i++) {
+  //   if (cartItemsNames[i].innerText != name) {
+  //     cartItems.append(CartElement);
+  //   }
+  // }
   cartItems.append(CartElement);
   CartElement.getElementsByClassName("remove-btn")[0].addEventListener(
     "click",
-    RemoveCartItem
+    removeCartItem
   );
   CartElement.getElementsByClassName("product-quantity")[0].addEventListener(
     "change",
     quantityChanged
   );
+  countUp();
 }
 
 // click event for removing from the shopping cart
 // let RemoveItem = document.getElementsByClassName("remove-btn");
 // for (let i = 0; i < RemoveItem.length; i++) {
 //   let button = RemoveItem[i];
-//   button.addEventListener("click", RemoveCartItem);
+//   button.addEventListener("click", removeCartItem);
 // }
 // function for removing the targeted item.
-function RemoveCartItem(event) {
+function removeCartItem(event) {
   buttonclicked = event.target;
   buttonclicked.parentElement.parentElement.remove();
-  UpdateCartTotal();
+  updateCartTotal();
+  countDown();
 }
 // change event to quantitiy input.
 let quantityInputs = document.getElementsByClassName("product-quantity");
@@ -239,11 +247,11 @@ function quantityChanged(event) {
   if (isNaN(input.value) || input.value <= 0) {
     input.value = 1;
   }
-  UpdateCartTotal();
+  updateCartTotal();
 }
 
 // function for updating the total price.
-function UpdateCartTotal() {
+function updateCartTotal() {
   let AddedItemContent = document.getElementsByClassName("mycart-content");
   let total = 0;
   for (let i = 0; i < AddedItemContent.length; i++) {
@@ -257,5 +265,23 @@ function UpdateCartTotal() {
   }
   total = Math.round(total * 100) / 100;
   //document.getElementsByClassName("total-price")[0].innerText = "ø" + total;
-  document.querySelector(".total-price").innerText = "ø" + total;
+  document.querySelector(".total-price").innerText = total + "ø";
+}
+
+let PressBasket = document.querySelector(".cart-btn");
+let CartInput = document.querySelector(".product-info");
+let PressAddToCard = document.getElementsByClassName("add-to-cart");
+for (let i = 0; i < PressAddToCard.length; i++) {
+  let AddingButton = PressAddToCard[i];
+  AddingButton.addEventListener("cilick", CountUp);
+}
+function countDown() {
+  let item = Number(PressBasket.getAttribute("data-count") || 0);
+  PressBasket.setAttribute("data-count", item - 1);
+  PressBasket.classList.add("on");
+}
+function countUp() {
+  let item = Number(PressBasket.getAttribute("data-count") || 0);
+  PressBasket.setAttribute("data-count", item + 1);
+  PressBasket.classList.add("on");
 }
