@@ -188,7 +188,7 @@ function AddItemToCart(item) {
   let imageSrc = $(item).find("img").attr("src");
   let CartElement = document.createElement("div");
   CartElement.classList.add("mycart-content");
-  let cartItems = document.getElementsByClassName("inner-container")[0];
+  let cartItems = document.getElementsByClassName("all-items")[0];
   let CartElementContent = `
           <div>
               <img src="${imageSrc}">
