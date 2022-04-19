@@ -95,22 +95,25 @@ CREATE TABLE user (
     PRIMARY KEY (id),
     FOREIGN KEY (payment_id) REFERENCES user_payment(id),
     FOREIGN KEY (usertype_id) REFERENCES user_type(id),
-    FOREIGN KEY (session_id) REFERENCES shopping_session(id)
+    FOREIGN KEY (session_id) REFERENCES shopping_session(id),
+    CHECK (coins >= 0),
+    CHECK (high_score >= 0)
 );
 
 CREATE TABLE inventory (
-    id INTEGER NOT NULL AUTO_INCREMENT,
+    -- id INTEGER NOT NULL AUTO_INCREMENT,
     user_id INTEGER NOT NULL,
     item_id INTEGER NOT NULL,
     quantity INTEGER NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (user_id) REFERENCES user(id),
-    FOREIGN KEY (item_id) REFERENCES item(id)
+    PRIMARY KEY (user_id, item_id)
+    -- FOREIGN KEY (user_id) REFERENCES user(id),
+    -- FOREIGN KEY (item_id) REFERENCES item(id)
 );
 
 CREATE TABLE order_details(
     id INTEGER NOT NULL AUTO_INCREMENT,
     user_id INTEGER NOT NULL,
+    items TEXT NOT NULL,
     total INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
