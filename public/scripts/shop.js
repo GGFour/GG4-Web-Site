@@ -13,9 +13,14 @@ fetch('/api/items')
       const name = itemElement.querySelector('.name');
       // console.log(name);
       const price = itemElement.querySelector('.price');
+      const popUpDetailImage = itemElement.querySelector('.detail-img');
       const image = itemElement.querySelector('.clickable-img');
       name.textContent = item.name;
       price.textContent = item.price;
+      popUpDetailImage.src =
+        'assets/pixel_dungeon/items/items_' +
+        String(item.path_to_image).padStart(2, '0') +
+        '.png';
       image.src =
         'assets/pixel_dungeon/items/items_' +
         String(item.path_to_image).padStart(2, '0') +
