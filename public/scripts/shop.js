@@ -2,8 +2,7 @@
 const itemTemplate = document.querySelector("[item-template]");
 // console.log(itemTemplate);
 //dunno why there are `[]`, saw it on youtube, cool video
-let detailPopupId = null;
-
+let detailId = null;
 fetch("/api/items")
   .then((res) => res.json())
   .then((data) => {
@@ -31,19 +30,20 @@ fetch("/api/items")
         String(item.path_to_image).padStart(2, "0") +
         ".png";
       itemElement.classList.add(`${item.category}`);
+      itemElement.id = item.id;
       itemElement.querySelector(".price-popup").textContent = item.price;
       itemElement.querySelector(".name-popup").textContent = item.name;
       itemElement.querySelector(".description-popup").textContent =
         item.description;
 
-      itemElement.querySelector(".detail-popup").id = item.id;
+      // itemElement.querySelector(".detail-popup").id = item.id;
       itemElement.querySelector(".clickable-img").addEventListener(
         "click",
         () => {
           itemElement
             .querySelector(".detail-popup")
             .classList.toggle("show-detail-popup");
-          detailPopupId = itemElement.querySelector(".detail-popup").id;
+          detailId = itemElement.id;
         }
         //where the hell did you find "show-detail-popup"? it works
       );
@@ -52,20 +52,25 @@ fetch("/api/items")
       document.querySelector(".products-grid").append(itemElement);
     });
     bindAddToCart();
+    cartStorageFiller();
   });
 // function windowClicked(event) {
 //   if (event.target === detailPopup) {
 //     showDetailPopup();
 //   }
 // }
-console.log(document.getElementById(detailPopupId), detailPopupId);
+console.log(document.getElementById(detailId), detailId);
 window.addEventListener("click", function (event) {
   // console.log(document.getElementById(detailPopupId));
-  if (event.target == document.getElementById(detailPopupId)) {
+  if (
+    event.target ==
+    document.getElementById(detailId).getElementsByClassName("detail-popup")[0]
+  ) {
     {
       // console.log(detailPopupId);
       document
-        .getElementById(detailPopupId)
+        .getElementById(detailId)
+        .getElementsByClassName("detail-popup")[0]
         .classList.remove("show-detail-popup");
     }
   }
@@ -168,20 +173,44 @@ function bindAddToCart() {
   let addToCartButton = document.getElementsByClassName("add-to-cart");
   for (let i = 0; i < addToCartButton.length; i++) {
     let button = addToCartButton[i];
-    button.addEventListener("click", AddToCartClicked);
+    button.addEventListener("click", addToCartClicked);
   }
 }
-
+function addToLocalStorage(id) {
+  let cart = JSON.parse(localStorage.getItem("cart"));
+  console.log(cart);
+  if (cart == null) {
+    cart = [{ id: `${id}`, quantity: 1 }];
+  } else {
+    console.log(cart);
+    if (cart.find((x) => x.id === `${id}`) === undefined) {
+      cart.push({ id: `${id}`, quantity: 1 });
+    } else {
+      cart.find((x) => x.id === `${id}`).quantity++;
+    }
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
 function AddToCartClicked(event) {
   // you can add the price and the img src as parameters here
   let button = event.target;
   let shopItem = button.parentElement.parentElement.parentElement.parentElement;
   console.log(shopItem);
   AddItemToCart(shopItem);
+  addToLocalStorage(shopItem.id);
   UpdateCartTotal();
 }
+// here i work with localStorage and with array containing all items added to cart
 
-function AddItemToCart(item) {
+function cartStorageFiller() {
+  let cartItems = JSON.parse(localStorage.getItem("cart"));
+  cartItems.forEach(function (item) {
+    console.log(item.id);
+    AddItemToCart(document.getElementById(`${item.id}`), item.quantity);
+  });
+}
+
+function AddItemToCart(item, quantity) {
   let name = item.getElementsByClassName("name")[0].innerText;
   let price = item.getElementsByClassName("price")[0].innerText;
   //just copipasted iamgeSrc, it works
@@ -195,7 +224,9 @@ function AddItemToCart(item) {
             <p class="product-name">${name}</p>
           </div>
           <div>
-            <input type="number" value="1" class="product-quantity" onchange='quantityChanged'/>
+            <input type="number" value="${
+              quantity || 1
+            }" class="product-quantity" onchange='quantityChanged'/>
             <p class="remove-btn" onclick='RemoveCartItem'>Remove</p>
           </div>
           <div>
@@ -203,28 +234,36 @@ function AddItemToCart(item) {
           </div>
   `;
   CartElement.innerHTML = CartElementContent;
+  // let cartItemsNames = item.getElementsByClassName("name");
+  // for (let i = 0; i < cartItemsNames.length; i++) {
+  //   if (cartItemsNames[i].innerText != name) {
+  //     cartItems.append(CartElement);
+  //   }
+  // }
   cartItems.append(CartElement);
   CartElement.getElementsByClassName("remove-btn")[0].addEventListener(
     "click",
-    RemoveCartItem
+    removeCartItem
   );
   CartElement.getElementsByClassName("product-quantity")[0].addEventListener(
     "change",
     quantityChanged
   );
+  countUp();
 }
 
 // click event for removing from the shopping cart
 // let RemoveItem = document.getElementsByClassName("remove-btn");
 // for (let i = 0; i < RemoveItem.length; i++) {
 //   let button = RemoveItem[i];
-//   button.addEventListener("click", RemoveCartItem);
+//   button.addEventListener("click", removeCartItem);
 // }
 // function for removing the targeted item.
-function RemoveCartItem(event) {
+function removeCartItem(event) {
   buttonclicked = event.target;
   buttonclicked.parentElement.parentElement.remove();
-  UpdateCartTotal();
+  updateCartTotal();
+  countDown();
 }
 // change event to quantitiy input.
 let quantityInputs = document.getElementsByClassName("product-quantity");
@@ -239,11 +278,11 @@ function quantityChanged(event) {
   if (isNaN(input.value) || input.value <= 0) {
     input.value = 1;
   }
-  UpdateCartTotal();
+  updateCartTotal();
 }
 
 // function for updating the total price.
-function UpdateCartTotal() {
+function updateCartTotal() {
   let AddedItemContent = document.getElementsByClassName("mycart-content");
   let total = 0;
   for (let i = 0; i < AddedItemContent.length; i++) {
@@ -257,5 +296,23 @@ function UpdateCartTotal() {
   }
   total = Math.round(total * 100) / 100;
   //document.getElementsByClassName("total-price")[0].innerText = "ø" + total;
-  document.querySelector(".total-price").innerText = "ø" + total;
+  document.querySelector(".total-price").innerText = total + "ø";
+}
+
+let PressBasket = document.querySelector(".cart-btn");
+let CartInput = document.querySelector(".product-info");
+let PressAddToCard = document.getElementsByClassName("add-to-cart");
+for (let i = 0; i < PressAddToCard.length; i++) {
+  let AddingButton = PressAddToCard[i];
+  AddingButton.addEventListener("cilick", CountUp);
+}
+function countDown() {
+  let item = Number(PressBasket.getAttribute("data-count") || 0);
+  PressBasket.setAttribute("data-count", item - 1);
+  PressBasket.classList.add("on");
+}
+function countUp() {
+  let item = Number(PressBasket.getAttribute("data-count") || 0);
+  PressBasket.setAttribute("data-count", item + 1);
+  PressBasket.classList.add("on");
 }
