@@ -184,6 +184,12 @@ footer a {
 .inner-container img {
   width: 80px;
   margin-right: 10px;
+  border: 1px solid #764b17;
+  border-radius: 0.75rem;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 .total {
   display: flex;

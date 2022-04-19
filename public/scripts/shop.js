@@ -119,6 +119,7 @@ function showAll() {
     // console.log(el);
     el.style.visibility = "visible";
     el.style.position = "initial";
+    el.querySelector(`.clickable-img`).style.transitionDuration = "0.3s";
   });
   //not sure about that, maybe need to use for loop
 }
@@ -176,7 +177,7 @@ function bindAddToCart() {
     button.addEventListener("click", addToCartClicked);
   }
 }
-function addToLocalStorage(id) {
+function addToLocalStorageCart(id) {
   let cart = JSON.parse(localStorage.getItem("cart"));
   console.log(cart);
   if (cart == null) {
@@ -191,14 +192,35 @@ function addToLocalStorage(id) {
   }
   localStorage.setItem("cart", JSON.stringify(cart));
 }
-function AddToCartClicked(event) {
+function addToCartClicked(event) {
   // you can add the price and the img src as parameters here
   let button = event.target;
   let shopItem = button.parentElement.parentElement.parentElement.parentElement;
   console.log(shopItem);
-  AddItemToCart(shopItem);
-  addToLocalStorage(shopItem.id);
-  UpdateCartTotal();
+  addItemToCart(shopItem);
+  updateCartTotal();
+  addToLocalStorageCart(shopItem.id);
+  addItemToLocalStorage(shopItem);
+}
+function addItemToLocalStorage(item) {
+  //write a function which will push item item details to local storage
+  if (
+    localStorage.getItem("items") == undefined ||
+    localStorage.getItem("items") == null
+  ) {
+    console.log("Не туда вставляешь!");
+    let items = [];
+    localStorage.setItem("items", JSON.stringify(items));
+  }
+  let items = JSON.parse(localStorage.getItem("items"));
+  console.log(items);
+  items.push({
+    id: item.id,
+    name: item.querySelector(".name").innerText,
+    price: item.querySelector(".price").innerText,
+    img: item.querySelector(".clickable-img").src,
+  });
+  localStorage.setItem("items", JSON.stringify(items));
 }
 // here i work with localStorage and with array containing all items added to cart
 
@@ -206,11 +228,11 @@ function cartStorageFiller() {
   let cartItems = JSON.parse(localStorage.getItem("cart"));
   cartItems.forEach(function (item) {
     console.log(item.id);
-    AddItemToCart(document.getElementById(`${item.id}`), item.quantity);
+    addItemToCart(document.getElementById(`${item.id}`), item.quantity);
   });
 }
 
-function AddItemToCart(item, quantity) {
+function addItemToCart(item, quantity) {
   let name = item.getElementsByClassName("name")[0].innerText;
   let price = item.getElementsByClassName("price")[0].innerText;
   //just copipasted iamgeSrc, it works
@@ -250,6 +272,7 @@ function AddItemToCart(item, quantity) {
     quantityChanged
   );
   countUp();
+  updateCartTotal();
 }
 
 // click event for removing from the shopping cart
@@ -304,7 +327,7 @@ let CartInput = document.querySelector(".product-info");
 let PressAddToCard = document.getElementsByClassName("add-to-cart");
 for (let i = 0; i < PressAddToCard.length; i++) {
   let AddingButton = PressAddToCard[i];
-  AddingButton.addEventListener("cilick", CountUp);
+  AddingButton.addEventListener("click", countUp);
 }
 function countDown() {
   let item = Number(PressBasket.getAttribute("data-count") || 0);
