@@ -37,6 +37,24 @@
                         <div class="cart-btn"><i class="fa fa-shopping-cart" value="8" onclick="openCart()"><a href="#" class="shopping-cart-icon" ></a> </i></div>
              <div> <img src="images/burger-menu.png" alt="" class="burger-menu-btn" onclick="openNav()"></div>
              </div>
+                   <!-- beginning of cart -->
+ <div class="main-container" id="myCart">
+      <div class="inner-container" >
+        <div class="cart-header">
+        <h1>MY CART</h1>
+      <p onclick="openCart()"style="cursor:pointer">X</p>
+        </div>
+        <div class="all-items"></div>
+        <div class="total">
+          <p>Total</p>
+          <p class="total-price">0ø</p>
+        </div>
+        <div class="checkout-btn">
+          <button>Check Out</button>
+        </div>
+      </div>
+      </div>
+        <!-- end of cart  -->
     </header>
     <container class="container">   
       
@@ -46,28 +64,31 @@
     </div>  
 
     <div class="acc-form-log">
+      <form id="myForm">
+
         <div class="block-input">
-          <label class="acc-label" for="email"><b>Email</b></label>
-          <input id="input-group" type="text" placeholder="joe.doe@email.com" name="email" required>
+            <label class="acc-label" for="email"><b>Email</b></label>
+            <input id="input-group" type="email" placeholder="joe.doe@email.com" name="email" required>
         </div>
 
         <div class="block-input">
-          <label class="acc-label" for="pwd"><b>Password</b></label>
-          <input id="input-group" type="text" placeholder="Password" name="pwd" required>
+            <label class="acc-label" for="pwd"><b>Password</b></label>
+            <input id="input-group" type="password" placeholder="Password" name="password" required>
         </div>
 
         <div class="remember-forgot">
           <label>
-            <input type="checkbox" checked="checked" name="remember"> <p class="remember-text">Remember for 30 days</p>
+              <input type="checkbox" checked="checked" name="remember"> <p class="remember-text">Remember for 30 days</p>
 
-        </label>
+          </label>
+            
+        </div>
+
           
-        </div>
-
-        
-        <div class="button-content">
-          <button class="btn-arrow"><i class='fa fa-angle-double-right'></i></button>
-        </div>
+          <div class="button-content">
+            <button type="submit" class="btn-arrow"><i class='fa fa-angle-double-right'></i></button>
+          </div>
+      </form>    
 
         <div class="sub-createAcc">
           <p>Don't have an account?</p><a href="signUp.html"> Sign up for free</a>
@@ -95,6 +116,35 @@
     <div class="footer-copyright"><span></span>©GG4 Inc.</span>
     </div>
     </footer>
+
+    <script>
+
+      const myForm = document.getElementById('myForm');
+
+      myForm.addEventListener('submit', function(e) {
+        
+        e.preventDefault();
+
+        const formData = new FormData(this);
+
+        fetch('/auth/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({'email' : formData.get('email'), 'password' : formData.get('password')})
+        }).then(function (response) {
+            return response.text();
+        }).then(function (text) {
+            console.log(text);
+        }).catch(function (error){
+            console.error(error);
+        })
+
+
+      });
+
+    </script>
 
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"

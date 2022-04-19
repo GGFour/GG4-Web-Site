@@ -62,7 +62,27 @@ header a {
   cursor: pointer;
   display: none;
 }
-
+.cart-btn {
+  position: relative;
+}
+.cart-btn:before {
+  position: absolute;
+  content: attr(data-count);
+  top: -15px;
+  width: 25px;
+  height: 25px;
+  font-size: 15px;
+  line-height: 25px;
+  border-radius: 25px;
+  text-align: center;
+  background-color: #f9e805;
+  color: #764b17;
+  cursor: pointer;
+  opacity: 0;
+}
+.cart-btn.on:before {
+  opacity: 1;
+}
 /* .container {
    border: 1px solid blue;
 } */
