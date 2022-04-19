@@ -119,6 +119,7 @@ function showAll() {
     // console.log(el);
     el.style.visibility = "visible";
     el.style.position = "initial";
+    el.querySelector(`.clickable-img`).style.transitionDuration = "0.3s";
   });
   //not sure about that, maybe need to use for loop
 }
