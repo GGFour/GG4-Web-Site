@@ -191,14 +191,14 @@ function addToLocalStorage(id) {
   }
   localStorage.setItem("cart", JSON.stringify(cart));
 }
-function AddToCartClicked(event) {
+function addToCartClicked(event) {
   // you can add the price and the img src as parameters here
   let button = event.target;
   let shopItem = button.parentElement.parentElement.parentElement.parentElement;
   console.log(shopItem);
-  AddItemToCart(shopItem);
+  addItemToCart(shopItem);
   addToLocalStorage(shopItem.id);
-  UpdateCartTotal();
+  updateCartTotal();
 }
 // here i work with localStorage and with array containing all items added to cart
 
@@ -206,11 +206,11 @@ function cartStorageFiller() {
   let cartItems = JSON.parse(localStorage.getItem("cart"));
   cartItems.forEach(function (item) {
     console.log(item.id);
-    AddItemToCart(document.getElementById(`${item.id}`), item.quantity);
+    addItemToCart(document.getElementById(`${item.id}`), item.quantity);
   });
 }
 
-function AddItemToCart(item, quantity) {
+function addItemToCart(item, quantity) {
   let name = item.getElementsByClassName("name")[0].innerText;
   let price = item.getElementsByClassName("price")[0].innerText;
   //just copipasted iamgeSrc, it works
@@ -304,7 +304,7 @@ let CartInput = document.querySelector(".product-info");
 let PressAddToCard = document.getElementsByClassName("add-to-cart");
 for (let i = 0; i < PressAddToCard.length; i++) {
   let AddingButton = PressAddToCard[i];
-  AddingButton.addEventListener("cilick", CountUp);
+  AddingButton.addEventListener("click", countUp);
 }
 function countDown() {
   let item = Number(PressBasket.getAttribute("data-count") || 0);
