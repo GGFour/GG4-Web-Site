@@ -114,10 +114,6 @@
   object-position: center;
   object-fit: cover;
   transition-duration: 0.3s;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -webkit-crisp-edges;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
 }
 .products-grid img:hover {
   transform: scale(1.1);
@@ -215,8 +211,14 @@
   }
 
   .category-side h1 {
-    border: none;
+    /* border: none; */
     cursor: pointer;
+  }
+  .category-side h1:hover span {
+    display: none;
+  }
+  .category-side h1:hover:before {
+    content: "Click!";
   }
   .category-side ul {
     display: none;
@@ -231,7 +233,7 @@
 
   .popup-content {
     flex-direction: column;
-    max-width: 40%;
+    max-width: 50%;
     min-width: unset;
   }
   .popup-content img {

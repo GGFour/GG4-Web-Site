@@ -51,6 +51,7 @@ fetch('/api/items')
       // console.log(document.querySelector(".products-grid"));
       document.querySelector('.products-grid').append(itemElement);
     });
+    bindAddToCart();
   });
 // function windowClicked(event) {
 //   if (event.target === detailPopup) {
@@ -162,24 +163,27 @@ $('#category-header').click(function () {
 });
 
 // implementing add-to-cart functionality
-
-// click event for adding to the shopping cart.
-let addToCartButton = document.getElementsByClassName('add-to-cart');
-for (let i = 0; i < addToCartButton.length; i++) {
-  let button = addToCartButton[i];
-  button.addEventListener('click', AddToCartClicked);
+function bindAddToCart() {
+  // click-event for adding to the shopping cart.
+  let addToCartButton = document.getElementsByClassName('add-to-cart');
+  for (let i = 0; i < addToCartButton.length; i++) {
+    let button = addToCartButton[i];
+    button.addEventListener('click', AddToCartClicked);
+  }
 }
 
 function AddToCartClicked(event) {
   // you can add the price and the img src as parameters here
   let button = event.target;
   let shopItem = button.parentElement.parentElement.parentElement.parentElement;
-  let name = shopItem.getElementsByClassName('product-name')[0].innerText;
-  AddItemToCart(name);
+  console.log(shopItem);
+  AddItemToCart(shopItem);
   UpdateCartTotal();
 }
 
-function AddItemToCart(name) {
+function AddItemToCart(item) {
+  let name = item.getElementsByClassName('name')[0].innerText;
+  let price = item.getElementsByClassName('price')[0].innerText;
   let CartElement = document.createElement('div');
   CartElement.classList.add('mycart-content');
   let cartItems = document.getElementsByClassName('inner-container')[0];
@@ -189,11 +193,11 @@ function AddItemToCart(name) {
             <p class="product-name">${name}</p>
           </div>
           <div>
-            <input type="number" value="1" class="product-quantity" />
-            <p class="remove-btn">Remove</p>
+            <input type="number" value="1" class="product-quantity" onchange='quantityChanged'/>
+            <p class="remove-btn" onclick='RemoveCartItem'>Remove</p>
           </div>
           <div>
-            <p class="product-price">P.price</p>
+            <p class="product-price">${price + 'ø'}</p>
           </div>
   `;
   CartElement.innerHTML = CartElementContent;
@@ -209,11 +213,11 @@ function AddItemToCart(name) {
 }
 
 // click event for removing from the shopping cart
-let RemoveItem = document.getElementsByClassName('remove-btn');
-for (let i = 0; i < RemoveItem.length; i++) {
-  let button = RemoveItem[i];
-  button.addEventListener('click', RemoveCartItem);
-}
+// let RemoveItem = document.getElementsByClassName("remove-btn");
+// for (let i = 0; i < RemoveItem.length; i++) {
+//   let button = RemoveItem[i];
+//   button.addEventListener("click", RemoveCartItem);
+// }
 // function for removing the targeted item.
 function RemoveCartItem(event) {
   buttonclicked = event.target;
@@ -250,5 +254,6 @@ function UpdateCartTotal() {
     total = total + price * quantity;
   }
   total = Math.round(total * 100) / 100;
-  document.getElementsByClassName('sum-price')[0].innerText = 'ø' + total;
+  //document.getElementsByClassName("total-price")[0].innerText = "ø" + total;
+  document.querySelector('.total-price').innerText = 'ø' + total;
 }

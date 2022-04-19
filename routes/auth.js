@@ -1,6 +1,9 @@
 const express = require('express');
 const { body } = require('express-validator');
 const authenticated = require('../middlewares/authenticated');
+const redirectAuthed = require('../middlewares/redirectIfAuth');
+const redirectUnauthed = require('../middlewares/redirectIfUnauth');
+const protected = require("../middlewares/protected");
 
 const controller = require('../controllers/authController');
 
@@ -19,6 +22,6 @@ router.post('/login',
     body('password', 'Password should be from 8 to 24 characters!').isLength({min: 8, max: 24}).isAscii(),
     controller.logIn);
 
-router.get('/logout', authenticated, controller.logout);
+router.get('/logout', authenticated, protected, controller.logout);
 
 module.exports = router;
