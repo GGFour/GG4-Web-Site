@@ -184,13 +184,14 @@ function AddToCartClicked(event) {
 function AddItemToCart(item) {
   let name = item.getElementsByClassName("name")[0].innerText;
   let price = item.getElementsByClassName("price")[0].innerText;
-  let image = item.getElementsByClassName("clickable-img")[0].src;
+  //just copipasted iamgeSrc, it works
+  let imageSrc = $(item).find("img").attr("src");
   let CartElement = document.createElement("div");
   CartElement.classList.add("mycart-content");
-  let cartItems = document.getElementsByClassName("all-items")[0];
+  let cartItems = document.getElementsByClassName("inner-container")[0];
   let CartElementContent = `
           <div>
-              <img src="${image}"/>
+              <img src="${imageSrc}">
             <p class="product-name">${name}</p>
           </div>
           <div>
