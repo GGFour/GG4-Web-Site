@@ -197,7 +197,6 @@ function addToCartClicked(event) {
   let button = event.target;
   let shopItem = button.parentElement.parentElement.parentElement.parentElement;
   console.log(shopItem);
-  addItemToCart(shopItem);
   updateCartTotal();
   addToLocalStorageCart(shopItem.id);
   addItemToLocalStorage(shopItem);
@@ -220,6 +219,11 @@ function addItemToLocalStorage(item) {
     price: item.querySelector(".price").innerText,
     img: item.querySelector(".clickable-img").src,
   });
+  addItemToCart(
+    items[items.length - 1],
+    JSON.parse(localStorage.getItem("cart")).find((x) => x.id === `${item.id}`)
+      .quantity
+  );
   localStorage.setItem("items", JSON.stringify(items));
 }
 // here i work with localStorage and with array containing all items added to cart
@@ -227,16 +231,22 @@ function addItemToLocalStorage(item) {
 function cartStorageFiller() {
   let cartItems = JSON.parse(localStorage.getItem("cart"));
   cartItems.forEach(function (item) {
-    console.log(item.id);
-    addItemToCart(document.getElementById(`${item.id}`), item.quantity);
+    console.log(item);
+    console.log();
+    addItemToCart(
+      JSON.parse(localStorage.getItem("items")).find(
+        (x) => x.id === `${item.id}`
+      ),
+      item.quantity
+    );
   });
 }
-
-function addItemToCart(item, quantity) {
-  let name = item.getElementsByClassName("name")[0].innerText;
-  let price = item.getElementsByClassName("price")[0].innerText;
-  //just copipasted iamgeSrc, it works
-  let imageSrc = $(item).find("img").attr("src");
+// I will rewrite it
+function addItemToCart(itemData, quantity) {
+  console.log(itemData);
+  let name = itemData.name;
+  let price = itemData.price;
+  let imageSrc = itemData.img;
   let CartElement = document.createElement("div");
   CartElement.classList.add("mycart-content");
   let cartItems = document.getElementsByClassName("all-items")[0];
