@@ -18,6 +18,12 @@ router.get('/personalInfo',
     controller.getPersonalInfo
 );
 
+router.get('/getInventory',
+    authenticated, 
+    protected, 
+    controller.getInventory
+);
+
 router.post('/placeOrder', 
     authenticated,
     protected,

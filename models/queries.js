@@ -45,7 +45,10 @@ exports.createUser = `
         );
 `;
 
+exports.getInventory = `
+            select item_id, quantity FROM inventory WHERE user_id = ?;`
+;
 // Statement to get user info.
 exports.personalInfo = `
-select id, email, firstname, lastname, username, coins, high_score FROM user WHERE id = ?;
-`;
+select id, email, firstname, lastname, username, coins, high_score FROM user WHERE id = ?;`
+;
