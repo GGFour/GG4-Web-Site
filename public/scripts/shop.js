@@ -262,7 +262,7 @@ function addItemToCart(itemData, quantity) {
             <input type="number" value="${
               quantity || 1
             }" class="product-quantity" onchange='quantityChanged'/>
-            <p class="remove-btn" onclick='RemoveCartItem'>Remove</p>
+            <p class="remove-btn" onclick='removeCartItem'>Remove</p>
           </div>
           <div>
             <p class="product-price">${price + "ø"}</p>
@@ -304,6 +304,14 @@ function removeCartItem(event) {
   buttonclicked = event.target;
   buttonclicked.parentElement.parentElement.remove();
   updateCartTotal();
+  cart = JSON.parse(localStorage.getItem("cart"));
+  cart.splice(
+    cart.findIndex(
+      (x) => x.id === `${buttonclicked.parentElement.parentElement.id.slice(5)}`
+    ),
+    1
+  );
+  localStorage.setItem("cart", JSON.stringify(cart));
   countDown();
 }
 // change event to quantitiy input.
