@@ -224,19 +224,25 @@
   .category-side {
     position: unset;
     height: fit-content;
+    width: 100%;
     /* border: 1px solid red; */
   }
 
   .category-side h1 {
     /* border: none; */
     cursor: pointer;
+    border-radius: 0.5rem;
+    /* border: none; */
+    background-color: #f9e805;
+    padding: 0.5rem;
+    width: fit-content;
   }
-  .category-side h1:hover span {
+  /* .category-side h1:hover span {
     display: none;
   }
   .category-side h1:hover:before {
-    content: "Click!";
-  }
+    content: "FILTER";
+  } */
   .category-side ul {
     display: none;
   }
