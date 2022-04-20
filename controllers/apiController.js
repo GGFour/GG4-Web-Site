@@ -98,3 +98,16 @@ exports.placeOrder = async (req, res, next) => {
     return res.status(500).json({ message: "error" });
   }
 };
+
+exports.getInventory = async (req, res, next) => {
+  let userId = req.user.id;
+  database.getInventory(userId, function (err, result, fields) {
+    if (err) {
+      res.status(500);
+      res.send("Whoops");
+    } else {
+      res.status(200);
+      res.json(result);
+    }
+  });
+};

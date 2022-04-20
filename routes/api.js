@@ -19,6 +19,16 @@ router.get(
   controller.getPersonalInfo
 );
 
-router.post("/placeOrder", authenticated, protected, controller.placeOrder);
+router.get('/getInventory',
+    authenticated, 
+    protected, 
+    controller.getInventory
+);
+
+router.post('/placeOrder', 
+    authenticated,
+    protected,
+    controller.placeOrder
+);
 
 module.exports = router;
