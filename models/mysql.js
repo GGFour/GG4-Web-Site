@@ -62,6 +62,11 @@ exports.createUser = async (credentials, response) => {
   );
 };
 
+/**
+ * Returns object with information about user.
+ * @param {Integer} userId 
+ * @param {Array} response - array containing one object with user info 
+ */
 exports.getPersonalInfo = async (userId, response) => {
   pool.query(queries.personalInfo, [userId], (err, result, fields) => {
     if (err) {
@@ -71,6 +76,11 @@ exports.getPersonalInfo = async (userId, response) => {
   });
 };
 
+/**
+ * Returns array of objects with item prices an availability
+ * @param {Array} itemsIds 
+ * @returns 
+ */
 exports.getItemsForOrder = async (itemsIds) => {
   try {
     [rows, fields] = await pool.promise().query(`
@@ -94,6 +104,11 @@ exports.getItemsForOrder = async (itemsIds) => {
   }
 };
 
+/**
+ * Returns user balance for checking the transaction.
+ * @param {Integer} userId 
+ * @returns 
+ */
 exports.getUserBalance = async (userId) => {
   try {
     [rows, fields] = await pool.promise().query(
@@ -115,6 +130,13 @@ exports.getUserBalance = async (userId) => {
   }
 };
 
+/**
+ * Creates order transaction for database
+ * @param {Integer} userId 
+ * @param {Integer} total - total price of order
+ * @param {Array} itemsInfo - array containing objects {id:, quantity:}
+ * @returns {Boolean} status of transaction
+ */
 exports.placeOrder = async (userId, total, itemsInfo) => {
   let status = false;
   try {
@@ -122,37 +144,51 @@ exports.placeOrder = async (userId, total, itemsInfo) => {
     connection.config.namedPlaceholders = true;
     await connection.query(`SET TRANSACTION ISOLATION LEVEL READ COMMITTED;`);
     await connection.beginTransaction();
+    // Locking user money.
     await connection.query(
       `
         SELECT coins FROM user WHERE user.id = ? FOR UPDATE;
       `,
       [userId]
     );
+    // Decrement user money.
     await connection.query(
       `
         UPDATE user SET coins = coins - ?  WHERE user.id = ?;`,
       [total, userId]
     );
-
+    // Creating new order.
     await connection.query(
       `
-        INSERT INTO order_details (user_id, total, items) VALUES (?, ?, "?");
+        INSERT INTO order_details (user_id, total) VALUES (?, ?);
         `,
       [
         userId,
-        total,
-        JSON.stringify(
-          itemsInfo.map((item) => ({ i: item.id, q: item.quantity }))
-        ),
+        total
       ]
     );
-
+    
+    // Getting id of the created order.
+    await connection.query(
+      `
+      SET @order_id := last_insert_id();`
+    );
+    // Adding information about each item.
     await itemsInfo.map(async (item) => {
+      // Adding items to order history.
+      await connection.query(
+        `
+        INSERT INTO order_items (quantity, item_id, order_id) VALUES (?, ?, @order_id);
+        `,
+        [item.quantity, item.id]
+      );
+      // Locking the user inventory.
       await connection.query(
         `
           SELECT * FROM inventory WHERE user_id = ? and item_id = ? FOR UPDATE;`,
         [userId, item.id]
       );
+      // Adding item to user inventory.
       await connection.query(
         `
           INSERT INTO inventory (user_id, item_id, quantity)
@@ -160,7 +196,7 @@ exports.placeOrder = async (userId, total, itemsInfo) => {
             ON DUPLICATE KEY UPDATE quantity = quantity + ?;`,
         [userId, item.id, item.quantity, item.quantity]
       );
-
+      // Locking quantity of available items.
       await connection.query(
         `
           SELECT * FROM item_inventory WHERE id IN (SELECT inventory_id
@@ -170,6 +206,7 @@ exports.placeOrder = async (userId, total, itemsInfo) => {
         [item.id]
       );
 
+      // Decreasing quantity of available items.
       await connection.query(
         `
           UPDATE item_inventory 
