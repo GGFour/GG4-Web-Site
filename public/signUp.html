@@ -63,40 +63,45 @@
       </div>  
 
       <div class="acc-form">
-        <div class="block-input">
-          <label class="acc-label" for="username"><b>Username</b></label>
-          <input id="input-group" type="text" placeholder="joe.doe" name="username" required>
-        </div>
 
-        <div class="block-input">
-        <label class="acc-label" for="fname"><b>First Name</b></label>
-        <input id="input-group" type="text" placeholder="Joe" name="fname" required>
-        </div>
+        <form id="myForm-sign">
 
-        <div class="block-input">
-          <label class="acc-label" for="lname"><b>Last Name</b></label>
-          <input id="input-group" type="text" placeholder="Doe" name="lname" required>
-        </div>
+          <div class="block-input">
+            <label class="acc-label" for="username"><b>Username</b></label>
+            <input class="input-group" type="text" placeholder="joe.doe" name="username" required>
+          </div>
 
-        <div class="block-input">
-          <label class="acc-label" for="email"><b>Email</b></label>
-          <input id="input-group" type="text" placeholder="joe.doe@email.com" name="email" required>
-        </div>
+          <div class="block-input">
+            <label class="acc-label" for="fname"><b>First Name</b></label>
+            <input class="input-group" type="text" placeholder="Joe" name="firstname" required>
+          </div>
 
-        <div class="block-input">
-          <label class="acc-label" for="pwd"><b>Password</b></label>
-          <input id="input-group" type="password" placeholder="Password" name="pwd" required>
-        </div>
+          <div class="block-input">
+            <label class="acc-label" for="lname"><b>Last Name</b></label>
+            <input class="input-group" type="text" placeholder="Doe" name="lastname" required>
+          </div>
 
-        <div class="block-input">
-          <label class="acc-label" for="pwd-repeat"><b>Re-enter new password</b></label>
-          <input id="input-group" type="text" placeholder="Password" name="pwd-repeat" required>
-        </div> 
-        
+          <div class="block-input">
+            <label class="acc-label" for="email"><b>Email</b></label>
+            <input class="input-group" type="email" placeholder="joe.doe@email.com" name="email" required>
+          </div>
+
+          <div class="block-input">
+            <label class="acc-label" for="pwd"><b>Password</b></label>
+            <input class="input-group" id="password" type="password" placeholder="Password" name="password" required>
+          </div>
+
+          <div class="block-input">
+            <label class="acc-label" for="pwd-repeat"><b>Re-enter new password</b></label>
+            <input class="input-group" id="confirm-pwd" type="password" placeholder="Password" name="password-repeat" required>
+            <p id="message"></p>
+          </div> 
+          
           <div class="button-content">
-          <button class="btn-arrow"><i class='fa fa-angle-double-right'></i></button>
-        </div>
-      
+            <button type="submit" onclick="checkPassword()" class="btn-arrow"><i class='fa fa-angle-double-right'></i></button>
+          </div>
+
+        </form>
 
       </div>
 
@@ -124,6 +129,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="scripts/jquery.js"></script>
+    <script src="scripts/signup.js"></script>
   </body>
   
 </html>

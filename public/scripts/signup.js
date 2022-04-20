@@ -1,3 +1,18 @@
+function checkPassword() {
+  let password = document.getElementById('password').value;
+  let cnfrmPassword = document.getElementById('confirm-pwd').value;
+  console.log(password, cnfrmPassword);
+  let message = document.getElementById('message');
+
+  if (password.length != 0) {
+    if (password == cnfrmPassword) {
+      message.textContent = 'Password match';
+    } else {
+      message.textContent = "Password don't match";
+    }
+  }
+}
+
 window.onload = function () {
   const myFormSign = document.getElementById('myForm-sign');
 

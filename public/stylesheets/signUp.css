@@ -38,7 +38,7 @@
   padding: 0.1rem 0;
 }
 
-#input-group {
+.input-group {
   border-radius: 5px;
   background-color: #c9c2b8;
   border: none;
@@ -48,6 +48,14 @@
 
 ::placeholder {
   padding-left: 5px;
+}
+
+#message {
+  font-size: 14px;
+  margin: 15px 0;
+  display: inline-block;
+  color: #0000;
+  padding: 0.1rem 0;
 }
 
 .button-content {
