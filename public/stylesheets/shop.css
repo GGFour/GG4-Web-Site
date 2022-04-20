@@ -52,7 +52,8 @@
   letter-spacing: 1.5px;
 }
 
-.search-input :hover :focus {
+.search-input:hover,
+.search-input:focus {
   padding: 12px 0;
   outline: 0;
   border: 1px solid transparent;
