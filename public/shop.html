@@ -39,20 +39,65 @@
                     <a href="signUp.html" >SIGN UP</a>
                     <a href="log.html" >LOG IN</a>
                 </div>
-                <div><i class="fa fa-shopping-cart" value="8" ><a href="#" class="shopping-cart-icon" onclick="openCart()"></a> </i></div>
-                <div> <img src="images/burger-menu.png" alt="" class="burger-menu-btn" onclick="openNav()"></div>
+                 <div class="cart-btn"><i class="fa fa-shopping-cart" value="8" onclick="openCart()"><a href="#" class="shopping-cart-icon" ></a> </i></div>
+             <div> <img src="images/burger-menu.png" alt="" class="burger-menu-btn" onclick="openNav()"></div>
             </div>
+            <!-- beginning of cart -->
+ <div class="main-container" id="myCart">
+      <div class="inner-container" >
+        <div class="cart-header">
+        <h1>MY CART</h1>
+      <p onclick="openCart()"style="cursor:pointer">X</p>
+        </div>
+        <div class="all-items"></div>
+        <!-- <div class="mycart-content">
+          <div>
+            <img class="cart-image" src="./images/mob-landing-img.png" alt="" />
+            <p class="product-name">P.name</p>
+          </div>
+        <div>
+            <input type="number" value="1" class="product-quantity" />
+            <p class="remove-btn">Remove</p>
+          </div>
+          <div>
+            <p class="product-price">80ø</p>
+          </div>
+        </div>
+        <div class="mycart-content">
+          <div>
+            <img src="./images/mob-landing-img.png" alt="" />
+            <p class="product-name">P.name</p>
+          </div>
+          <div>
+            <input type="number" value="1" class="product-quantity" />
+            <p class="remove-btn">Remove</p>
+          </div>
+          <div>
+            <p class="product-price">300ø</p>
+          </div>
+        </div> -->
+        <div class="total">
+          <p>Total</p>
+          <p class="total-price">0ø</p>
+        </div>
+        <div class="checkout-btn">
+          <button>Check Out</button>
+        </div>
+      </div>
+      </div>
+        <!-- end of cart  -->
         </header>
         <container class="shop-container">
             <div class="category-side">
-                <h1>CATEGORY</h1>
-                    <ul>
-                        <li><a href="">WEAPONS</a></li>
-                        <li><a href="">ARMORS</a></li>
-                        <li><a href="">POTIONS</a></li>
-                        <li><a href="">SEEDS</a></li>
-                        <li><a href="">FOOD</a></li>
-                        <li><a href="">OTHER ITEMS</a></li>
+                <h1 id="category-header"><span>CATEGORY</span> </h1>
+                    <ul id="all-categories">
+                        <li><a href="javascript:showAll()">ALL</a></li>
+                        <li><a href="javascript:leaveOneCategory('weapon')">WEAPONS</a></li>
+                        <li><a href="javascript:leaveOneCategory('armor')">ARMORS</a></li>
+                        <li><a href="javascript:leaveOneCategory('potion')">POTIONS</a></li>
+                        <li><a href="javascript:leaveOneCategory('seed')">SEEDS</a></li>
+                        <li><a href="javascript:leaveOneCategory('food')">FOOD</a></li>
+                        <li><a href="javascript:leaveOneCategory('others')">OTHER ITEMS</a></li>
                     </ul>
             </div>
             <div class="products-side">
@@ -65,7 +110,7 @@
                     <div class="search-container">
                         <input class="search-input" type="text" placeholder="Search...">
                     </div>
-                </div> --!>
+                </div>
                 
                 <div class="products-grid">
                     
@@ -77,13 +122,13 @@
                     <div class="detail-popup">
                       <div class="popup-content">
                           <div class="imgdiv">
-                          <img src="./images/cat.jpg" alt="">
+                          <img class="detail-img" src="./images/cat.jpg" alt="">
                           </div>
                           <div class="product-details">
                               <h1 class="name-popup"></h1>
                               <p class="description-popup"></p>
                             <h2 class="price-popup"></h2> 
-                            <button>ADD TO CART</button> 
+                            <button class="add-to-cart">ADD TO CART</button> 
                           </div>
                       </div>
                       </div>

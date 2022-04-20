@@ -59,7 +59,7 @@ exports.getPersonalInfo = async (req, res, next) => {
       res.send("Whoops");
     } else {
       res.status(200);
-      res.json(result);
+      res.json(result[0]);
     }
   });
 };
@@ -73,29 +73,29 @@ exports.placeOrder = async (req, res, next) => {
   }
 
   try {
-    let actualItems = await database.getItemsForOrder(itemsInfo.map((item) => item.id));
+    let actualItems = await database.getItemsForOrder(
+      itemsInfo.map((item) => item.id)
+    );
     if (actualItems.length === 0) {
       return res.status(500).json({ message: "error" });
     }
     let userBalance = await database.getUserBalance(user.id);
     let total = checkBalance(userBalance, itemsInfo, actualItems);
     if (!total) {
-      return res
-        .status(400)
-        .json({
-          message: "not enough coins or not enough items available for bying",
-        });
+      return res.status(400).json({
+        message: "not enough coins or not enough items available for bying",
+      });
     }
-    
+
     let result = await database.placeOrder(user.id, total, itemsInfo);
     if (result) {
-        return res.status(200).json({message: "ok", result});
+      return res.status(200).json({ message: "ok", result });
     } else {
-        return res.status(500).json({message: "error", result});
+      return res.status(500).json({ message: "error", result });
     }
   } catch (err) {
-      console.log(err);
-      return res.status(500).json({message: "error"});
+    console.log(err);
+    return res.status(500).json({ message: "error" });
   }
 };
 
