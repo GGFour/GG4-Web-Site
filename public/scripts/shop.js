@@ -305,12 +305,20 @@ function removeCartItem(event) {
   buttonclicked.parentElement.parentElement.remove();
   updateCartTotal();
   cart = JSON.parse(localStorage.getItem("cart"));
+  items = JSON.parse(localStorage.getItem("items"));
   cart.splice(
     cart.findIndex(
       (x) => x.id === `${buttonclicked.parentElement.parentElement.id.slice(5)}`
     ),
     1
   );
+  items.splice(
+    items.findIndex(
+      (x) => x.id === `${buttonclicked.parentElement.parentElement.id.slice(5)}`
+    ),
+    1
+  );
+  localStorage.setItem("items", JSON.stringify(items));
   localStorage.setItem("cart", JSON.stringify(cart));
   countDown();
 }
