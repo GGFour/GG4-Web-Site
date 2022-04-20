@@ -71,6 +71,15 @@ exports.getPersonalInfo = async (userId, response) => {
   });
 };
 
+exports.getInventory = async (userId, response) => {
+  pool.query(queries.getInventory, [userId], (err, result, fields) => {
+    if (err) {
+      console.log(err.message);
+    }
+    response(err, result, fields);
+  });
+};
+
 exports.getItemsForOrder = async (itemsIds) => {
   try {
     [rows, fields] = await pool.promise().query(`
