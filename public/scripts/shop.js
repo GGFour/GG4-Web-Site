@@ -6,6 +6,7 @@ let detailId = null;
 fetch("/api/items")
   .then((res) => res.json())
   .then((data) => {
+    cartStorageFiller();
     data.forEach((item) => {
       const itemElement = itemTemplate.content.cloneNode(true).children[0];
       // console.log(itemElement);
@@ -52,7 +53,6 @@ fetch("/api/items")
       document.querySelector(".products-grid").append(itemElement);
     });
     bindAddToCart();
-    cartStorageFiller();
   });
 // function windowClicked(event) {
 //   if (event.target === detailPopup) {
@@ -230,27 +230,30 @@ function addItemToLocalStorage(item) {
 
 function cartStorageFiller() {
   let cartItems = JSON.parse(localStorage.getItem("cart"));
-  cartItems.forEach(function (item) {
-    console.log(item);
-    console.log();
-    addItemToCart(
-      JSON.parse(localStorage.getItem("items")).find(
-        (x) => x.id === `${item.id}`
-      ),
-      item.quantity
-    );
-  });
+  if (cartItems != null) {
+    cartItems.forEach(function (item) {
+      console.log(item);
+      addItemToCart(
+        JSON.parse(localStorage.getItem("items")).find(
+          (x) => x.id === `${item.id}`
+        ),
+        item.quantity
+      );
+    });
+  }
 }
 // I will rewrite it
 function addItemToCart(itemData, quantity) {
-  console.log(itemData);
-  let name = itemData.name;
-  let price = itemData.price;
-  let imageSrc = itemData.img;
-  let CartElement = document.createElement("div");
-  CartElement.classList.add("mycart-content");
   let cartItems = document.getElementsByClassName("all-items")[0];
-  let CartElementContent = `
+  if (cartItems.querySelector(`#cart_${itemData.id}`) == undefined) {
+    console.log(cartItems.querySelector(`cart_${itemData.id}`));
+    let name = itemData.name;
+    let price = itemData.price;
+    let imageSrc = itemData.img;
+    let CartElement = document.createElement("div");
+    CartElement.id = "cart_" + itemData.id;
+    CartElement.classList.add("mycart-content");
+    let CartElementContent = `
           <div>
               <img src="${imageSrc}">
             <p class="product-name">${name}</p>
@@ -259,29 +262,34 @@ function addItemToCart(itemData, quantity) {
             <input type="number" value="${
               quantity || 1
             }" class="product-quantity" onchange='quantityChanged'/>
-            <p class="remove-btn" onclick='RemoveCartItem'>Remove</p>
+            <p class="remove-btn" onclick='removeCartItem'>Remove</p>
           </div>
           <div>
             <p class="product-price">${price + "ø"}</p>
           </div>
   `;
-  CartElement.innerHTML = CartElementContent;
-  // let cartItemsNames = item.getElementsByClassName("name");
-  // for (let i = 0; i < cartItemsNames.length; i++) {
-  //   if (cartItemsNames[i].innerText != name) {
-  //     cartItems.append(CartElement);
-  //   }
-  // }
-  cartItems.append(CartElement);
-  CartElement.getElementsByClassName("remove-btn")[0].addEventListener(
-    "click",
-    removeCartItem
-  );
-  CartElement.getElementsByClassName("product-quantity")[0].addEventListener(
-    "change",
-    quantityChanged
-  );
-  countUp();
+    CartElement.innerHTML = CartElementContent;
+    // let cartItemsNames = item.getElementsByClassName("name");
+    // for (let i = 0; i < cartItemsNames.length; i++) {
+    //   if (cartItemsNames[i].innerText != name) {
+    //     cartItems.append(CartElement);
+    //   }
+    // }
+    cartItems.append(CartElement);
+    CartElement.getElementsByClassName("remove-btn")[0].addEventListener(
+      "click",
+      removeCartItem
+    );
+    CartElement.getElementsByClassName("product-quantity")[0].addEventListener(
+      "change",
+      quantityChanged
+    );
+    countUp();
+  } else {
+    cartItems
+      .querySelector(`#cart_${itemData.id}`)
+      .getElementsByClassName("product-quantity")[0].value = quantity;
+  }
   updateCartTotal();
 }
 
@@ -296,6 +304,22 @@ function removeCartItem(event) {
   buttonclicked = event.target;
   buttonclicked.parentElement.parentElement.remove();
   updateCartTotal();
+  cart = JSON.parse(localStorage.getItem("cart"));
+  items = JSON.parse(localStorage.getItem("items"));
+  cart.splice(
+    cart.findIndex(
+      (x) => x.id === `${buttonclicked.parentElement.parentElement.id.slice(5)}`
+    ),
+    1
+  );
+  items.splice(
+    items.findIndex(
+      (x) => x.id === `${buttonclicked.parentElement.parentElement.id.slice(5)}`
+    ),
+    1
+  );
+  localStorage.setItem("items", JSON.stringify(items));
+  localStorage.setItem("cart", JSON.stringify(cart));
   countDown();
 }
 // change event to quantitiy input.
@@ -311,6 +335,13 @@ function quantityChanged(event) {
   if (isNaN(input.value) || input.value <= 0) {
     input.value = 1;
   }
+  cartItems = JSON.parse(localStorage.getItem("cart"));
+  cartItems[
+    cartItems.findIndex(
+      (x) => x.id === `${input.parentElement.parentElement.id.slice(5)}`
+    )
+  ].quantity = input.value;
+  localStorage.setItem("cart", JSON.stringify(cartItems));
   updateCartTotal();
 }
 
