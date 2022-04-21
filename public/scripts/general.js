@@ -161,6 +161,7 @@ function countUp() {
 
 const logo = document.getElementsByClassName("logo-img")[0];
 logo.addEventListener("click", function () {
+  console.log("PressBasket");
   document
     .getElementsByClassName("user-profile")[0]
     .classList.add("show-user-profile");

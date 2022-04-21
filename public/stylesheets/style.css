@@ -55,6 +55,7 @@ header a {
 .logo-img {
   width: 78px;
   height: 116px;
+  cursor: pointer;
 }
 .burger-menu-btn {
   width: 25px;
