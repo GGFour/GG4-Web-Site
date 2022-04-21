@@ -1,11 +1,16 @@
 //this file is conflict-free(we hope so) light version of shop.js
 
 function openNav() {
+  // copy login buttons to target div
+  let buttons = document.querySelector(".right-nav-btns .signinup-btns").cloneNode(true);
+  document.querySelector(".hamburger-icon .left-nav-btns").appendChild(buttons);
   document.getElementById("myNav").style.height = "100%";
   // document.querySelector('.left-nav-btns').style.display = 'unset';
 }
 function closeNav() {
   document.getElementById("myNav").style.height = "0%";
+  // remove login buttons 
+  document.querySelector(".hamburger-icon .left-nav-btns .signinup-btns").remove();
 }
 cartStorageFiller();
 
