@@ -1,4 +1,5 @@
 //this file is conflict-free(we hope so) light version of shop.js
+
 function openNav() {
   document.getElementById("myNav").style.height = "100%";
   // document.querySelector('.left-nav-btns').style.display = 'unset';
@@ -170,20 +171,22 @@ function openProfile() {
   document
     .getElementsByClassName("user-profile")[0]
     .classList.add("show-user-profile");
-  window.addEventListener("click", function (event) {
-    // console.log(document.getElementById(detailPopupId));
-    if (
-      event.target == document.getElementsByClassName("user-profile")[0]
-      // ||
-      // event.target == document.getElementsByClassName("logo-img")[0]
-    ) {
-      {
-        document
-          .getElementsByClassName("user-profile")[0]
-          .classList.remove("show-user-profile");
-      }
-    }
-  });
+  window.addEventListener("click", closeProfilePopup);
+}
+function closeProfilePopup() {
+  // console.log(document.getElementById(detailPopupId));
+  console.log("event listener triggered");
+
+  if (
+    event.target == document.getElementsByClassName("user-profile")[0]
+    // ||
+    // event.target == document.getElementsByClassName("logo-img")[0]
+  ) {
+    document
+      .getElementsByClassName("user-profile")[0]
+      .classList.remove("show-user-profile");
+    window.removeEventListener("click", closeProfilePopup);
+  }
 }
 // window.addEventListener("click", function () {
 //   document

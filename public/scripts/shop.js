@@ -212,19 +212,21 @@ function addItemToLocalStorage(item) {
     localStorage.setItem("items", JSON.stringify(items));
   }
   let items = JSON.parse(localStorage.getItem("items"));
-  console.log(items);
-  items.push({
-    id: item.id,
-    name: item.querySelector(".name").innerText,
-    price: item.querySelector(".price").innerText,
-    img: item.querySelector(".clickable-img").src,
-  });
+  if (items[items.findIndex((x) => x.id === item.id)] === undefined) {
+    console.log(items);
+    items.push({
+      id: item.id,
+      name: item.querySelector(".name").innerText,
+      price: item.querySelector(".price").innerText,
+      img: item.querySelector(".clickable-img").src,
+    });
+    localStorage.setItem("items", JSON.stringify(items));
+  }
   addItemToCart(
     items[items.length - 1],
     JSON.parse(localStorage.getItem("cart")).find((x) => x.id === `${item.id}`)
       .quantity
   );
-  localStorage.setItem("items", JSON.stringify(items));
 }
 // here i work with localStorage and with array containing all items added to cart
 
@@ -381,15 +383,22 @@ function countUp() {
   PressBasket.classList.add("on");
 }
 
-const logo = document.getElementsByClassName("logo-img")[0];
-logo.addEventListener("click", function () {
+function openProfile() {
   document
     .getElementsByClassName("user-profile")[0]
     .classList.add("show-user-profile");
-});
-
-window.addEventListener("click", function () {
-  document
-    .getElementsByClassName("user-profile")[0]
-    .classList.remove("show-user-profile");
-});
+  window.addEventListener("clickCloseProfilePopup", function (event) {
+    // console.log(document.getElementById(detailPopupId));
+    if (
+      event.target == document.getElementsByClassName("user-profile")[0]
+      // ||
+      // event.target == document.getElementsByClassName("logo-img")[0]
+    ) {
+      {
+        document
+          .getElementsByClassName("user-profile")[0]
+          .classList.remove("show-user-profile");
+      }
+    }
+  });
+}
