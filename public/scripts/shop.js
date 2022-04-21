@@ -254,7 +254,7 @@ function addItemToCart(itemData, quantity) {
     CartElement.id = "cart_" + itemData.id;
     CartElement.classList.add("mycart-content");
     let CartElementContent = `
-          <div>
+          <div class="img-name">
               <img src="${imageSrc}">
             <p class="product-name">${name}</p>
           </div>
@@ -380,3 +380,16 @@ function countUp() {
   PressBasket.setAttribute("data-count", item + 1);
   PressBasket.classList.add("on");
 }
+
+const logo = document.getElementsByClassName("logo-img")[0];
+logo.addEventListener("click", function () {
+  document
+    .getElementsByClassName("user-profile")[0]
+    .classList.add("show-user-profile");
+});
+
+window.addEventListener("click", function () {
+  document
+    .getElementsByClassName("user-profile")[0]
+    .classList.remove("show-user-profile");
+});
