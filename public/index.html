@@ -12,7 +12,7 @@
     integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
   <script src="scripts/userInfo.js"></script>
-  <script src="scripts/shop.js" defer></script>
+  <script src="scripts/general.js" defer></script>
   <style>
     .signinup-btns {
       display: flex;
@@ -35,7 +35,7 @@
 <body>
   <header class="navbar">
     <div class="left-navbar">
-      <div><img src="images/logo.png" alt="" class="logo-img" /></div>
+      <div><img src="images/logo.png" alt="" class="logo-img" onclick="openProfile()" /></div>
       <div class="hamburger-icon" id="myNav">
         <div class="left-nav-btns">
           <a href="./">HOME</a>
@@ -67,6 +67,7 @@
           <h1>MY CART</h1>
           <p onclick="openCart()"style="cursor:pointer">X</p>
         </div>
+        <div class="all-items"></div>
         <div class="total">
           <p>Total</p>
           <p class="total-price">0ø</p>
@@ -77,6 +78,43 @@
       </div>
     </div>
     <!-- end of cart  -->
+    <!-- beginning of user profile -->
+    <div class="user-profile">
+     <div class="user-container">
+      <h1 class="profile-header">User Profile</h1>
+      <div class="user-img">
+        <h1></h1>
+        <p>#Personal ID</p>
+      </div>
+      <div class="profile-input">
+        <label for="fname"><b>Username</b></label>
+        <input type="text" name="fname" required />
+      </div>
+      <div class="profile-input">
+        <label for="fname"><b>Email</b></label>
+        <input type="text" name="fname" required />
+      </div>
+      <div class="profile-input">
+        <label for="fname"><b>Coins Blanace</b></label>
+        <input type="text" name="fname" required />
+      </div>
+      <div class="profile-input">
+        <label for="fname"><b>Highest Score</b></label>
+        <input type="text" name="fname" required />
+      </div>
+      <div class="dark-mode">
+        <p>Dark mode</p>
+        <div class="mode-toggle">
+          <input type="checkbox" class="checkbox" id="checkbox" />
+          <label class="label" for="checkbox">
+            <div class="ball"></div>
+          </label>
+        </div>
+      </div>
+      <button class="signout-btn">Sign Out</button>
+    </div>
+    </div>
+    <!-- end of user profile -->
   </header>
   <container class="container">
     <div class="body-effect">
