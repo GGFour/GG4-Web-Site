@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+    integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="scripts/userInfo.js"></script>
+  <script src="scripts/general.js" defer></script>
+  <script src="scripts/inventory.js"></script>
+  <title>GG4 Landing Page</title>
+</head>
+<body>
+  <header class="navbar">
+    <div class="left-navbar">
+      <div><img src="images/logo.png" alt="" class="logo-img"/></div>
+      <div class="hamburger-icon" id="myNav">
+        <div class="left-nav-btns">
+          <a href="./">HOME</a>
+          <a href="./shop">SHOP</a>
+          <a href="./about">ABOUT</a>
+          <a href="./game" class="game">GAME</a>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      </div>
+    </div>
+    <div class="right-navbar">
+      <div class="right-nav-btns">
+        <div class="signinup-btns">
+          <a href="./signup">SIGN UP</a>
+          <a href="./login">LOG IN</a>
+        </div>
+      </div>
+      <div class="signed-user-icon" onclick="openProfile()">
+        <h3>AV</h3>
+      </div>
+      <div class="cart-btn"><i class="fa fa-shopping-cart" value="8" onclick="openCart()"><a href="#"
+            class="shopping-cart-icon"></a> </i></div>
+      <div> <img src="images/burger-menu.png" alt="" class="burger-menu-btn" onclick="openNav()"></div>
+    </div>
+    <!-- beginning of cart -->
+    <div class="main-container" id="myCart">
+      <div class="inner-container" >
+        <div class="cart-header">
+          <h1>MY CART</h1>
+          <p onclick="openCart()"style="cursor:pointer">X</p>
+        </div>
+        <div class="all-items"></div>
+        <div class="total">
+          <p>Total</p>
+          <p class="total-price">0ø</p>
+        </div>
+        <div class="checkout-btn">
+          <button>Check Out</button>
+        </div>
+      </div>
+    </div>
+    <!-- end of cart  -->
+    <!-- beginning of user profile -->
+    <div class="user-profile">
+     <div class="user-container">
+      <h1 class="profile-header">User Profile</h1>
+      <div class="user-img">
+        <h1></h1>
+        <p>#Personal ID: </p>
+      </div>
+      <div class="profile-input">
+        <label for="popup-username"><b>Username</b></label>
+        <input type="text" name="popup-username" id="popup-username" readonly />
+      </div>
+      <div class="profile-input">
+        <label for="popup-email"><b>Email</b></label>
+        <input type="text" name="popup-email" id="popup-email" readonly />
+      </div>
+      <div class="profile-input">
+        <label for="popup-balance"><b>Coins Blanace</b></label>
+        <input type="text" name="popup-balance" id="popup-balance" readonly />
+      </div>
+      <div class="profile-input">
+        <label for="popup-highscore"><b>Highest Score</b></label>
+        <input type="text" name="popup-highscore" id="popup-highscore"readonly />
+      </div>
+      <div class="dark-mode">
+        <p>Dark mode</p>
+        <div class="mode-toggle">
+          <input type="checkbox" class="checkbox" id="checkbox" />
+          <label class="label" for="checkbox">
+            <div class="ball"></div>
+          </label>
+        </div>
+      </div>
+      <button class="signout-btn" onclick="location.href = '/auth/logout';">Sign Out</button>
+    </div>
+    </div>
+    <!-- end of user profile -->
+  </header>
+  <container class="container">
+    <div class="body-effect">
+      <table class="inventory-table">
+          <tr>
+              <th>Icon</th>
+              <th>Name</th>
+              <th>Quantity</th>
+          </tr>
+      </table>
+    </div>
+  </container>
+  <footer>
+    <div class="social-media-icons">
+      <a href="#"><img src="images/discord.png" alt="discord-media"></a>
+      <a href="#"><img src="images/instagram.png" alt="insta-media"></a>
+      <a href="#"><img src="images/facebook.png" alt="fb-media"></a>
+      <a href="#"><img src="images/google.png" alt="google-media"></a>
+    </div>
+    <ul class="footer-texts">
+      <li><a href="">About</a></li>
+      <li><a href="">Need Help?</a></li>
+      <li><a href="">Content Guide</a></li>
+      <li><a href="">Terms of Use</a></li>
+    </ul>
+    <div class="footer-copyright"><span></span>©GG4 Inc.</span>
+    </div>
+  </footer>
+
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"
+  ></script>
+  <!-- <script src="scripts/jquery.js"></script> -->
+</body>
+</html>

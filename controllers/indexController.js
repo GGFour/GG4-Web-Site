@@ -33,3 +33,8 @@ exports.sendSignup = (req, res, next) => {
 exports.sendGame = (req, res, next) => {
   res.status(200).sendFile(path.join(__dirname, "../public/game.html"));
 };
+
+// Sends inventory.html file
+exports.sendInventory = (req, res, next) => { 
+  res.status(200).sendFile(path.join(__dirname, "../public/inventory.html"))
+}
