@@ -77,6 +77,20 @@ exports.getPersonalInfo = async (userId, response) => {
 };
 
 /**
+ * Returns inventory of user
+ * @param {Integer} userId 
+ * @param {Array} response - array containing objects {id, quantity}, where id - id of item
+ */
+exports.getInventory = async (userId, response) => {
+  pool.query(queries.getInventory, [userId], (err, result, fields) => {
+    if (err) {
+      console.log(err.message);
+    }
+    response(err, result, fields);
+  });
+};
+
+/**
  * Returns array of objects with item prices an availability
  * @param {Array} itemsIds 
  * @returns 

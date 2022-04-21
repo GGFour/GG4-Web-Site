@@ -1,8 +1,8 @@
 //          LOG IN PAGE
 
-const myForm = document.getElementById('myForm');
+const myFormLog = document.getElementById('myForm-log');
 
-myForm.addEventListener('submit', function (e) {
+myFormLog.addEventListener('submit', function (e) {
   e.preventDefault();
 
   const formData = new FormData(this);
@@ -27,5 +27,3 @@ myForm.addEventListener('submit', function (e) {
       console.error(error);
     });
 });
-
-//           SIGN UP PAGE
