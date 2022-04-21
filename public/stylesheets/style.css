@@ -391,6 +391,11 @@ footer a {
   .left-nav-btns {
     display: unset;
   }
+  .signinup-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
   .right-nav-btns {
     display: none;
   }
