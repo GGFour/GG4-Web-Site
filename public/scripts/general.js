@@ -159,15 +159,34 @@ function countUp() {
   PressBasket.classList.add("on");
 }
 
-const logo = document.getElementsByClassName("logo-img")[0];
-logo.addEventListener("click", function () {
+// const logo = document.getElementsByClassName("logo-div")[0];
+// logo.addEventListener("click", function () {
+//   console.log("logo clicked!");
+//   document
+//     .getElementsByClassName("user-profile")[0]
+//     .classList.add("show-user-profile");
+// });
+function openProfile() {
   document
     .getElementsByClassName("user-profile")[0]
     .classList.add("show-user-profile");
-});
-
-window.addEventListener("click", function () {
-  document
-    .getElementsByClassName("user-profile")[0]
-    .classList.remove("show-user-profile");
-});
+  window.addEventListener("click", function (event) {
+    // console.log(document.getElementById(detailPopupId));
+    if (
+      event.target == document.getElementsByClassName("user-profile")[0]
+      // ||
+      // event.target == document.getElementsByClassName("logo-img")[0]
+    ) {
+      {
+        document
+          .getElementsByClassName("user-profile")[0]
+          .classList.remove("show-user-profile");
+      }
+    }
+  });
+}
+// window.addEventListener("click", function () {
+//   document
+//     .getElementsByClassName("user-profile")[0]
+//     .classList.remove("show-user-profile");
+// });
