@@ -55,6 +55,43 @@
       </div>
       </div>
         <!-- end of cart  -->
+        <!-- beginning of user profile -->
+    <div class="user-profile">
+      <div class="user-container">
+       <h1 class="profile-header">User Profile</h1>
+       <div class="user-img">
+         <h1></h1>
+         <p>#Personal ID: </p>
+       </div>
+       <div class="profile-input">
+         <label for="popup-username"><b>Username</b></label>
+         <input type="text" name="popup-username" id="popup-username" readonly />
+       </div>
+       <div class="profile-input">
+         <label for="popup-email"><b>Email</b></label>
+         <input type="text" name="popup-email" id="popup-email" readonly />
+       </div>
+       <div class="profile-input">
+         <label for="popup-balance"><b>Coins Blanace</b></label>
+         <input type="text" name="popup-balance" id="popup-balance" readonly />
+       </div>
+       <div class="profile-input">
+         <label for="popup-highscore"><b>Highest Score</b></label>
+         <input type="text" name="popup-highscore" id="popup-highscore"readonly />
+       </div>
+       <div class="dark-mode">
+         <p>Dark mode</p>
+         <div class="mode-toggle">
+           <input type="checkbox" class="checkbox" id="checkbox" />
+           <label class="label" for="checkbox">
+             <div class="ball"></div>
+           </label>
+         </div>
+       </div>
+       <button class="signout-btn" onclick="location.href = '/auth/logout';">Sign Out</button>
+     </div>
+     </div>
+     <!-- end of user profile -->
     </header>
     <container class="about-container">
         <div class="left-side">
