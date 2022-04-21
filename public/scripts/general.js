@@ -2,15 +2,19 @@
 
 function openNav() {
   // copy login buttons to target div
-  let buttons = document.querySelector(".right-nav-btns .signinup-btns").cloneNode(true);
+  let buttons = document
+    .querySelector(".right-nav-btns .signinup-btns")
+    .cloneNode(true);
   document.querySelector(".hamburger-icon .left-nav-btns").appendChild(buttons);
   document.getElementById("myNav").style.height = "100%";
   // document.querySelector('.left-nav-btns').style.display = 'unset';
 }
 function closeNav() {
   document.getElementById("myNav").style.height = "0%";
-  // remove login buttons 
-  document.querySelector(".hamburger-icon .left-nav-btns .signinup-btns").remove();
+  // remove login buttons
+  document
+    .querySelector(".hamburger-icon .left-nav-btns .signinup-btns")
+    .remove();
 }
 cartStorageFiller();
 
@@ -147,7 +151,6 @@ function updateCartTotal() {
   document.querySelector(".total-price").innerText = total + "ø";
 }
 
-let PressBasket = document.querySelector(".cart-btn");
 let CartInput = document.querySelector(".product-info");
 let PressAddToCard = document.getElementsByClassName("add-to-cart");
 for (let i = 0; i < PressAddToCard.length; i++) {
@@ -155,11 +158,14 @@ for (let i = 0; i < PressAddToCard.length; i++) {
   AddingButton.addEventListener("click", countUp);
 }
 function countDown() {
+  let PressBasket = document.querySelector(".cart-btn");
   let item = Number(PressBasket.getAttribute("data-count") || 0);
   PressBasket.setAttribute("data-count", item - 1);
   PressBasket.classList.add("on");
 }
 function countUp() {
+  let PressBasket = document.querySelector(".cart-btn");
+
   let item = Number(PressBasket.getAttribute("data-count") || 0);
   PressBasket.setAttribute("data-count", item + 1);
   PressBasket.classList.add("on");
