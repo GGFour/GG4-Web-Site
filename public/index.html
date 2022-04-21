@@ -13,29 +13,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
   <script src="scripts/userInfo.js"></script>
   <script src="scripts/general.js" defer></script>
-  <style>
-    .signinup-btns {
-      display: flex;
-      flex-direction: row;
-      gap: 40px;
-    }
-
-    .signed-user-icon {
-      display: none;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      background-color: #c9c2b8;
-      height:2em;
-      width: 2em;
-    }
-  </style>
   <title>GG4 Landing Page</title>
 </head>
 <body>
   <header class="navbar">
     <div class="left-navbar">
-      <div><img src="images/logo.png" alt="" class="logo-img" onclick="openProfile()" /></div>
+      <div><img src="images/logo.png" alt="" class="logo-img"/></div>
       <div class="hamburger-icon" id="myNav">
         <div class="left-nav-btns">
           <a href="./">HOME</a>
@@ -52,7 +35,7 @@
           <a href="./signup">SIGN UP</a>
           <a href="./login">LOG IN</a>
         </div>
-        <div class="signed-user-icon">
+        <div class="signed-user-icon" onclick="openProfile()">
           <h3>AV</h3>
         </div>
       </div>
@@ -84,23 +67,23 @@
       <h1 class="profile-header">User Profile</h1>
       <div class="user-img">
         <h1></h1>
-        <p>#Personal ID</p>
+        <p>#Personal ID: </p>
       </div>
       <div class="profile-input">
-        <label for="fname"><b>Username</b></label>
-        <input type="text" name="fname" required />
+        <label for="popup-username"><b>Username</b></label>
+        <input type="text" name="popup-username" id="popup-username" readonly />
       </div>
       <div class="profile-input">
-        <label for="fname"><b>Email</b></label>
-        <input type="text" name="fname" required />
+        <label for="popup-email"><b>Email</b></label>
+        <input type="text" name="popup-email" id="popup-email" readonly />
       </div>
       <div class="profile-input">
-        <label for="fname"><b>Coins Blanace</b></label>
-        <input type="text" name="fname" required />
+        <label for="popup-balance"><b>Coins Blanace</b></label>
+        <input type="text" name="popup-balance" id="popup-balance" readonly />
       </div>
       <div class="profile-input">
-        <label for="fname"><b>Highest Score</b></label>
-        <input type="text" name="fname" required />
+        <label for="popup-highscore"><b>Highest Score</b></label>
+        <input type="text" name="popup-highscore" id="popup-highscore"readonly />
       </div>
       <div class="dark-mode">
         <p>Dark mode</p>
@@ -111,7 +94,7 @@
           </label>
         </div>
       </div>
-      <button class="signout-btn">Sign Out</button>
+      <button class="signout-btn" onclick="location.href = '/auth/logout';">Sign Out</button>
     </div>
     </div>
     <!-- end of user profile -->
