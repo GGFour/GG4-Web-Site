@@ -59,7 +59,7 @@ fetch("/api/items")
 //     showDetailPopup();
 //   }
 // }
-console.log(document.getElementById(detailId), detailId);
+// console.log(document.getElementById(detailId), detailId);
 window.addEventListener("click", function (event) {
   // console.log(document.getElementById(detailPopupId));
   if (
