@@ -9,11 +9,15 @@
 .acc-form {
   width: 30%;
   font-size: 1.5rem;
+  /* display: flex;
+  flex-direction: column; */
+  /* align-items: center; */
+}
+.acc-form form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .block-input {
   width: 70%;
 }
@@ -36,6 +40,7 @@
   display: flex;
   flex-direction: column;
   padding: 0.1rem 0;
+  /* float: right; */
 }
 
 .input-group {
