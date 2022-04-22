@@ -17,20 +17,20 @@
 }
 .remember-text {
   margin-left: 5px;
-  color: #764b17;
+  color: var(--brown);
   font-weight: bold;
   width: fit-content;
 }
 
 .remember-forgot label {
   display: flex;
-  color: #764b17;
+  color: var(--brown);
   justify-content: flex-start;
 }
 .remember-forgot {
   padding: 20px 0;
   font-size: 0.7rem;
-  color: #764b17;
+  color: var(--brown);
   font-weight: bold;
   width: fit-content;
   /* align-self: flex-start; */

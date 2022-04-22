@@ -7,7 +7,7 @@
   border: 1px solid black;
 } */
 .acc-form {
-  width: 26%;
+  width: 25%;
   font-size: 1.5rem;
   /* display: flex;
   flex-direction: column; */
@@ -31,7 +31,7 @@
 }
 
 .acc-label {
-  color: #764b17;
+  color: var(--brown);
 }
 .acc-label b {
   font-size: 1.3rem;
@@ -46,9 +46,9 @@
 
 .input-group {
   border-radius: 5px;
-  background-color: #c9c2b8;
+  background-color: var(--stark-white);
   border: none;
-  border-bottom: 2px solid #764b17;
+  border-bottom: 2px solid var(--brown);
   height: 1.8rem;
 }
 
@@ -60,7 +60,7 @@
   font-size: 14px;
   margin: 15px 0;
   display: inline-block;
-  color: #ffffff;
+  color: var(--specific-white);
   padding: 0.1rem 0;
   justify-self: center;
   align-self: center;
@@ -73,7 +73,7 @@
   /* border: 1px solid black; */
 }
 .btn-arrow {
-  background-color: #f9e805;
+  background-color: var(--yellow);
   border: none;
   border-radius: 50%;
   height: 35px;
@@ -88,6 +88,9 @@
   /* border: 1px solid black; */
   display: flex;
   /* align-self: left; */
+}
+.sub-createAcc u:hover {
+  color: var(--brown);
 }
 @media all and (max-width: 1000px) {
   .block-input {

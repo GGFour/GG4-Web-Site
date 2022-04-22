@@ -29,7 +29,7 @@
 hr {
   size: 1;
   width: 50%;
-  color: #bbbbbb;
+  color: var(--light-grey);
 }
 .creators img {
   width: 100%;
@@ -40,7 +40,7 @@ hr {
   font-weight: bold;
 }
 .occupation {
-  color: #764b17;
+  color: var(--brown);
 }
 .creator-grid {
   display: grid;
@@ -50,7 +50,11 @@ hr {
 .creator-grid div {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid var(--black);
+}
+
+.creator-grid div:hover {
+  cursor: pointer;
 }
 
 .right-side img {
