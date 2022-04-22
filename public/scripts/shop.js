@@ -45,6 +45,7 @@ fetch("/api/items")
             .querySelector(".detail-popup")
             .classList.toggle("show-detail-popup");
           detailId = itemElement.id;
+          window.addEventListener("click", hideDetailPopup);
         }
         //where the hell did you find "show-detail-popup"? it works
       );
@@ -60,8 +61,8 @@ fetch("/api/items")
 //   }
 // }
 // console.log(document.getElementById(detailId), detailId);
-window.addEventListener("click", function (event) {
-  // console.log(document.getElementById(detailPopupId));
+function hideDetailPopup() {
+  console.log("detail popup hider triggered!");
   if (
     event.target ==
     document.getElementById(detailId).getElementsByClassName("detail-popup")[0]
@@ -72,10 +73,10 @@ window.addEventListener("click", function (event) {
         .getElementById(detailId)
         .getElementsByClassName("detail-popup")[0]
         .classList.remove("show-detail-popup");
+      window.removeEventListener("click", hideDetailPopup);
     }
   }
-});
-
+}
 function showDetailPopup() {
   document.getElementsByClassName("popup")[0].classList.remove("js-is-hidden");
 }
@@ -212,19 +213,21 @@ function addItemToLocalStorage(item) {
     localStorage.setItem("items", JSON.stringify(items));
   }
   let items = JSON.parse(localStorage.getItem("items"));
-  console.log(items);
-  items.push({
-    id: item.id,
-    name: item.querySelector(".name").innerText,
-    price: item.querySelector(".price").innerText,
-    img: item.querySelector(".clickable-img").src,
-  });
+  if (items[items.findIndex((x) => x.id === item.id)] === undefined) {
+    console.log(items);
+    items.push({
+      id: item.id,
+      name: item.querySelector(".name").innerText,
+      price: item.querySelector(".price").innerText,
+      img: item.querySelector(".clickable-img").src,
+    });
+    localStorage.setItem("items", JSON.stringify(items));
+  }
   addItemToCart(
     items[items.length - 1],
     JSON.parse(localStorage.getItem("cart")).find((x) => x.id === `${item.id}`)
       .quantity
   );
-  localStorage.setItem("items", JSON.stringify(items));
 }
 // here i work with localStorage and with array containing all items added to cart
 
@@ -381,15 +384,24 @@ function countUp() {
   PressBasket.classList.add("on");
 }
 
-const logo = document.getElementsByClassName("logo-img")[0];
-logo.addEventListener("click", function () {
+function openProfile() {
   document
     .getElementsByClassName("user-profile")[0]
     .classList.add("show-user-profile");
-});
+  window.addEventListener("click", closeProfilePopup);
+}
+function closeProfilePopup() {
+  // console.log(document.getElementById(detailPopupId));
+  console.log("event listener triggered");
 
-window.addEventListener("click", function () {
-  document
-    .getElementsByClassName("user-profile")[0]
-    .classList.remove("show-user-profile");
-});
+  if (
+    event.target == document.getElementsByClassName("user-profile")[0]
+    // ||
+    // event.target == document.getElementsByClassName("logo-img")[0]
+  ) {
+    document
+      .getElementsByClassName("user-profile")[0]
+      .classList.remove("show-user-profile");
+    window.removeEventListener("click", closeProfilePopup);
+  }
+}

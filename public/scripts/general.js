@@ -1,15 +1,20 @@
 //this file is conflict-free(we hope so) light version of shop.js
+
 function openNav() {
   // copy login buttons to target div
-  let buttons = document.querySelector(".right-nav-btns .signinup-btns").cloneNode(true);
+  let buttons = document
+    .querySelector(".right-nav-btns .signinup-btns")
+    .cloneNode(true);
   document.querySelector(".hamburger-icon .left-nav-btns").appendChild(buttons);
   document.getElementById("myNav").style.height = "100%";
   // document.querySelector('.left-nav-btns').style.display = 'unset';
 }
 function closeNav() {
   document.getElementById("myNav").style.height = "0%";
-  // remove login buttons 
-  document.querySelector(".hamburger-icon .left-nav-btns .signinup-btns").remove();
+  // remove login buttons
+  document
+    .querySelector(".hamburger-icon .left-nav-btns .signinup-btns")
+    .remove();
 }
 cartStorageFiller();
 
@@ -146,7 +151,6 @@ function updateCartTotal() {
   document.querySelector(".total-price").innerText = total + "ø";
 }
 
-let PressBasket = document.querySelector(".cart-btn");
 let CartInput = document.querySelector(".product-info");
 let PressAddToCard = document.getElementsByClassName("add-to-cart");
 for (let i = 0; i < PressAddToCard.length; i++) {
@@ -154,11 +158,14 @@ for (let i = 0; i < PressAddToCard.length; i++) {
   AddingButton.addEventListener("click", countUp);
 }
 function countDown() {
+  let PressBasket = document.querySelector(".cart-btn");
   let item = Number(PressBasket.getAttribute("data-count") || 0);
   PressBasket.setAttribute("data-count", item - 1);
   PressBasket.classList.add("on");
 }
 function countUp() {
+  let PressBasket = document.querySelector(".cart-btn");
+
   let item = Number(PressBasket.getAttribute("data-count") || 0);
   PressBasket.setAttribute("data-count", item + 1);
   PressBasket.classList.add("on");
@@ -175,20 +182,22 @@ function openProfile() {
   document
     .getElementsByClassName("user-profile")[0]
     .classList.add("show-user-profile");
-  window.addEventListener("click", function (event) {
-    // console.log(document.getElementById(detailPopupId));
-    if (
-      event.target == document.getElementsByClassName("user-profile")[0]
-      // ||
-      // event.target == document.getElementsByClassName("logo-img")[0]
-    ) {
-      {
-        document
-          .getElementsByClassName("user-profile")[0]
-          .classList.remove("show-user-profile");
-      }
-    }
-  });
+  window.addEventListener("click", closeProfilePopup);
+}
+function closeProfilePopup() {
+  // console.log(document.getElementById(detailPopupId));
+  console.log("event listener triggered");
+
+  if (
+    event.target == document.getElementsByClassName("user-profile")[0]
+    // ||
+    // event.target == document.getElementsByClassName("logo-img")[0]
+  ) {
+    document
+      .getElementsByClassName("user-profile")[0]
+      .classList.remove("show-user-profile");
+    window.removeEventListener("click", closeProfilePopup);
+  }
 }
 // window.addEventListener("click", function () {
 //   document

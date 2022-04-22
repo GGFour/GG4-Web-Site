@@ -40,6 +40,15 @@ window.onload = function () {
       }),
     })
       .then(function (response) {
+        if (response.status === 200) {
+          // redirect to /
+          window.location.href = 'http://localhost/';
+        } else {
+          // unsuccess show smth
+          if (response.status === 400) {
+            console.log('Signing up failed');
+          }
+        }
         return response.text();
       })
       .then(function (text) {
