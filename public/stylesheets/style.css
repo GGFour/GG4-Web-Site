@@ -18,11 +18,12 @@
   --shady-grey: #818181;
   --ship-grey: #575756;
 }
- .dark-theme {
+.dark-theme {
   --dark-grey: #3c3d41;
   --swirling-water: #121212;
   --brown: #f9e805;
-  --black: white; */
+  --black: white;
+  --white: #313131;
 }
 body {
   display: grid;
@@ -33,6 +34,7 @@ body {
 
 p {
   font-weight: 100;
+  color: var(--black);
 }
 
 li,
@@ -81,12 +83,14 @@ header a {
   height: 25px;
   cursor: pointer;
   display: none;
+  color: var(--black);
 }
 .cart-btn {
   position: relative;
 }
 .cart-btn i {
   font-size: 25px;
+  color: var(--black);
 }
 .cart-btn:before {
   position: absolute;
@@ -100,7 +104,7 @@ header a {
   border-radius: 25px;
   text-align: center;
   background-color: var(--yellow);
-  color: var(--brown);
+  color: var(--black);
   cursor: pointer;
   opacity: 0;
 }
@@ -323,12 +327,14 @@ footer a {
   height: 5rem;
   border: 1px solid var(--brown);
   border-radius: 50%;
+  color: var(--black);
 }
 .profile-header {
   width: 100%;
   text-align: center;
   border-bottom: 1px solid var(--light-grey);
   font-size: 1.5rem;
+  color: var(--black);
 }
 .profile-input input {
   padding-left: 5px;
@@ -403,6 +409,7 @@ footer a {
   display: none;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   border-radius: 50%;
   background-color: var(--stark-white);
   height: 2em;
