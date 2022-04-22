@@ -113,7 +113,6 @@ CREATE TABLE inventory (
 CREATE TABLE order_details(
     id INTEGER NOT NULL AUTO_INCREMENT,
     user_id INTEGER NOT NULL,
-    items TEXT NOT NULL,
     total INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
@@ -125,7 +124,6 @@ CREATE TABLE order_items (
     quantity INTEGER NOT NULL,
     item_id INTEGER NOT NULL,
     order_id INTEGER NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (item_id) REFERENCES item(id),
     FOREIGN KEY (order_id) REFERENCES order_details(id)

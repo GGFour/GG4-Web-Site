@@ -93,16 +93,18 @@
 
           <div class="block-input">
             <label class="acc-label" for="pwd-repeat"><b>Re-enter new password</b></label>
-            <input class="input-group" id="confirm-pwd" type="password" placeholder="Password" name="password-repeat" required>
+            <input class="input-group" id="confirm-pwd" oninput="checkPassword()" type="password" placeholder="Password" name="password-repeat" required>
             <p id="message"></p>
           </div> 
           
           <div class="button-content">
-            <button type="submit" onclick="checkPassword()" class="btn-arrow"><i class='fa fa-angle-double-right'></i></button>
+            <button type="submit" class="btn-arrow"><i class='fa fa-angle-double-right'></i></button>
           </div>
 
         </form>
-
+        <div class="sub-createAcc">
+          <p>Already have an account?<a href="/login"> <u>Go to login</u></a></p>
+        </div>
       </div>
 
     </container>

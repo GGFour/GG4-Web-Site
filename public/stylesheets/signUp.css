@@ -7,15 +7,20 @@
   border: 1px solid black;
 } */
 .acc-form {
-  width: 30%;
+  width: 26%;
   font-size: 1.5rem;
+  /* display: flex;
+  flex-direction: column; */
+  /* align-items: center; */
+  /* border: 1px solid black; */
+}
+.acc-form form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 }
-
 .block-input {
-  width: 70%;
+  width: 100%;
 }
 .acc-maintext {
   font-size: 5.5vw;
@@ -36,6 +41,7 @@
   display: flex;
   flex-direction: column;
   padding: 0.1rem 0;
+  /* float: right; */
 }
 
 .input-group {
@@ -54,14 +60,17 @@
   font-size: 14px;
   margin: 15px 0;
   display: inline-block;
-  color: #0000;
+  color: #ffffff;
   padding: 0.1rem 0;
+  justify-self: center;
+  align-self: center;
 }
 
 .button-content {
   padding: 10px 0;
   cursor: pointer;
   width: fit-content;
+  /* border: 1px solid black; */
 }
 .btn-arrow {
   background-color: #f9e805;
@@ -74,7 +83,12 @@
   align-self: center;
   cursor: pointer;
 }
-
+.sub-createAcc {
+  font-size: 0.7rem;
+  /* border: 1px solid black; */
+  display: flex;
+  /* align-self: left; */
+}
 @media all and (max-width: 1000px) {
   .block-input {
     width: 100%;
