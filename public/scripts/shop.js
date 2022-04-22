@@ -1,5 +1,6 @@
 // const items = require("./items");
 const itemTemplate = document.querySelector('[item-template]');
+const searchInput = document.querySelector('[data-search]');
 // console.log(itemTemplate);
 //dunno why there are `[]`, saw it on youtube, cool video
 let detailId = null;
@@ -62,7 +63,19 @@ fetch('/api/items')
 //   }
 // }
 // console.log(document.getElementById(detailId), detailId);
-function hideDetailPopup() {
+searchInput.addEventListener('input', (e) => {
+  const value = e.target.value.toLowerCase();
+  const items = document.querySelectorAll('.grid-div');
+  console.log(items);
+  items.forEach((item) => {
+    const isVisible = item
+      .getElementsByClassName('name')[0]
+      .innerText.toLowerCase()
+      .includes(value);
+    item.classList.toggle('hide', !isVisible);
+  });
+});
+function hideDetailPopup(event) {
   console.log('detail popup hider triggered!');
   if (
     event.target ==
@@ -82,7 +95,6 @@ function showDetailPopup() {
   document.getElementsByClassName('popup')[0].classList.remove('js-is-hidden');
 }
 //just copied from jquery.js, it works well
-
 ///didn't work with code below yet
 ////////
 function leaveOneCategory(category) {
