@@ -6,6 +6,7 @@ const { validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+// This function is generates token for 1 hour.
 const generateAccessToken = (path_to_image, uid, usertype) => {
   const payload = {
     id: uid,
@@ -15,6 +16,16 @@ const generateAccessToken = (path_to_image, uid, usertype) => {
   return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: "1 h",
   });
+};
+
+// Generates normal text to send when bad signup.
+const messageFromError = (errorMessage) => {
+  let value = errorMessage.split(" ")[2].replace(/\'/g, "");
+  let field = errorMessage
+    .split(" ")[5]
+    .replace(/\'/g, "")
+    .replace("user.", "");
+  return `User with the ${field} '${value}' already exists`;
 };
 
 /**
@@ -46,7 +57,7 @@ exports.signUp = async (req, res, next) => {
       if (err && err.code == "ER_DUP_ENTRY") {
         return res
           .status(400)
-          .json({ message: err.sqlMessage.split(" ").slice(0, 3).join(" ") });
+          .json({ message: messageFromError(err.sqlMessage) });
       } else if (err) {
         return res.status(400).json({ message: "Registration error" });
       }
