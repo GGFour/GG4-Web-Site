@@ -40,7 +40,7 @@ window.onload = function () {
       }),
     }).then(async function (response) {
       if (response.status === 200) {
-        window.location.href = 'http://localhost/login';
+        window.location.href = '/login';
       } else if (response.status === 400) {
         let data = await response.json();
         alert(data.message);

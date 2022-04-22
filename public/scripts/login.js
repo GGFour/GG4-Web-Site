@@ -18,7 +18,7 @@ myFormLog.addEventListener('submit', function (e) {
     }),
   }).then(async function (response) {
     if (response.status === 200) {
-      window.location.href = 'http://localhost';
+      window.location.href = '/';
     } else if (response.status === 400) {
       let data = await response.json();
       alert(data.message);
