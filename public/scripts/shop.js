@@ -13,11 +13,11 @@ fetch('/api/items')
       // console.log(itemElement);
       const name = itemElement.querySelector('.name');
       // console.log(name);
-      const price = itemElement.querySelector('.price');
-      const cartImage = itemElement.querySelector('.cart-image');
-      const popUpDetailImage = itemElement.querySelector('.detail-img');
-      const image = itemElement.querySelector('.clickable-img');
-      name.textContent = item.name;
+      const price = itemElement.querySelector(".price");
+      const cartImage = itemElement.querySelector(".cart-image");
+      const popUpDetailImage = itemElement.querySelector(".detail-img");
+      const image = itemElement.querySelector(".clickable-img");
+      name.textContent = item.name.charAt(0).toUpperCase() + item.name.slice(1);
       price.textContent = item.price;
 
       // cartImage.src =
