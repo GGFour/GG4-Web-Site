@@ -93,7 +93,7 @@ let items = [
     class: 2,
     name: "quarterstaff",
     description: "A staff of hardwood, its ends are shod with iron",
-    imgId: 16,
+    imgId: 18,
     tier: 2,
     accuracy: 1,
   },
@@ -283,6 +283,138 @@ let items = [
       "A blast from this wand will teleport a creature against its will to a random place on the current level.",
     imgId: 72,
   },
+  {
+    class: 2,
+    name: "potion of experience",
+    description: "The storied experiences of multitudes of battles reduced to liquid form, this draught will instantly raise your experience level",
+    imgId: 64
+  },
+  {
+    class: 2,
+    name: "potion of liquid flame",
+    description: "This flask contains an unstable compound which will burst violently into flame upon exposure to open air",
+    imgId: 65
+  },
+  {
+    class: 2,
+    name: "potion of frost",
+    description: "Upon exposure to open air, this chemical will evaporate into a freezing cloud, causing any creature that contacts it to be frozen in place",
+    imgId: 66
+  },
+  {
+    class: 2,
+    name: "potion of healing",
+    description: "An elixir that will instantly return you to full health and cure poison",
+    imgId: 67
+  },
+  {
+    class: 3,
+    name: "potion of might",
+    description: "This powerful liquid will course through your muscles, permanently increasing your strenght by one point and health by five",
+    imgId: 68
+  },
+  {
+    class: 3,
+    name: "potion of mind vision",
+    description: "After drinking this, your mind will become attuned to the psychic signature of distant creatures. Enabling you to sense biological presence through walls.",
+    imgId: 69
+  },
+  {
+    class: 3,
+    name: "potion of paralytic gas",
+    description: "Upon exposure to open air, the liquid in this flask will vaporize and instantly paralyze anyone who inhales it. They will be unable to move for sometime.",
+    imgId: 70
+  },
+  {
+    class: 3,
+    name: "potion of purity",
+    description: "This reagent will quickly neutralize all harmful gases in the area of effect. Drinking it will give you temporary immunity to such gases",
+    imgId: 71
+  },
+  {
+    class: 2,
+    name: "potion of strenght",
+    description: "This powerful liquid will course through your muscles, permamently increasing your strength by one point",
+    imgId: 72
+  },
+  {
+    class: 3,
+    name: "potion of toxic gas",
+    description: "Shattering this pressurized glass will cause its contents to explode into a deadly cloud of toxic gas. You might want to be careful with this one...",
+    imgId: 73
+  },
+  {
+    class: 3,
+    name: "potion of invisibility",
+    description: "Drinking this potion will render you temporarily invisible. While invisible, enemies will be unable to see you. Attacking will dispel the effect",
+    imgId: 74
+  },
+  {
+    class: 3,
+    name: "potion of levitation",
+    description: "Drinking this curious liquid will cause you to hover in the air, able to drift effortlessly over traps. However, flames and gases fill the air and cannot be bypassed by levitation",
+    imgId: 75
+  },
+  {
+    class: 2,
+    name: "ring of haste",
+    description: "This ring accelerates the wearers flow of time, allowing one to perform all actions a little faster.",
+    imgId: 33
+  },
+  {
+    class: 2,
+    name: "ring of detection",
+    description: "Wearing this ring will allow the wearer to notice hidden secrets, traps and doors.",
+    imgId: 34
+  },
+  {
+    class: 2,
+    name: "ring of power",
+    description: "Your wands will become more powerful in the energy field that radiates from this ring.",
+    imgId: 35
+  },
+  {
+    class: 2,
+    name: "ring of satiety",
+    description: "Wearing this ring you can go without food longer.",
+    imgId: 36
+  },
+  {
+    class: 2,
+    name: "ring of evasion",
+    description: "This ring increases your chance to dodge enemy attack",
+    imgId: 37
+  },
+  {
+    class: 2,
+    name: "ring of herbalism",
+    description: "This ring increases your chance to gather dew and seeds from trampled grass",
+    imgId: 38
+  },
+  {
+    class: 3,
+    name: "ring of shadows",
+    description: "Enemies will be less likely to notice you if you wear this ring.",
+    imgId: 39
+  },
+  {
+    class: 3,
+    name: "ring of throns",
+    description: "Though this ring doesnt provide real thorns, an enemy that attacks you will itself be wounded by a fraction of the damage that it inflicts",
+    imgId: 40
+  },
+  {
+    class: 1,
+    name: "chargrilled meat",
+    description: "It looks like a decent steak",
+    imgId: 143
+  },
+  {
+    class: 1,
+    name: "frozen carpaccio",
+    description: "Its a piece of frozen raw meat. The only way to eat it is by cutting thin slices of it. This way its surprisingly good!",
+    imgId: 145
+  }
 ];
 
 for (let i = 0; i < items.length; i++) {
