@@ -40,7 +40,7 @@ let items = [
     class: 2,
     name: "battle axe",
     description:
-      "This is a crude and heavy weapon. It's specifically designed todeal devastating blows to your enemies.",
+      "This is a crude and heavy weapon. It's specifically designed to deal devastating blows to your enemies.",
     imgId: 23,
     tier: 4,
     accuracy: 1.2,
@@ -67,7 +67,7 @@ let items = [
     class: 2,
     name: "brass knuckles",
     description:
-      "Piece of metal designed to fit around the fingers and gripped by the hand. Increases your punching power dramatically.",
+      "Piece of metal designed to fit around the fingers and gripped by the hand. Increases your punching power drastically.",
     imgId: 17,
     tier: 1,
     accuracy: 1,
@@ -76,7 +76,7 @@ let items = [
     class: 2,
     name: "longsword",
     description:
-      "Widely-used standard straight sword. An accessible sword which inflicts consistent regular damage and high slash damage, making it applicable to avariety of situations.",
+      "Widely-used standard straight sword. An accessible sword which inflicts consistent regular damage and high slash damage, making it applicable to a variety of situations.",
     imgId: 21,
     tier: 4,
     accuracy: 1,
@@ -101,7 +101,7 @@ let items = [
     class: 2,
     name: "shortsword",
     description:
-      "It is indeed quite short, just a few inches longer, than a dagger",
+      "It's indeed quite short, just a few inches longer, than a dagger",
     imgId: 3,
     tier: 1,
     accuracy: 1,
@@ -118,7 +118,7 @@ let items = [
     class: 2,
     name: "greatsword",
     description:
-      "Greatswords are powerful blades with a wide swing radius and long reaching attacks, enabling the wielder to target multiple opponents within theradius of the swing motion.",
+      "Greatswords are powerful blades with a wide swing radius and long reaching attacks, enabling the wielder to target multiple opponents within the radius of the swing motion.",
     imgId: 22,
     tier: 3,
     accuracy: 1,
@@ -160,7 +160,7 @@ let items = [
     name: "plate armor",
     tier: 5,
     description:
-      "Enormous plates of metal are joined together into a suit thatprovides unmatched protection to any adventurer strong enough to bear its staggering weight.",
+      "Enormous plates of metal are joined together into a suit that provides unmatched protection to any adventurer strong enough to bear its staggering weight.",
     imgId: 28,
   },
   {
@@ -196,21 +196,21 @@ let items = [
     class: 4,
     name: "wand of amok",
     description:
-      "The purple light from this wand will make the target run amokattacking random creatures in its vicinity.",
+      "The purple light from this wand will make the target run amok attacking random creatures in its vicinity.",
     imgId: 4,
   },
   {
     class: 4,
     name: "wand of avalanche",
     description:
-      "When a discharge of this wand hits a wall (or any other solidobstacle) it causes an avalanche of stones, damaging and stunning all creatures in the affected area.",
+      "When a discharge of this wand hits a wall (or any other solid obstacle) it causes an avalanche of stones, damaging and stunning all creatures in the affected area.",
     imgId: 49,
   },
   {
     class: 4,
     name: "wand of blink",
     description:
-      "This wand will allow you to teleport in the chosen direction.Creatures and inanimate obstructions will block the teleportation.",
+      "This wand will allow you to teleport in the chosen direction. Creatures and inanimate obstructions will block the teleportation.",
     imgId: 50,
   },
   {
@@ -231,7 +231,7 @@ let items = [
     class: 4,
     name: "wand of flock",
     description:
-      "A flick of this wand summons a flock of magic sheep, creatingtemporary impenetrable obstacle.",
+      "A flick of this wand summons a flock of magic sheep, creating a temporary impenetrable obstacle.",
     imgId: 53,
   },
   {
@@ -252,14 +252,14 @@ let items = [
     class: 4,
     name: "wand of poison",
     description:
-      "The vile blast of this twisted bit of wood will imbue its target with a deadly venom. A creature that is poisoned will suffer periodic damageuntil the effect ends. The duration of the effect increases with the level of the staff.",
+      "The vile blast of this twisted bit of wood will imbue its target with a deadly venom. A creature that is poisoned will suffer periodic damage until the effect ends. The duration of the effect increases with the level of the staff.",
     imgId: 56,
   },
   {
     class: 4,
     name: "wand of reach",
     description:
-      "This utility wand can be used to grab objects from a distanceand to switch places with enemies. Waves of magic force radiated from it will affect all cells on their way triggering traps, trampling high vegetation, opening closed doors and closing open ones.",
+      "This utility wand can be used to grab objects from a distance and to switch places with enemies. Waves of magic force radiated from it will affect all cells on their way triggering traps, trampling high vegetation, opening closed doors and closing open ones.",
     imgId: 69,
   },
   {

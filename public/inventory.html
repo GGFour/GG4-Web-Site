@@ -13,12 +13,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
   <script src="scripts/userInfo.js"></script>
   <script src="scripts/general.js" defer></script>
+  <script src="scripts/inventory.js"></script>
   <title>GG4 Landing Page</title>
 </head>
 <body>
   <header class="navbar">
     <div class="left-navbar">
-      <div><img src="images/logo.png" alt="" class="logo-img" onclick="openProfile()"/></div>
+      <div><img src="images/logo.png" alt="" class="logo-img"/></div>
       <div class="hamburger-icon" id="myNav">
         <div class="left-nav-btns">
           <a href="./">HOME</a>
@@ -43,12 +44,12 @@
             class="shopping-cart-icon"></a> </i></div>
       <div> <img src="images/burger-menu.png" alt="" class="burger-menu-btn" onclick="openNav()"></div>
     </div>
-     <!-- beginning of cart -->
- <div class="main-container" id="myCart">
+    <!-- beginning of cart -->
+    <div class="main-container" id="myCart">
       <div class="inner-container" >
         <div class="cart-header">
-        <h1>MY CART</h1>
-      <p onclick="openCart()"style="cursor:pointer">X</p>
+          <h1>MY CART</h1>
+          <p onclick="openCart()"style="cursor:pointer">X</p>
         </div>
         <div class="all-items"></div>
         <div class="total">
@@ -59,8 +60,8 @@
           <button>Check Out</button>
         </div>
       </div>
-      </div>
-        <!-- end of cart  -->
+    </div>
+    <!-- end of cart  -->
     <!-- beginning of user profile -->
     <div class="user-profile">
      <div class="user-container">
@@ -95,15 +96,19 @@
         </div>
       </div>
       <button class="signout-btn" onclick="location.href = '/auth/logout';">Sign Out</button>
-      <button class="signout-btn" onclick="location.href = '/inventory';">Open Inventory</button>
     </div>
     </div>
     <!-- end of user profile -->
   </header>
   <container class="container">
     <div class="body-effect">
-      <img src="images/web-landing-img.png" alt="" class="body-desktop-img">
-      <img src="images/mob-landing-img.png" alt="" class="body-mobile-img">
+      <table class="inventory-table">
+          <tr>
+              <th>Icon</th>
+              <th>Name</th>
+              <th>Quantity</th>
+          </tr>
+      </table>
     </div>
   </container>
   <footer>

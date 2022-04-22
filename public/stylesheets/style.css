@@ -84,9 +84,9 @@ header a {
 .cart-btn.on:before {
   opacity: 1;
 }
-/* .container {
-   border: 1px solid blue;
-} */
+.container {
+   padding-bottom: 20px;
+}
 
 .body-desktop-img {
   display: unset;
