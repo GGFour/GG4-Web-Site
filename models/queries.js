@@ -30,25 +30,24 @@ exports.getItems = `select
 
 // Statement to add user;
 exports.createUser = `
-        INSERT INTO user (
-            email,
-            username,
-            firstname,
-            lastname,
-            pswd
-        ) VALUES (
-            ?,
-            ?,
-            ?,
-            ?,
-            ?
-        );
+    INSERT INTO user (
+        email,
+        username,
+        firstname,
+        lastname,
+        pswd
+    ) VALUES (
+        ?,
+        ?,
+        ?,
+        ?,
+        ?
+    );
 `;
 
 exports.getInventory = `
-            select item_id, quantity FROM inventory WHERE user_id = ?;`
-;
+    SELECT item_id as id, name, path_to_image, quantity FROM inventory, item WHERE user_id = ? AND inventory.item_id = item.id;`;
 // Statement to get user info.
 exports.personalInfo = `
-select id, email, firstname, lastname, username, coins, high_score FROM user WHERE id = ?;
+    select id, email, firstname, lastname, username, coins, high_score FROM user WHERE id = ?;
 `;

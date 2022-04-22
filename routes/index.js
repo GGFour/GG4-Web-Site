@@ -28,13 +28,16 @@ router.get("/about", controller.sendAbout);
  */
 router.get("/shop", controller.sendShop);
 
-/* Returns login page*/
+/* Returns login page redirects to '/' if logged in */
 router.get("/login", authenticated, redirectAuthed(), controller.sendLogin);
 
 /* Returns signup page redirects '/' if logged in */
 router.get("/signup", authenticated, redirectAuthed(), controller.sendSignup);
 
-/* Returns game page redirects to '/' if logged in */
+/* Returns game page */
 router.get("/game", controller.sendGame);
+
+/* Returns inventory page redirects to '/' if not logged in */
+router.get("/inventory", authenticated, redirectUnauthed(), controller.sendInventory)
 
 module.exports = router;
