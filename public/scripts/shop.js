@@ -1,57 +1,58 @@
 // const items = require("./items");
-const itemTemplate = document.querySelector("[item-template]");
+const itemTemplate = document.querySelector('[item-template]');
 // console.log(itemTemplate);
 //dunno why there are `[]`, saw it on youtube, cool video
 let detailId = null;
-fetch("/api/items")
+fetch('/api/items')
   .then((res) => res.json())
   .then((data) => {
     cartStorageFiller();
     data.forEach((item) => {
       const itemElement = itemTemplate.content.cloneNode(true).children[0];
       // console.log(itemElement);
-      const name = itemElement.querySelector(".name");
+      const name = itemElement.querySelector('.name');
       // console.log(name);
-      const price = itemElement.querySelector(".price");
-      const cartImage = itemElement.querySelector(".cart-image");
-      const popUpDetailImage = itemElement.querySelector(".detail-img");
-      const image = itemElement.querySelector(".clickable-img");
+      const price = itemElement.querySelector('.price');
+      const cartImage = itemElement.querySelector('.cart-image');
+      const popUpDetailImage = itemElement.querySelector('.detail-img');
+      const image = itemElement.querySelector('.clickable-img');
       name.textContent = item.name;
       price.textContent = item.price;
+
       // cartImage.src =
       //   'assets/pixel_dungeon/items/items_' +
       //   String(item.path_to_image).padStart(2, '0') +
       //   '.png';
       popUpDetailImage.src =
-        "assets/pixel_dungeon/items/items_" +
-        String(item.path_to_image).padStart(2, "0") +
-        ".png";
+        'assets/pixel_dungeon/items/items_' +
+        String(item.path_to_image).padStart(2, '0') +
+        '.png';
       image.src =
-        "assets/pixel_dungeon/items/items_" +
-        String(item.path_to_image).padStart(2, "0") +
-        ".png";
+        'assets/pixel_dungeon/items/items_' +
+        String(item.path_to_image).padStart(2, '0') +
+        '.png';
       itemElement.classList.add(`${item.category}`);
       itemElement.id = item.id;
-      itemElement.querySelector(".price-popup").textContent = item.price;
-      itemElement.querySelector(".name-popup").textContent = item.name;
-      itemElement.querySelector(".description-popup").textContent =
+      itemElement.querySelector('.price-popup').textContent = item.price;
+      itemElement.querySelector('.name-popup').textContent = item.name;
+      itemElement.querySelector('.description-popup').textContent =
         item.description;
 
       // itemElement.querySelector(".detail-popup").id = item.id;
-      itemElement.querySelector(".clickable-img").addEventListener(
-        "click",
+      itemElement.querySelector('.clickable-img').addEventListener(
+        'click',
         () => {
           itemElement
-            .querySelector(".detail-popup")
-            .classList.toggle("show-detail-popup");
+            .querySelector('.detail-popup')
+            .classList.toggle('show-detail-popup');
           detailId = itemElement.id;
-          window.addEventListener("click", hideDetailPopup);
+          window.addEventListener('click', hideDetailPopup);
         }
         //where the hell did you find "show-detail-popup"? it works
       );
 
       // console.log(document.querySelector(".products-grid"));
-      document.querySelector(".products-grid").append(itemElement);
+      document.querySelector('.products-grid').append(itemElement);
     });
     bindAddToCart();
   });
@@ -62,65 +63,65 @@ fetch("/api/items")
 // }
 // console.log(document.getElementById(detailId), detailId);
 function hideDetailPopup() {
-  console.log("detail popup hider triggered!");
+  console.log('detail popup hider triggered!');
   if (
     event.target ==
-    document.getElementById(detailId).getElementsByClassName("detail-popup")[0]
+    document.getElementById(detailId).getElementsByClassName('detail-popup')[0]
   ) {
     {
       // console.log(detailPopupId);
       document
         .getElementById(detailId)
-        .getElementsByClassName("detail-popup")[0]
-        .classList.remove("show-detail-popup");
-      window.removeEventListener("click", hideDetailPopup);
+        .getElementsByClassName('detail-popup')[0]
+        .classList.remove('show-detail-popup');
+      window.removeEventListener('click', hideDetailPopup);
     }
   }
 }
 function showDetailPopup() {
-  document.getElementsByClassName("popup")[0].classList.remove("js-is-hidden");
+  document.getElementsByClassName('popup')[0].classList.remove('js-is-hidden');
 }
 //just copied from jquery.js, it works well
 function openCart() {
-  const Cart = document.getElementById("myCart");
-  const inner = document.querySelector(".inner-container");
-  Cart.classList.toggle("show-main-container");
-  inner.classList.toggle("show-inner-container");
+  const Cart = document.getElementById('myCart');
+  const inner = document.querySelector('.inner-container');
+  Cart.classList.toggle('show-main-container');
+  inner.classList.toggle('show-inner-container');
 }
 function openNav() {
-  document.getElementById("myNav").style.height = "100%";
+  document.getElementById('myNav').style.height = '100%';
   // document.querySelector('.left-nav-btns').style.display = 'unset';
 }
 
 function closeNav() {
-  document.getElementById("myNav").style.height = "0%";
+  document.getElementById('myNav').style.height = '0%';
 }
 ///didn't work with code below yet
 ////////
 function leaveOneCategory(category) {
   document.querySelectorAll(`.grid-div`).forEach(function (el) {
     // console.log(el);
-    el.style.visibility = "hidden";
-    el.querySelector(`.clickable-img`).style.transitionDuration = "0s";
-    el.style.top = "0";
-    el.style.left = "0";
-    el.style.position = "absolute";
+    el.style.visibility = 'hidden';
+    el.querySelector(`.clickable-img`).style.transitionDuration = '0s';
+    el.style.top = '0';
+    el.style.left = '0';
+    el.style.position = 'absolute';
 
     //order is putting the elements in order, from 1 to 2 so elements with order 2 are lower and elements with order 1 are higher
   });
   document.querySelectorAll(`.${category}`).forEach(function (el) {
     console.log(el);
-    el.style.position = "initial";
-    el.style.visibility = "visible";
-    el.querySelector(`.clickable-img`).style.transitionDuration = "0.3s";
+    el.style.position = 'initial';
+    el.style.visibility = 'visible';
+    el.querySelector(`.clickable-img`).style.transitionDuration = '0.3s';
   });
 }
 function showAll() {
   document.querySelectorAll(`.grid-div`).forEach(function (el) {
     // console.log(el);
-    el.style.visibility = "visible";
-    el.style.position = "initial";
-    el.querySelector(`.clickable-img`).style.transitionDuration = "0.3s";
+    el.style.visibility = 'visible';
+    el.style.position = 'initial';
+    el.querySelector(`.clickable-img`).style.transitionDuration = '0.3s';
   });
   //not sure about that, maybe need to use for loop
 }
@@ -165,21 +166,21 @@ function showAll() {
 // }
 
 // showing a slidedown for mobile categories
-$("#category-header").click(function () {
-  $("#all-categories").slideToggle("slow");
+$('#category-header').click(function () {
+  $('#all-categories').slideToggle('slow');
 });
 
 // implementing add-to-cart functionality
 function bindAddToCart() {
   // click-event for adding to the shopping cart.
-  let addToCartButton = document.getElementsByClassName("add-to-cart");
+  let addToCartButton = document.getElementsByClassName('add-to-cart');
   for (let i = 0; i < addToCartButton.length; i++) {
     let button = addToCartButton[i];
-    button.addEventListener("click", addToCartClicked);
+    button.addEventListener('click', addToCartClicked);
   }
 }
 function addToLocalStorageCart(id) {
-  let cart = JSON.parse(localStorage.getItem("cart"));
+  let cart = JSON.parse(localStorage.getItem('cart'));
   console.log(cart);
   if (cart == null) {
     cart = [{ id: `${id}`, quantity: 1 }];
@@ -191,7 +192,7 @@ function addToLocalStorageCart(id) {
       cart.find((x) => x.id === `${id}`).quantity++;
     }
   }
-  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem('cart', JSON.stringify(cart));
 }
 function addToCartClicked(event) {
   // you can add the price and the img src as parameters here
@@ -205,39 +206,39 @@ function addToCartClicked(event) {
 function addItemToLocalStorage(item) {
   //write a function which will push item item details to local storage
   if (
-    localStorage.getItem("items") == undefined ||
-    localStorage.getItem("items") == null
+    localStorage.getItem('items') == undefined ||
+    localStorage.getItem('items') == null
   ) {
-    console.log("Не туда вставляешь!");
+    console.log('Не туда вставляешь!');
     let items = [];
-    localStorage.setItem("items", JSON.stringify(items));
+    localStorage.setItem('items', JSON.stringify(items));
   }
-  let items = JSON.parse(localStorage.getItem("items"));
+  let items = JSON.parse(localStorage.getItem('items'));
   if (items[items.findIndex((x) => x.id === item.id)] === undefined) {
     console.log(items);
     items.push({
       id: item.id,
-      name: item.querySelector(".name").innerText,
-      price: item.querySelector(".price").innerText,
-      img: item.querySelector(".clickable-img").src,
+      name: item.querySelector('.name').innerText,
+      price: item.querySelector('.price').innerText,
+      img: item.querySelector('.clickable-img').src,
     });
-    localStorage.setItem("items", JSON.stringify(items));
+    localStorage.setItem('items', JSON.stringify(items));
   }
   addItemToCart(
     items[items.length - 1],
-    JSON.parse(localStorage.getItem("cart")).find((x) => x.id === `${item.id}`)
+    JSON.parse(localStorage.getItem('cart')).find((x) => x.id === `${item.id}`)
       .quantity
   );
 }
 // here i work with localStorage and with array containing all items added to cart
 
 function cartStorageFiller() {
-  let cartItems = JSON.parse(localStorage.getItem("cart"));
+  let cartItems = JSON.parse(localStorage.getItem('cart'));
   if (cartItems != null) {
     cartItems.forEach(function (item) {
       console.log(item);
       addItemToCart(
-        JSON.parse(localStorage.getItem("items")).find(
+        JSON.parse(localStorage.getItem('items')).find(
           (x) => x.id === `${item.id}`
         ),
         item.quantity
@@ -247,15 +248,15 @@ function cartStorageFiller() {
 }
 // I will rewrite it
 function addItemToCart(itemData, quantity) {
-  let cartItems = document.getElementsByClassName("all-items")[0];
+  let cartItems = document.getElementsByClassName('all-items')[0];
   if (cartItems.querySelector(`#cart_${itemData.id}`) == undefined) {
     console.log(cartItems.querySelector(`cart_${itemData.id}`));
     let name = itemData.name;
     let price = itemData.price;
     let imageSrc = itemData.img;
-    let CartElement = document.createElement("div");
-    CartElement.id = "cart_" + itemData.id;
-    CartElement.classList.add("mycart-content");
+    let CartElement = document.createElement('div');
+    CartElement.id = 'cart_' + itemData.id;
+    CartElement.classList.add('mycart-content');
     let CartElementContent = `
           <div class="img-name">
               <img src="${imageSrc}">
@@ -268,7 +269,7 @@ function addItemToCart(itemData, quantity) {
             <p class="remove-btn" onclick='removeCartItem'>Remove</p>
           </div>
           <div>
-            <p class="product-price">${price + "ø"}</p>
+            <p class="product-price">${price + 'ø'}</p>
           </div>
   `;
     CartElement.innerHTML = CartElementContent;
@@ -279,19 +280,19 @@ function addItemToCart(itemData, quantity) {
     //   }
     // }
     cartItems.append(CartElement);
-    CartElement.getElementsByClassName("remove-btn")[0].addEventListener(
-      "click",
+    CartElement.getElementsByClassName('remove-btn')[0].addEventListener(
+      'click',
       removeCartItem
     );
-    CartElement.getElementsByClassName("product-quantity")[0].addEventListener(
-      "change",
+    CartElement.getElementsByClassName('product-quantity')[0].addEventListener(
+      'change',
       quantityChanged
     );
     countUp();
   } else {
     cartItems
       .querySelector(`#cart_${itemData.id}`)
-      .getElementsByClassName("product-quantity")[0].value = quantity;
+      .getElementsByClassName('product-quantity')[0].value = quantity;
   }
   updateCartTotal();
 }
@@ -307,8 +308,8 @@ function removeCartItem(event) {
   buttonclicked = event.target;
   buttonclicked.parentElement.parentElement.remove();
   updateCartTotal();
-  cart = JSON.parse(localStorage.getItem("cart"));
-  items = JSON.parse(localStorage.getItem("items"));
+  cart = JSON.parse(localStorage.getItem('cart'));
+  items = JSON.parse(localStorage.getItem('items'));
   cart.splice(
     cart.findIndex(
       (x) => x.id === `${buttonclicked.parentElement.parentElement.id.slice(5)}`
@@ -321,15 +322,15 @@ function removeCartItem(event) {
     ),
     1
   );
-  localStorage.setItem("items", JSON.stringify(items));
-  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem('items', JSON.stringify(items));
+  localStorage.setItem('cart', JSON.stringify(cart));
   countDown();
 }
 // change event to quantitiy input.
-let quantityInputs = document.getElementsByClassName("product-quantity");
+let quantityInputs = document.getElementsByClassName('product-quantity');
 for (let i = 0; i < quantityInputs.length; i++) {
   let input = quantityInputs[i];
-  input.addEventListener("change", quantityChanged);
+  input.addEventListener('change', quantityChanged);
 }
 
 // fucntion to let the item quantity increase no less than one
@@ -338,70 +339,70 @@ function quantityChanged(event) {
   if (isNaN(input.value) || input.value <= 0) {
     input.value = 1;
   }
-  cartItems = JSON.parse(localStorage.getItem("cart"));
+  cartItems = JSON.parse(localStorage.getItem('cart'));
   cartItems[
     cartItems.findIndex(
       (x) => x.id === `${input.parentElement.parentElement.id.slice(5)}`
     )
   ].quantity = input.value;
-  localStorage.setItem("cart", JSON.stringify(cartItems));
+  localStorage.setItem('cart', JSON.stringify(cartItems));
   updateCartTotal();
 }
 
 // function for updating the total price.
 function updateCartTotal() {
-  let AddedItemContent = document.getElementsByClassName("mycart-content");
+  let AddedItemContent = document.getElementsByClassName('mycart-content');
   let total = 0;
   for (let i = 0; i < AddedItemContent.length; i++) {
     let singleItem = AddedItemContent[i];
-    let priceElement = singleItem.getElementsByClassName("product-price")[0];
+    let priceElement = singleItem.getElementsByClassName('product-price')[0];
     let quantityElement =
-      singleItem.getElementsByClassName("product-quantity")[0];
-    let price = parseFloat(priceElement.innerText.replace("ø", ""));
+      singleItem.getElementsByClassName('product-quantity')[0];
+    let price = parseFloat(priceElement.innerText.replace('ø', ''));
     let quantity = quantityElement.value;
     total = total + price * quantity;
   }
   total = Math.round(total * 100) / 100;
   //document.getElementsByClassName("total-price")[0].innerText = "ø" + total;
-  document.querySelector(".total-price").innerText = total + "ø";
+  document.querySelector('.total-price').innerText = total + 'ø';
 }
 
-let PressBasket = document.querySelector(".cart-btn");
-let CartInput = document.querySelector(".product-info");
-let PressAddToCard = document.getElementsByClassName("add-to-cart");
+let PressBasket = document.querySelector('.cart-btn');
+let CartInput = document.querySelector('.product-info');
+let PressAddToCard = document.getElementsByClassName('add-to-cart');
 for (let i = 0; i < PressAddToCard.length; i++) {
   let AddingButton = PressAddToCard[i];
-  AddingButton.addEventListener("click", countUp);
+  AddingButton.addEventListener('click', countUp);
 }
 function countDown() {
-  let item = Number(PressBasket.getAttribute("data-count") || 0);
-  PressBasket.setAttribute("data-count", item - 1);
-  PressBasket.classList.add("on");
+  let item = Number(PressBasket.getAttribute('data-count') || 0);
+  PressBasket.setAttribute('data-count', item - 1);
+  PressBasket.classList.add('on');
 }
 function countUp() {
-  let item = Number(PressBasket.getAttribute("data-count") || 0);
-  PressBasket.setAttribute("data-count", item + 1);
-  PressBasket.classList.add("on");
+  let item = Number(PressBasket.getAttribute('data-count') || 0);
+  PressBasket.setAttribute('data-count', item + 1);
+  PressBasket.classList.add('on');
 }
 
 function openProfile() {
   document
-    .getElementsByClassName("user-profile")[0]
-    .classList.add("show-user-profile");
-  window.addEventListener("click", closeProfilePopup);
+    .getElementsByClassName('user-profile')[0]
+    .classList.add('show-user-profile');
+  window.addEventListener('click', closeProfilePopup);
 }
 function closeProfilePopup() {
   // console.log(document.getElementById(detailPopupId));
-  console.log("event listener triggered");
+  console.log('event listener triggered');
 
   if (
-    event.target == document.getElementsByClassName("user-profile")[0]
+    event.target == document.getElementsByClassName('user-profile')[0]
     // ||
     // event.target == document.getElementsByClassName("logo-img")[0]
   ) {
     document
-      .getElementsByClassName("user-profile")[0]
-      .classList.remove("show-user-profile");
-    window.removeEventListener("click", closeProfilePopup);
+      .getElementsByClassName('user-profile')[0]
+      .classList.remove('show-user-profile');
+    window.removeEventListener('click', closeProfilePopup);
   }
 }

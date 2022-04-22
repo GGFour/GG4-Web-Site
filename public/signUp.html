@@ -68,17 +68,17 @@
 
           <div class="block-input">
             <label class="acc-label" for="username"><b>Username</b></label>
-            <input class="input-group" type="text" placeholder="joe.doe" name="username" required>
+            <input class="input-group" type="text" placeholder="joe.doe" name="username" paterns="[0-9a-zA-Z]" required>
           </div>
 
           <div class="block-input">
             <label class="acc-label" for="fname"><b>First Name</b></label>
-            <input class="input-group" type="text" placeholder="Joe" name="firstname" required>
+            <input class="input-group" type="text" placeholder="Joe" name="firstname" paterns="[a-zA-Z]" required>
           </div>
 
           <div class="block-input">
             <label class="acc-label" for="lname"><b>Last Name</b></label>
-            <input class="input-group" type="text" placeholder="Doe" name="lastname" required>
+            <input class="input-group" type="text" placeholder="Doe" name="lastname" paterns="[a-zA-Z]" required>
           </div>
 
           <div class="block-input">
@@ -88,7 +88,7 @@
 
           <div class="block-input">
             <label class="acc-label" for="pwd"><b>Password</b></label>
-            <input class="input-group" id="password" type="password" placeholder="Password" name="password" required>
+            <input class="input-group" id="password" type="password" minlength="8" maxlength="24" placeholder="Password" name="password" required>
           </div>
 
           <div class="block-input">
