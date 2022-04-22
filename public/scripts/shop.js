@@ -1,5 +1,6 @@
 // const items = require("./items");
 const itemTemplate = document.querySelector("[item-template]");
+const searchInput = document.querySelector("[data-search]");
 // console.log(itemTemplate);
 //dunno why there are `[]`, saw it on youtube, cool video
 let detailId = null;
@@ -18,6 +19,7 @@ fetch("/api/items")
       const image = itemElement.querySelector(".clickable-img");
       name.textContent = item.name;
       price.textContent = item.price;
+
       // cartImage.src =
       //   'assets/pixel_dungeon/items/items_' +
       //   String(item.path_to_image).padStart(2, '0') +
@@ -61,7 +63,19 @@ fetch("/api/items")
 //   }
 // }
 // console.log(document.getElementById(detailId), detailId);
-function hideDetailPopup() {
+searchInput.addEventListener("input", (e) => {
+  const value = e.target.value.toLowerCase();
+  const items = document.querySelectorAll(".grid-div");
+  console.log(items);
+  items.forEach((item) => {
+    const isVisible = item
+      .getElementsByClassName("name")[0]
+      .innerText.toLowerCase()
+      .includes(value);
+    item.classList.toggle("hide", !isVisible);
+  });
+});
+function hideDetailPopup(event) {
   console.log("detail popup hider triggered!");
   if (
     event.target ==
@@ -390,7 +404,7 @@ function openProfile() {
     .classList.add("show-user-profile");
   window.addEventListener("click", closeProfilePopup);
 }
-function closeProfilePopup() {
+function closeProfilePopup(event) {
   // console.log(document.getElementById(detailPopupId));
   console.log("event listener triggered");
 

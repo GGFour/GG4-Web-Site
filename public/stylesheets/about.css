@@ -53,6 +53,10 @@ hr {
   border: 1px solid var(--black);
 }
 
+.creator-grid div:hover {
+  cursor: pointer;
+}
+
 .right-side img {
   /* border: 1px solid blueviolet; */
   max-width: 70%;

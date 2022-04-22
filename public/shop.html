@@ -16,32 +16,39 @@
     <!-- Just testing stuff, won't need items.js later-->
     <!-- <script src="scripts/items.js"></script> -->
     <!-- <script src="scripts/jquery.js" defer></script> -->
+    <script src="scripts/userInfo.js"></script>
     <script src="scripts/shop.js" defer></script>
    
-    <title>GG4 Landing Page</title>
+    <title>GG4 Shop page</title>
     </head>
     <body>
-        <header class="navbar"> 
-            <div class="left-navbar" >
-              <div><img src="images/logo.png" alt="" class="logo-img" onclick="openProfile()" /></div>
-                <div class="hamburger-icon" id="myNav">
-                    <div class="left-nav-btns"  > 
-                    <a href="./">HOME</a> 
-                    <a href="./shop">SHOP</a>
-                    <a href="./about">ABOUT</a>
-                    <a href="./game">GAME</a>
-                    </div>
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                </div>
+      <header class="navbar">
+        <div class="left-navbar">
+          <div><img src="images/logo.png" alt="" class="logo-img" onclick="location.href='/'"/></div>
+          <div class="hamburger-icon" id="myNav">
+            <div class="left-nav-btns">
+              <a href="./">HOME</a>
+              <a href="./shop">SHOP</a>
+              <a href="./about">ABOUT</a>
+              <a href="./game" class="game">GAME</a>
             </div>
-            <div class="right-navbar">
-                <div class="right-nav-btns">
-                    <a href="./signup" >SIGN UP</a>
-                    <a href="./login" >LOG IN</a>
-                </div>
-                 <div class="cart-btn"><i class="fa fa-shopping-cart" value="8" onclick="openCart()"><a href="#" class="shopping-cart-icon" ></a> </i></div>
-             <div> <img src="images/burger-menu.png" alt="" class="burger-menu-btn" onclick="openNav()"></div>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          </div>
+        </div>
+        <div class="right-navbar">
+          <div class="right-nav-btns">
+            <div class="signinup-btns">
+              <a href="./signup">SIGN UP</a>
+              <a href="./login">LOG IN</a>
             </div>
+          </div>
+          <div class="signed-user-icon" onclick="openProfile()">
+            <h3>AV</h3>
+          </div>
+          <div class="cart-btn"><i class="fa fa-shopping-cart" value="8" onclick="openCart()"><a href="#"
+                class="shopping-cart-icon"></a> </i></div>
+          <div> <img src="images/burger-menu.png" alt="" class="burger-menu-btn" onclick="openNav()"></div>
+        </div>
             <!-- beginning of cart -->
  <div class="main-container" id="myCart">
       <div class="inner-container" >
@@ -55,7 +62,7 @@
           <p class="total-price">0ø</p>
         </div>
         <div class="checkout-btn">
-          <button>Check Out</button>
+          <button type="submit" id="checkout-btn">Check Out</button>
         </div>
       </div>
       </div>
@@ -119,7 +126,7 @@
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form> -->
                     <div class="search-container">
-                        <input class="search-input" type="text" placeholder="Search...">
+                        <input class="search-input" type="search" placeholder="Search..." data-search>
                     </div>
                 </div>
                 
