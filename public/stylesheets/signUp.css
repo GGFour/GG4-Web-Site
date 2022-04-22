@@ -89,6 +89,9 @@
   display: flex;
   /* align-self: left; */
 }
+.sub-createAcc u:hover {
+  color: var(--brown);
+}
 @media all and (max-width: 1000px) {
   .block-input {
     width: 100%;
