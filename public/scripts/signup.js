@@ -38,15 +38,16 @@ window.onload = function () {
         email: formData.get('email'),
         password: formData.get('password'),
       }),
-    })
-      .then(function (response) {
-        return response.text();
-      })
-      .then(function (text) {
-        console.log(text);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    }).then(async function (response) {
+      if (response.status === 200) {
+        window.location.href = '/login';
+      } else if (response.status === 400) {
+        let data = await response.json();
+        alert(data.message);
+        return;
+      } else {
+        alert('Something went wrong. Please try again later...');
+      }
+    });
   });
 };

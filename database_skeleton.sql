@@ -79,8 +79,8 @@ CREATE TABLE user_payment (
 CREATE TABLE user (
     id INTEGER NOT NULL AUTO_INCREMENT,
     email VARCHAR(32) UNIQUE NOT NULL,
-    firstname VARCHAR(32) UNIQUE NOT NULL,
-    lastname VARCHAR(32) UNIQUE NOT NULL,
+    firstname VARCHAR(32) NOT NULL,
+    lastname VARCHAR(32) NOT NULL,
     username VARCHAR(32) UNIQUE NOT NULL,
     pswd VARCHAR(255) NOT NULL,
     path_to_logo VARCHAR(32),
