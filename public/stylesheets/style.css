@@ -17,6 +17,7 @@
   --red: red;
   --shady-grey: #818181;
   --ship-grey: #575756;
+  --black-bg: rgb(0, 0, 0);
 }
 .dark-theme {
   --dark-grey: #3c3d41;
@@ -24,6 +25,7 @@
   --brown: #f9e805;
   --black: white;
   --white: #313131;
+  --black-bg: #313131;
 }
 body {
   display: grid;
@@ -458,8 +460,7 @@ footer a {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: var(--black-bg);
     overflow-y: hidden;
     transition: 0.5s;
   }
