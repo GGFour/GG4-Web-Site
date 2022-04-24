@@ -117,20 +117,6 @@ header a {
   padding-bottom: 20px;
 }
 
-.mobile-home-container {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.body-desktop-img {
-  display: unset;
-  /* width: 30%; */
-  /* height: auto; */
-  /* display: table; */
-  /* margin: auto; */
-}
-
 .body-mobile-img {
   display: none;
 }
@@ -598,6 +584,12 @@ footer {
   /* end of navbar design*/
   .animation {
     display: none;
+  }
+  .mobile-home-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   /* .body-desktop-img {
     display: none;
