@@ -290,6 +290,7 @@ footer a {
   align-items: center;
   border-radius: 0.5rem;
   background-color: var(--white);
+  /* z-index: 2; */
 }
 .show-user-profile {
   z-index: 1;
@@ -431,6 +432,7 @@ footer a {
   left: 30%;
   animation: anim 2s forwards, anim2 3s forwards 3s;
   /* -webkit-animation: anim 2s forwards, anim2 3s forwards 3s; */
+  z-index: -1;
 }
 @keyframes anim {
   from {
@@ -492,9 +494,9 @@ footer a {
   }
 }
 
-footer {
+/* footer {
   z-index: 1;
-}
+} */
 /* end of it*/
 
 /* BEGINNING OF MOBILE LAYOUT */
