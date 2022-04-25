@@ -235,7 +235,7 @@ function closeProfilePopup() {
 //     .classList.remove("show-user-profile");
 // });
 const darkModeToggle = document.getElementById("checkbox");
-darkModeToggle.checked = addEventListener("change", () => {
+darkModeToggle.addEventListener("change", () => {
   console.log("onload listener triggered");
   if (localStorage.getItem("darkMode") == "true") {
     localStorage.setItem("darkMode", "false");
