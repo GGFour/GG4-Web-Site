@@ -178,6 +178,35 @@ function countUp() {
 //     .getElementsByClassName("user-profile")[0]
 //     .classList.add("show-user-profile");
 // });
+
+// Place order function
+function checkoutOrder() {
+  const data = JSON.parse(window.localStorage.getItem("cart"));
+  if (!data || data.length === 0) {
+    alert("Your cart is empty");
+    return;
+  }
+  fetch("/api/placeOrder", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      items: data,
+    }),
+  }).then(async function (response) {
+    if (response.status === 200) {
+      localStorage.clear();
+      window.location.href = "/shop";
+    } else if (response.status === 400) {
+      let data = await response.json();
+      alert(data.message);
+      return;
+    } else if (response.status === 403) {
+      window.location.href = "/login";
+    } else {
+      alert("Something went wrong. Please try again later...");
+    }
+  });
+}
 function openProfile() {
   document
     .getElementsByClassName("user-profile")[0]
