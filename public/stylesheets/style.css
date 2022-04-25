@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
 }
 :root {
   --brown: #764b17;
@@ -424,7 +424,7 @@ footer a {
   max-width: 650px;
   width: 50%;
   height: 312px;
-  background: url("../images/console-landing-chopped-page.png");
+  background: url('../images/console-landing-chopped-page.png');
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
