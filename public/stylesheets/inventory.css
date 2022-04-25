@@ -34,9 +34,12 @@
 .inventory-table tbody tr:last-of-type {
   border-bottom: 1px solid var(--yellow);
 }
+tbody tr {
+  color: var(--black);
+}
 
 /* editable */
-.inventory-table tbody tr:active {
+/* .inventory-table tbody tr:active {
   font-weight: bold;
   color: var(--yellow);
-}
+} */
