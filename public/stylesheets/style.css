@@ -420,11 +420,7 @@ footer a {
   height: 100%;
   min-height: 475px;
 }
-.homepage-script,
-.desktop-img-container {
-  border: 1px solid blue;
-  /* padding: 20rem 0; */
-}
+
 .desktop-img-container {
   position: relative;
   left: 30%;
