@@ -194,7 +194,8 @@ function checkoutOrder() {
     }),
   }).then(async function (response) {
     if (response.status === 200) {
-      localStorage.clear();
+      localStorage.setItem("cart", "[]");
+      localStorage.setItem("items", "[]");
       window.location.href = "/shop";
     } else if (response.status === 400) {
       let data = await response.json();
