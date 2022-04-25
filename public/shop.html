@@ -143,7 +143,28 @@
                 </div>
                 
                 <div class="products-grid">
-                    
+                  <div  class="grid-div" id="Your_mom">
+                    <img class="clickable-img" src="./images/carbonara.png" alt="" onclick="parentElement
+.querySelector('.detail-popup')
+            .classList.toggle('show-detail-popup');
+          detailId = parentElement.id;
+          window.addEventListener('click', hideDetailPopup);" >
+                    <p class="name">Carbonara</p>
+                    <p class="price">priceless</p>
+                    <div class="detail-popup">
+                      <div class="popup-content">
+                          <div class="imgdiv">
+                          <img class="detail-img" src="./images/carbonara.png" alt="">
+                          </div>
+                          <div class="product-details">
+                              <h1 class="name-popup">Carbonara the Great</h1>
+                              <p class="description-popup">That's carbonara with grana padano, super juicy <br> You can not buy it, but can cook it and post image to our discord server</p>
+                           
+                      
+                          </div>
+                      </div>
+                      </div>
+                </div>
                 <template item-template>
                   <div  class="grid-div">
                     <img class="clickable-img" src="./images/cat.jpg" alt="" >
