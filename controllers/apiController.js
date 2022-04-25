@@ -2,7 +2,7 @@
  * This is controller for '/api/' requests.
  */
 
-const database = require("../models/mysql");
+const database = require("../models/postgres");
 
 /**
  * Checks if user can place order
@@ -80,10 +80,11 @@ exports.placeOrder = async (req, res, next) => {
       return res.status(500).json({ message: "error" });
     }
     let userBalance = await database.getUserBalance(user.id);
+    console.log(userBalance);
     let total = checkBalance(userBalance, itemsInfo, actualItems);
     if (!total) {
       return res.status(400).json({
-        message: "not enough coins or not enough items available for bying",
+        message: "Not enough coins or not enough items available for bying",
       });
     }
 
