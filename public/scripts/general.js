@@ -233,9 +233,13 @@ function closeProfilePopup() {
 //     .getElementsByClassName("user-profile")[0]
 //     .classList.remove("show-user-profile");
 // });
-
 const chk = document.getElementById("checkbox");
-
 chk.addEventListener("change", () => {
+  console.log("onload listener triggered");
+  if (localStorage.getItem("darkMode") == "true") {
+    localStorage.setItem("darkMode", "false");
+  } else {
+    localStorage.setItem("darkMode", "true");
+  }
   document.body.classList.toggle("dark-theme");
 });
