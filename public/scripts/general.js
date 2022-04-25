@@ -205,8 +205,8 @@ function closeProfilePopup() {
 //     .classList.remove("show-user-profile");
 // });
 
-const chk = document.getElementById("checkbox");
-
-chk.addEventListener("change", () => {
+const darkModeToggle = document.getElementById("checkbox");
+let darkMode = localStorage.getItem("dark-mode");
+darkModeToggle.addEventListener("change", () => {
   document.body.classList.toggle("dark-theme");
 });
