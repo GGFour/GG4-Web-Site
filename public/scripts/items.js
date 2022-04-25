@@ -266,7 +266,7 @@ let items = [
     class: 4,
     name: "wand of regrowth",
     description:
-      '"When life ceases new life always begins to grow... The eternal cycle always remains!"',
+      "When life ceases new life always begins to grow... The eternal cycle always remains!",
     imgId: 70,
   },
   {
