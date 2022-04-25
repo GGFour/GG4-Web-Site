@@ -3,6 +3,8 @@ const path = require("path");
 let scriptfile = path.join(__dirname, "fillin.sql");
 
 fs.writeFileSync(scriptfile,"");
+fs.appendFileSync(scriptfile, 'SET SCHEMA ecommerce_db;');
+fs.appendFileSync(scriptfile, 'BEGIN; \n');
 let categories = [
   { id: 1, name: "armor", description: "" },
   { id: 2, name: "weapon", description: "" },
@@ -13,16 +15,18 @@ let categories = [
 ];
 for (let i = 0; i < categories.length; i++) {
   let curr = categories[i];
-  let resultString = `INSERT INTO item_category (name, description) VALUES ("${curr.name}", "${curr.description}");\n`;
+  let resultString = `INSERT INTO item_category (name, description) VALUES ('${curr.name}', '${curr.description}');\n`;
   fs.appendFileSync(scriptfile, resultString);
 }
+fs.appendFileSync(scriptfile, 'COMMIT; BEGIN; \n');
 
 let games = [{ name: "pixel dungeon" }];
 for (let i = 0; i < games.length; i++) {
   let curr = games[i];
-  let resultString = `INSERT INTO game (name) VALUES ("${curr.name}");\n`;
+  let resultString = `INSERT INTO game (name) VALUES ('${curr.name}');\n`;
   fs.appendFileSync(scriptfile, resultString);
 }
+fs.appendFileSync(scriptfile, 'COMMIT; BEGIN; \n');
 
 let user_types = [
   {name: "user"},
@@ -31,16 +35,17 @@ let user_types = [
 ];
 for (let i = 0; i < user_types.length; i++) {
   let curr = user_types[i];
-  let resultString = `INSERT INTO user_type (name) VALUES ("${curr.name}");\n`;
+  let resultString = `INSERT INTO user_type (name) VALUES ('${curr.name}');\n`;
   fs.appendFileSync(scriptfile, resultString);
 }
+fs.appendFileSync(scriptfile, 'COMMIT; BEGIN; \n');
 
 let items = [
   {
     class: 2,
     name: "battle axe",
     description:
-      "This is a crude and heavy weapon. It's specifically designed to deal devastating blows to your enemies.",
+      "This is a crude and heavy weapon. It''s specifically designed to deal devastating blows to your enemies.",
     imgId: 23,
     tier: 4,
     accuracy: 1.2,
@@ -101,7 +106,7 @@ let items = [
     class: 2,
     name: "shortsword",
     description:
-      "It's indeed quite short, just a few inches longer, than a dagger",
+      "It''s indeed quite short, just a few inches longer, than a dagger",
     imgId: 3,
     tier: 1,
     accuracy: 1,
@@ -287,73 +292,73 @@ let items = [
     class: 2,
     name: "potion of experience",
     description: "The storied experiences of multitudes of battles reduced to liquid form, this draught will instantly raise your experience level",
-    imgId: 64
+    imgId: 57
   },
   {
     class: 2,
     name: "potion of liquid flame",
     description: "This flask contains an unstable compound which will burst violently into flame upon exposure to open air",
-    imgId: 65
+    imgId: 58
   },
   {
     class: 2,
     name: "potion of frost",
     description: "Upon exposure to open air, this chemical will evaporate into a freezing cloud, causing any creature that contacts it to be frozen in place",
-    imgId: 66
+    imgId: 59
   },
   {
     class: 2,
     name: "potion of healing",
     description: "An elixir that will instantly return you to full health and cure poison",
-    imgId: 67
+    imgId: 60
   },
   {
     class: 3,
     name: "potion of might",
     description: "This powerful liquid will course through your muscles, permanently increasing your strenght by one point and health by five",
-    imgId: 68
+    imgId: 61
   },
   {
     class: 3,
     name: "potion of mind vision",
     description: "After drinking this, your mind will become attuned to the psychic signature of distant creatures. Enabling you to sense biological presence through walls.",
-    imgId: 69
+    imgId: 62
   },
   {
     class: 3,
     name: "potion of paralytic gas",
     description: "Upon exposure to open air, the liquid in this flask will vaporize and instantly paralyze anyone who inhales it. They will be unable to move for sometime.",
-    imgId: 70
+    imgId: 66
   },
   {
     class: 3,
     name: "potion of purity",
     description: "This reagent will quickly neutralize all harmful gases in the area of effect. Drinking it will give you temporary immunity to such gases",
-    imgId: 71
+    imgId: 64
   },
   {
     class: 2,
     name: "potion of strenght",
     description: "This powerful liquid will course through your muscles, permamently increasing your strength by one point",
-    imgId: 72
+    imgId: 65
   },
   {
     class: 3,
     name: "potion of toxic gas",
     description: "Shattering this pressurized glass will cause its contents to explode into a deadly cloud of toxic gas. You might want to be careful with this one...",
-    imgId: 73
+    imgId: 63
   },
   {
     class: 3,
     name: "potion of invisibility",
     description: "Drinking this potion will render you temporarily invisible. While invisible, enemies will be unable to see you. Attacking will dispel the effect",
-    imgId: 74
+    imgId: 68
   },
   {
     class: 3,
     name: "potion of levitation",
     description: "Drinking this curious liquid will cause you to hover in the air, able to drift effortlessly over traps. However, flames and gases fill the air and cannot be bypassed by levitation",
-    imgId: 75
+    imgId: 67
   },
   {
     class: 2,
@@ -399,30 +404,54 @@ let items = [
   },
   {
     class: 3,
-    name: "ring of throns",
+    name: "ring of thorns",
     description: "Though this ring doesnt provide real thorns, an enemy that attacks you will itself be wounded by a fraction of the damage that it inflicts",
     imgId: 40
   },
   {
-    class: 1,
+    class: 2,
     name: "chargrilled meat",
     description: "It looks like a decent steak",
-    imgId: 143
+    imgId: 122
+  },
+  {
+    class: 2,
+    name: "frozen carpaccio",
+    description: "Its a piece of frozen raw meat. The only way to eat it is by cutting thin slices of it. This way its surprisingly good!",
+    imgId: 124
   },
   {
     class: 1,
-    name: "frozen carpaccio",
-    description: "Its a piece of frozen raw meat. The only way to eat it is by cutting thin slices of it. This way its surprisingly good!",
-    imgId: 145
+    name: "Raw meat",
+    description: "Eating is raw wouldnt be a good idea, but cooking it could expose some beneficial effects!",
+    imgId: 121
+  },
+  {
+    class: 1,
+    name: "carbonara",
+    description: "Carbonara is https://en.wikipedia.org/wiki/Carbonara",
+    imgId: "carbonara"
+  },
+  {
+    class: 3,
+    name: "overpriced food ration",
+    description: "It looks exactly like a standard ration of food, but smaller and more expensive",
+    imgId: 123,
+  },
+  {
+    class: 2,
+    name: "pastry",
+    description: "This is authentic Cornish pasty with traditional filling of beef and potato.",
+    imgId: 120
   }
 ];
 
 for (let i = 0; i < items.length; i++) {
   let curr = items[i];
-  var inventoryString = `INSERT INTO item_inventory (quantity) VALUES (100);\n`;
-  let resultString = `INSERT INTO item (name, description, category_id, game_id, inventory_id, path_to_image, price) VALUES ("${curr.name}","${curr.description}", ${curr.class}, 1, ${i+1}, ${curr.imgId}, ${curr.tier*10 || curr.class*10});\n`;
+  var inventoryString = `INSERT INTO item_inventory (quantity) VALUES (100);\n COMMIT; BEGIN;`;
+  let resultString = `INSERT INTO item (name, description, category_id, game_id, inventory_id, path_to_image, price) VALUES ('${curr.name}','${curr.description}', ${curr.class}, 1, ${i+1}, '${curr.imgId}', ${curr.tier*10 || curr.class*10});\n`;
   fs.appendFileSync(scriptfile, inventoryString);
   fs.appendFileSync(scriptfile, resultString);
 }
-
+fs.appendFileSync(scriptfile, 'COMMIT; \n');
 module.exports = { items };
