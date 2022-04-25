@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+}
+.inventory-table {
+  /* width is changable */
+  width: 50%;
+  border-collapse: collapse;
+  margin: 2rem;
+  font-size: 1rem;
+  max-width: 600px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.inventory-table thead tr {
+  background-color: var(--yellow);
+  color: var(--white);
+  text-align: left;
+  font-weight: bold;
+}
+
+.inventory-table th,
+.inventory-table td {
+  padding: 12px 15px;
+}
+.inventory-table tbody tr {
+  border-top: 1px solid var(--light-grey);
+}
+
+.inventory-table tbody tr:last-of-type {
+  border-bottom: 1px solid var(--yellow);
+}
+
+/* editable */
+.inventory-table tbody tr:active {
+  font-weight: bold;
+  color: var(--yellow);
+}
