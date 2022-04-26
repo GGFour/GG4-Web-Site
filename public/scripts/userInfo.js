@@ -5,6 +5,8 @@ window.onload = () => {
         document.querySelector(".signinup-btns").style.display = "none";
         document.querySelector(".signed-user-icon").style.display = "flex";
         return response.json();
+      } else {
+        document.querySelector(".right-nav-btns").classList.remove("hide");
       }
       return;
     })
