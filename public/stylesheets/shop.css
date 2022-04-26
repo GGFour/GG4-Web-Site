@@ -201,6 +201,9 @@
 .all-items {
   width: 100%;
 }
+#category-header {
+  color: var(--black);
+}
 @media all and (max-width: 1200px) {
   .products-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
