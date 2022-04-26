@@ -10,7 +10,7 @@
 
 4. For docker:
    1. Install docker
-   2. execute `docker-compose -f .\mysql-docker-compose.yaml up` to run the database
-   3. execute `docker-compose -f .\mysql-docker-compose.yaml down` to stop the database. (add `-v` flag to remove the data generated during application work)
+   2. execute `docker-compose -f .\postgre-docker-compose.yaml up` to run the database
+   3. execute `docker-compose -f .\postgre-docker-compose.yaml down` to stop the database. (add `-v` flag to remove the data generated during application work)
 
 5. Execute `npm start` to run an application

@@ -1,7 +1,7 @@
 /**
  * This is controller for '/auth/' requests.
  */
-const database = require("../models/mysql");
+const database = require("../models/postgres");
 const { validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
