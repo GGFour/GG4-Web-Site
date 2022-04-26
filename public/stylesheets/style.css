@@ -534,7 +534,11 @@ footer a {
     max-width: 100%;
     height: auto;
   }
+  .cart-btn {
+    margin-top: 0.6rem;
+  }
   .logo-img {
+    width: 50px;
     max-width: 100%;
     height: auto;
     display: unset;
@@ -549,14 +553,17 @@ footer a {
     background-color: var(--black-bg);
     overflow-y: hidden;
     transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .left-nav-btns {
     position: relative;
-    top: 25%;
+    /* top: 25%; */
     width: 100%;
     text-align: center;
-    margin-top: 30px;
+    /* margin-top: 30px; */
   }
 
   .hamburger-icon a {
