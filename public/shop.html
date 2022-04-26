@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="stylesheets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,37 +37,38 @@
         if (localStorage.getItem("darkMode") == null) {
           localStorage.setItem("darkMode", "false");
         }</script>
-      <header class="navbar">
-        <div class="left-navbar">
-          <div><img src="images/logo.png" alt="" class="logo-img" onclick="location.href='/'"/></div>
-          <div class="hamburger-icon" id="myNav">
-            <div class="left-nav-btns">
-              <a href="./">HOME</a>
-              <a href="./shop">SHOP</a>
-              <a href="./about">ABOUT</a>
-              <a href="./game" class="game">GAME</a>
-            </div>
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-          </div>
+        <header class="navbar">
+    <div class="left-navbar">
+      <div><img src="images/logo.png" alt="" class="logo-img" onclick="location.href='/'"/></div>
+      <div class="hamburger-icon" id="myNav">
+        <div class="left-nav-btns">
+          <a href="./">HOME</a>
+          <a href="./shop">SHOP</a>
+          <a href="./about">ABOUT</a>
+          <a href="./game" class="game">GAME</a>
         </div>
-        <div class="right-navbar">
-          <div class="right-nav-btns">
-            <div class="signinup-btns">
-              <a href="./signup">SIGN UP</a>
-              <a href="./login">LOG IN</a>
-            </div>
-          </div>
-          <div class="signed-user-icon" onclick="openProfile()">
-            <h3>AV</h3>
-          </div>
-          <div class="cart-btn"><i class="fa fa-shopping-cart" value="8" onclick="openCart()"><a href="#"
-                class="shopping-cart-icon"></a> </i></div>
-          <div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      </div>
+    </div>
+    <div class="right-navbar">
+      <div class="right-nav-btns hide">
+        <div class="signinup-btns">
+          <a href="./signup">SIGN UP</a>
+          <a href="./login">LOG IN</a>
+        </div>
+      </div>
+      <div class="signed-user-icon" onclick="openProfile()">
+        <h3></h3>
+      </div>
+      <div class="cart-btn"><i class="fa fa-shopping-cart"  onclick="openCart()" ><a href="#"
+            class="shopping-cart-icon"></a> </i></div>
+    <div>
             </p>
 <span style="font-size:30px;" onclick="openNav()"class="burger-menu-btn">&#9776;</span>
              <!-- <img src="images/burger-menu.png" alt="" class="burger-menu-btn" onclick="openNav()"></div> -->
         </div>
-            <!-- beginning of cart -->
+    </div>
+     <!-- beginning of cart -->
  <div class="main-container" id="myCart">
       <div class="inner-container" >
         <div class="cart-header">
@@ -86,44 +86,45 @@
       </div>
       </div>
         <!-- end of cart  -->
-        <!-- beginning of user profile -->
+    <!-- beginning of user profile -->
     <div class="user-profile">
-      <div class="user-container">
-       <h1 class="profile-header">User Profile</h1>
-       <div class="user-img">
-         <h1></h1>
-         <p>#Personal ID: </p>
-       </div>
-       <div class="profile-input">
-         <label for="popup-username"><b>Username</b></label>
-         <input type="text" name="popup-username" id="popup-username" readonly />
-       </div>
-       <div class="profile-input">
-         <label for="popup-email"><b>Email</b></label>
-         <input type="text" name="popup-email" id="popup-email" readonly />
-       </div>
-       <div class="profile-input">
-         <label for="popup-balance"><b>Coins Blanace</b></label>
-         <input type="text" name="popup-balance" id="popup-balance" readonly />
-       </div>
-       <div class="profile-input">
-         <label for="popup-highscore"><b>Highest Score</b></label>
-         <input type="text" name="popup-highscore" id="popup-highscore"readonly />
-       </div>
-       <div class="dark-mode">
-         <p>Dark mode</p>
-         <div class="mode-toggle">
-           <input type="checkbox" class="checkbox" id="checkbox" />
-           <label class="label" for="checkbox">
-             <div class="ball"></div>
-           </label>
-         </div>
-       </div>
-       <button class="signout-btn" onclick="location.href = '/auth/logout';">Sign Out</button>
-     </div>
-     </div>
-     <!-- end of user profile -->
-        </header>
+     <div class="user-container">
+      <h1 class="profile-header">User Profile</h1>
+      <div class="user-img">
+        <h1></h1>
+        <p>#Personal ID: </p>
+      </div>
+      <div class="profile-input">
+        <label for="popup-username"><b>Username</b></label>
+        <input type="text" name="popup-username" id="popup-username" readonly />
+      </div>
+      <div class="profile-input">
+        <label for="popup-email"><b>Email</b></label>
+        <input type="text" name="popup-email" id="popup-email" readonly />
+      </div>
+      <div class="profile-input">
+        <label for="popup-balance"><b>Coins Blanace</b></label>
+        <input type="text" name="popup-balance" id="popup-balance" readonly />
+      </div>
+      <div class="profile-input">
+        <label for="popup-highscore"><b>Highest Score</b></label>
+        <input type="text" name="popup-highscore" id="popup-highscore"readonly />
+      </div>
+      <div class="dark-mode">
+        <p>Dark mode</p>
+        <div class="mode-toggle">
+          <input type="checkbox" class="checkbox" id="checkbox" />
+          <label class="label" for="checkbox">
+            <div class="ball"></div>
+          </label>
+        </div>
+      </div>
+      <button class="inventory-btn" onclick="location.href = '/inventory';">Open Inventory</button>
+      <button class="signout-btn" onclick="location.href = '/auth/logout';">Sign Out</button>
+    </div>
+    </div>
+    <!-- end of user profile -->
+  </header>
         <container class="shop-container">
             <div class="category-side">
                 <h1 id="category-header"><span>CATEGORY</span> </h1>
@@ -140,40 +141,17 @@
             <div class="products-side">
                 <div class="products-tile">
                     <h1>PRODUCTS</h1>
-                    <!-- <form action="">
-                        <input type="text" placeholder="Search...">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </form> -->
+                    
                     <div class="search-container">
                         <input class="search-input" type="search" placeholder="Search..." data-search>
                     </div>
                 </div>
                 
                 <div class="products-grid">
-                  <div  class="grid-div food" id="2 eggs, 30 gramms of cheese, spaghetti, guanciale and love">
-                    <img class="clickable-img" src="./images/carbonara.png" alt="" onclick="parentElement
-.querySelector('.detail-popup')
-            .classList.toggle('show-detail-popup');
-          detailId = parentElement.id;
-          window.addEventListener('click', hideDetailPopup);" >
-                    <p class="name">Carbonara</p>
-                    <p class="price">priceless</p>
-                    <div class="detail-popup">
-                      <div class="popup-content">
-                          <div class="imgdiv">
-                          <img class="detail-img" src="./images/carbonara.png" alt="">
-                          </div>
-                          <div class="product-details">
-                              <h1 class="name-popup">Carbonara the Great</h1>
-                              <p class="description-popup">That's carbonara with grana padano, super juicy <br> You can not buy it, but can cook it and post image to our discord server</p>
-                           
-                      
-                          </div>
-                      </div>
-                      </div>
+                  
                 </div>
                 <template item-template>
-                  <div  class="grid-div">
+                  <div  class="shop-item grid-div">
                     <img class="clickable-img" src="./images/cat.jpg" alt="" >
                     <p class="name"></p>
                     <p class="price"></p>
