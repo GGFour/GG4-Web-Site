@@ -7,6 +7,7 @@ const path = require("path");
 const controller = require("../controllers/apiController");
 const authenticated = require("../middlewares/authenticated");
 const protected = require("../middlewares/protected");
+const checkOrder = require("../middlewares/checkItems");
 
 var router = express.Router();
 
@@ -28,6 +29,7 @@ router.get('/getInventory',
 router.post('/placeOrder', 
     authenticated,
     protected,
+    checkOrder,
     controller.placeOrder
 );
 
