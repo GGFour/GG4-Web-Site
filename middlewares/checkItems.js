@@ -48,7 +48,7 @@ module.exports = async function (req, res, next) {
         }
     }
     let actualItems = await database.getItemsForOrder(items.map((item) => item.id));
-    if (actualItems.length === 0) {
+    if (actualItems.length === items.length) {
         return res.status(400).json({ message: "According to our information, you've tried to buy unexisting items. Please, buy early access to upcoming DLC that will allow you to create your items" });
     }
     let userBalance = await database.getUserBalance(req.user.id);
