@@ -215,6 +215,11 @@
 .popup-content {
   min-width: 470px;
 }
+@media all and (min-width: 760px) {
+  .category-side h1 div {
+    display: none;
+  }
+}
 @media all and (max-width: 760px) {
   h1 {
     font-size: 15px;
@@ -244,6 +249,9 @@
     background-color: var(--yellow);
     padding: 0.5rem;
     width: fit-content;
+  }
+  .category-side h1 span {
+    display: none;
   }
   /* .category-side h1:hover span {
     display: none;

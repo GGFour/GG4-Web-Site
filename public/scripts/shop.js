@@ -166,7 +166,7 @@ function showAll() {
 // }
 
 // showing a slidedown for mobile categories
-$("#category-header").click(function () {
+$("#category-header div").click(function () {
   $("#all-categories").slideToggle("slow");
 });
 
