@@ -227,7 +227,8 @@ exports.placeOrder = async (userId, total, itemsInfo) => {
       )).rows[0].id;
 
       // Adding information about each item.
-      await itemsInfo.map(async (item) => {
+      await itemsInfo.forEach(async (item) => {
+        if (item.quantity <=0) return;
         // Adding items to order history.
         await client.query(
           `

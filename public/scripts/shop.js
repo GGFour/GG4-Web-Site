@@ -1,17 +1,17 @@
 // const items = require("./items");
-const itemTemplate = document.querySelector('[item-template]');
-const searchInput = document.querySelector('[data-search]');
+const itemTemplate = document.querySelector("[item-template]");
+const searchInput = document.querySelector("[data-search]");
 // console.log(itemTemplate);
 //dunno why there are `[]`, saw it on youtube, cool video
 let detailId = null;
-fetch('/api/items')
+fetch("/api/items")
   .then((res) => res.json())
   .then((data) => {
     cartStorageFiller();
     data.forEach((item) => {
       const itemElement = itemTemplate.content.cloneNode(true).children[0];
       // console.log(itemElement);
-      const name = itemElement.querySelector('.name');
+      const name = itemElement.querySelector(".name");
       // console.log(name);
       const price = itemElement.querySelector(".price");
       const cartImage = itemElement.querySelector(".cart-image");
@@ -25,35 +25,35 @@ fetch('/api/items')
       //   String(item.path_to_image).padStart(2, '0') +
       //   '.png';
       popUpDetailImage.src =
-        'assets/pixel_dungeon/items/items_' +
-        String(item.path_to_image).padStart(2, '0') +
-        '.png';
+        "assets/pixel_dungeon/items/items_" +
+        String(item.path_to_image).padStart(2, "0") +
+        ".png";
       image.src =
-        'assets/pixel_dungeon/items/items_' +
-        String(item.path_to_image).padStart(2, '0') +
-        '.png';
+        "assets/pixel_dungeon/items/items_" +
+        String(item.path_to_image).padStart(2, "0") +
+        ".png";
       itemElement.classList.add(`${item.category}`);
       itemElement.id = item.id;
-      itemElement.querySelector('.price-popup').textContent = item.price;
-      itemElement.querySelector('.name-popup').textContent = item.name;
-      itemElement.querySelector('.description-popup').textContent =
+      itemElement.querySelector(".price-popup").textContent = item.price;
+      itemElement.querySelector(".name-popup").textContent = item.name;
+      itemElement.querySelector(".description-popup").textContent =
         item.description;
 
       // itemElement.querySelector(".detail-popup").id = item.id;
-      itemElement.querySelector('.clickable-img').addEventListener(
-        'click',
+      itemElement.querySelector(".clickable-img").addEventListener(
+        "click",
         () => {
           itemElement
-            .querySelector('.detail-popup')
-            .classList.toggle('show-detail-popup');
+            .querySelector(".detail-popup")
+            .classList.toggle("show-detail-popup");
           detailId = itemElement.id;
-          window.addEventListener('click', hideDetailPopup);
+          window.addEventListener("click", hideDetailPopup);
         }
         //where the hell did you find "show-detail-popup"? it works
       );
 
       // console.log(document.querySelector(".products-grid"));
-      document.querySelector('.products-grid').append(itemElement);
+      document.querySelector(".products-grid").append(itemElement);
     });
     bindAddToCart();
   });
@@ -63,36 +63,37 @@ fetch('/api/items')
 //   }
 // }
 // console.log(document.getElementById(detailId), detailId);
-searchInput.addEventListener('input', (e) => {
+searchInput.addEventListener("input", (e) => {
   const value = e.target.value.toLowerCase();
-  const items = document.querySelectorAll('.grid-div');
+  const items = document.querySelectorAll(".shop-item");
   console.log(items);
   items.forEach((item) => {
     const isVisible = item
-      .getElementsByClassName('name')[0]
+      .getElementsByClassName("name")[0]
       .innerText.toLowerCase()
       .includes(value);
-    item.classList.toggle('hide', !isVisible);
+    item.classList.toggle("hide", !isVisible);
+    item.classList.toggle("grid-div", isVisible);
   });
 });
 function hideDetailPopup(event) {
-  console.log('detail popup hider triggered!');
+  console.log("detail popup hider triggered!");
   if (
     event.target ==
-    document.getElementById(detailId).getElementsByClassName('detail-popup')[0]
+    document.getElementById(detailId).getElementsByClassName("detail-popup")[0]
   ) {
     {
       // console.log(detailPopupId);
       document
         .getElementById(detailId)
-        .getElementsByClassName('detail-popup')[0]
-        .classList.remove('show-detail-popup');
-      window.removeEventListener('click', hideDetailPopup);
+        .getElementsByClassName("detail-popup")[0]
+        .classList.remove("show-detail-popup");
+      window.removeEventListener("click", hideDetailPopup);
     }
   }
 }
 function showDetailPopup() {
-  document.getElementsByClassName('popup')[0].classList.remove('js-is-hidden');
+  document.getElementsByClassName("popup")[0].classList.remove("js-is-hidden");
 }
 //just copied from jquery.js, it works well
 ///didn't work with code below yet
@@ -100,27 +101,27 @@ function showDetailPopup() {
 function leaveOneCategory(category) {
   document.querySelectorAll(`.grid-div`).forEach(function (el) {
     // console.log(el);
-    el.style.visibility = 'hidden';
-    el.querySelector(`.clickable-img`).style.transitionDuration = '0s';
-    el.style.top = '0';
-    el.style.left = '0';
-    el.style.position = 'absolute';
+    el.style.visibility = "hidden";
+    el.querySelector(`.clickable-img`).style.transitionDuration = "0s";
+    el.style.top = "0";
+    el.style.left = "0";
+    el.style.position = "absolute";
 
     //order is putting the elements in order, from 1 to 2 so elements with order 2 are lower and elements with order 1 are higher
   });
   document.querySelectorAll(`.${category}`).forEach(function (el) {
     console.log(el);
-    el.style.position = 'initial';
-    el.style.visibility = 'visible';
-    el.querySelector(`.clickable-img`).style.transitionDuration = '0.3s';
+    el.style.position = "initial";
+    el.style.visibility = "visible";
+    el.querySelector(`.clickable-img`).style.transitionDuration = "0.3s";
   });
 }
 function showAll() {
   document.querySelectorAll(`.grid-div`).forEach(function (el) {
     // console.log(el);
-    el.style.visibility = 'visible';
-    el.style.position = 'initial';
-    el.querySelector(`.clickable-img`).style.transitionDuration = '0.3s';
+    el.style.visibility = "visible";
+    el.style.position = "initial";
+    el.querySelector(`.clickable-img`).style.transitionDuration = "0.3s";
   });
   //not sure about that, maybe need to use for loop
 }
@@ -165,21 +166,21 @@ function showAll() {
 // }
 
 // showing a slidedown for mobile categories
-$('#category-header').click(function () {
-  $('#all-categories').slideToggle('slow');
+$("#category-header").click(function () {
+  $("#all-categories").slideToggle("slow");
 });
 
 // implementing add-to-cart functionality
 function bindAddToCart() {
   // click-event for adding to the shopping cart.
-  let addToCartButton = document.getElementsByClassName('add-to-cart');
+  let addToCartButton = document.getElementsByClassName("add-to-cart");
   for (let i = 0; i < addToCartButton.length; i++) {
     let button = addToCartButton[i];
-    button.addEventListener('click', addToCartClicked);
+    button.addEventListener("click", addToCartClicked);
   }
 }
 function addToLocalStorageCart(id) {
-  let cart = JSON.parse(localStorage.getItem('cart'));
+  let cart = JSON.parse(localStorage.getItem("cart"));
   console.log(cart);
   if (cart == null) {
     cart = [{ id: `${id}`, quantity: 1 }];
@@ -191,7 +192,7 @@ function addToLocalStorageCart(id) {
       cart.find((x) => x.id === `${id}`).quantity++;
     }
   }
-  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
 function addToCartClicked(event) {
   // you can add the price and the img src as parameters here
@@ -205,27 +206,27 @@ function addToCartClicked(event) {
 function addItemToLocalStorage(item) {
   //write a function which will push item item details to local storage
   if (
-    localStorage.getItem('items') == undefined ||
-    localStorage.getItem('items') == null
+    localStorage.getItem("items") == undefined ||
+    localStorage.getItem("items") == null
   ) {
-    console.log('Не туда вставляешь!');
+    console.log("Не туда вставляешь!");
     let items = [];
-    localStorage.setItem('items', JSON.stringify(items));
+    localStorage.setItem("items", JSON.stringify(items));
   }
-  let items = JSON.parse(localStorage.getItem('items'));
+  let items = JSON.parse(localStorage.getItem("items"));
   if (items[items.findIndex((x) => x.id === item.id)] === undefined) {
     console.log(items);
     items.push({
       id: item.id,
-      name: item.querySelector('.name').innerText,
-      price: item.querySelector('.price').innerText,
-      img: item.querySelector('.clickable-img').src,
+      name: item.querySelector(".name").innerText,
+      price: item.querySelector(".price").innerText,
+      img: item.querySelector(".clickable-img").src,
     });
-    localStorage.setItem('items', JSON.stringify(items));
+    localStorage.setItem("items", JSON.stringify(items));
   }
   addItemToCart(
     items[items.length - 1],
-    JSON.parse(localStorage.getItem('cart')).find((x) => x.id === `${item.id}`)
+    JSON.parse(localStorage.getItem("cart")).find((x) => x.id === `${item.id}`)
       .quantity
   );
 }

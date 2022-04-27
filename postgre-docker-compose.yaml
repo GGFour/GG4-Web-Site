@@ -1,0 +1,20 @@
+version: '3'
+services:
+  mysql:
+    image: postgres
+    #command: sh "touch /docker-entrypoint-initdb.d/ecommerce_db.sql"
+    ports:
+     - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: $PGPASSWORD
+      POSTGRES_DB: $PGDATABASE
+      POSTGRES_USER: $PGUSER
+    volumes:
+     - type: bind
+       source: ./pgecommerce_db.sql
+       target: /docker-entrypoint-initdb.d/pgecommerce_db.sql
+     - gg4mysql-data:/var/lib/postgresql/data
+
+volumes:
+  gg4mysql-data:
+    driver: local
