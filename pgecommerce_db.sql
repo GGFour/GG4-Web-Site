@@ -20,17 +20,17 @@ SET row_security = off;
 
 --
 -- TOC entry 5 (class 2615 OID 25624)
--- Name: ecommerce_db; Type: SCHEMA; Schema: -; Owner: xlqqagjclirbnf
+-- Name: ecommerce_db; Type: SCHEMA; Schema: -; Owner: qnkvhvqulqvocv
 --
 
 CREATE SCHEMA ecommerce_db;
 
 
-ALTER SCHEMA ecommerce_db OWNER TO xlqqagjclirbnf;
+ALTER SCHEMA ecommerce_db OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 197 (class 1259 OID 25625)
--- Name: discount_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: discount_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE SEQUENCE ecommerce_db.discount_seq
@@ -41,7 +41,7 @@ CREATE SEQUENCE ecommerce_db.discount_seq
     CACHE 1;
 
 
-ALTER TABLE ecommerce_db.discount_seq OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.discount_seq OWNER TO qnkvhvqulqvocv;
 
 SET default_tablespace = '';
 
@@ -49,7 +49,7 @@ SET default_with_oids = false;
 
 --
 -- TOC entry 198 (class 1259 OID 25627)
--- Name: discount; Type: TABLE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: discount; Type: TABLE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE TABLE ecommerce_db.discount (
@@ -62,11 +62,11 @@ CREATE TABLE ecommerce_db.discount (
 );
 
 
-ALTER TABLE ecommerce_db.discount OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.discount OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 199 (class 1259 OID 25639)
--- Name: game_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: game_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE SEQUENCE ecommerce_db.game_seq
@@ -77,11 +77,11 @@ CREATE SEQUENCE ecommerce_db.game_seq
     CACHE 1;
 
 
-ALTER TABLE ecommerce_db.game_seq OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.game_seq OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 200 (class 1259 OID 25641)
--- Name: game; Type: TABLE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: game; Type: TABLE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE TABLE ecommerce_db.game (
@@ -91,11 +91,11 @@ CREATE TABLE ecommerce_db.game (
 );
 
 
-ALTER TABLE ecommerce_db.game OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.game OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 201 (class 1259 OID 25648)
--- Name: inventory; Type: TABLE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: inventory; Type: TABLE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE TABLE ecommerce_db.inventory (
@@ -105,11 +105,11 @@ CREATE TABLE ecommerce_db.inventory (
 );
 
 
-ALTER TABLE ecommerce_db.inventory OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.inventory OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 206 (class 1259 OID 25676)
--- Name: item_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE SEQUENCE ecommerce_db.item_seq
@@ -120,11 +120,11 @@ CREATE SEQUENCE ecommerce_db.item_seq
     CACHE 1;
 
 
-ALTER TABLE ecommerce_db.item_seq OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.item_seq OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 207 (class 1259 OID 25678)
--- Name: item; Type: TABLE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item; Type: TABLE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE TABLE ecommerce_db.item (
@@ -142,11 +142,11 @@ CREATE TABLE ecommerce_db.item (
 );
 
 
-ALTER TABLE ecommerce_db.item OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.item OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 202 (class 1259 OID 25654)
--- Name: item_category_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item_category_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE SEQUENCE ecommerce_db.item_category_seq
@@ -157,11 +157,11 @@ CREATE SEQUENCE ecommerce_db.item_category_seq
     CACHE 1;
 
 
-ALTER TABLE ecommerce_db.item_category_seq OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.item_category_seq OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 203 (class 1259 OID 25656)
--- Name: item_category; Type: TABLE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item_category; Type: TABLE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE TABLE ecommerce_db.item_category (
@@ -172,11 +172,11 @@ CREATE TABLE ecommerce_db.item_category (
 );
 
 
-ALTER TABLE ecommerce_db.item_category OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.item_category OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 204 (class 1259 OID 25666)
--- Name: item_inventory_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item_inventory_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE SEQUENCE ecommerce_db.item_inventory_seq
@@ -187,11 +187,11 @@ CREATE SEQUENCE ecommerce_db.item_inventory_seq
     CACHE 1;
 
 
-ALTER TABLE ecommerce_db.item_inventory_seq OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.item_inventory_seq OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 205 (class 1259 OID 25668)
--- Name: item_inventory; Type: TABLE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item_inventory; Type: TABLE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE TABLE ecommerce_db.item_inventory (
@@ -201,11 +201,11 @@ CREATE TABLE ecommerce_db.item_inventory (
 );
 
 
-ALTER TABLE ecommerce_db.item_inventory OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.item_inventory OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 214 (class 1259 OID 25767)
--- Name: order_details_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: order_details_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE SEQUENCE ecommerce_db.order_details_seq
@@ -216,11 +216,11 @@ CREATE SEQUENCE ecommerce_db.order_details_seq
     CACHE 1;
 
 
-ALTER TABLE ecommerce_db.order_details_seq OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.order_details_seq OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 215 (class 1259 OID 25769)
--- Name: order_details; Type: TABLE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: order_details; Type: TABLE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE TABLE ecommerce_db.order_details (
@@ -231,11 +231,11 @@ CREATE TABLE ecommerce_db.order_details (
 );
 
 
-ALTER TABLE ecommerce_db.order_details OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.order_details OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 216 (class 1259 OID 25782)
--- Name: order_items_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: order_items_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE SEQUENCE ecommerce_db.order_items_seq
@@ -246,11 +246,11 @@ CREATE SEQUENCE ecommerce_db.order_items_seq
     CACHE 1;
 
 
-ALTER TABLE ecommerce_db.order_items_seq OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.order_items_seq OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 217 (class 1259 OID 25784)
--- Name: order_items; Type: TABLE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: order_items; Type: TABLE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE TABLE ecommerce_db.order_items (
@@ -261,11 +261,11 @@ CREATE TABLE ecommerce_db.order_items (
 );
 
 
-ALTER TABLE ecommerce_db.order_items OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.order_items OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 212 (class 1259 OID 25735)
--- Name: user_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE SEQUENCE ecommerce_db.user_seq
@@ -276,11 +276,11 @@ CREATE SEQUENCE ecommerce_db.user_seq
     CACHE 1;
 
 
-ALTER TABLE ecommerce_db.user_seq OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.user_seq OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 213 (class 1259 OID 25737)
--- Name: user; Type: TABLE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user; Type: TABLE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE TABLE ecommerce_db."user" (
@@ -303,11 +303,11 @@ CREATE TABLE ecommerce_db."user" (
 );
 
 
-ALTER TABLE ecommerce_db."user" OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db."user" OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 208 (class 1259 OID 25715)
--- Name: user_payment_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user_payment_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE SEQUENCE ecommerce_db.user_payment_seq
@@ -318,11 +318,11 @@ CREATE SEQUENCE ecommerce_db.user_payment_seq
     CACHE 1;
 
 
-ALTER TABLE ecommerce_db.user_payment_seq OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.user_payment_seq OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 209 (class 1259 OID 25717)
--- Name: user_payment; Type: TABLE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user_payment; Type: TABLE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE TABLE ecommerce_db.user_payment (
@@ -334,11 +334,11 @@ CREATE TABLE ecommerce_db.user_payment (
 );
 
 
-ALTER TABLE ecommerce_db.user_payment OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.user_payment OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 210 (class 1259 OID 25726)
--- Name: user_type_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user_type_seq; Type: SEQUENCE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE SEQUENCE ecommerce_db.user_type_seq
@@ -349,11 +349,11 @@ CREATE SEQUENCE ecommerce_db.user_type_seq
     CACHE 1;
 
 
-ALTER TABLE ecommerce_db.user_type_seq OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.user_type_seq OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 211 (class 1259 OID 25728)
--- Name: user_type; Type: TABLE; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user_type; Type: TABLE; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE TABLE ecommerce_db.user_type (
@@ -362,12 +362,12 @@ CREATE TABLE ecommerce_db.user_type (
 );
 
 
-ALTER TABLE ecommerce_db.user_type OWNER TO xlqqagjclirbnf;
+ALTER TABLE ecommerce_db.user_type OWNER TO qnkvhvqulqvocv;
 
 --
 -- TOC entry 2933 (class 0 OID 25627)
 -- Dependencies: 198
--- Data for Name: discount; Type: TABLE DATA; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Data for Name: discount; Type: TABLE DATA; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 COPY ecommerce_db.discount (id, name, description, active, starts_at, ends_at) FROM stdin;
@@ -377,7 +377,7 @@ COPY ecommerce_db.discount (id, name, description, active, starts_at, ends_at) F
 --
 -- TOC entry 2935 (class 0 OID 25641)
 -- Dependencies: 200
--- Data for Name: game; Type: TABLE DATA; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Data for Name: game; Type: TABLE DATA; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 COPY ecommerce_db.game (id, name, created_at) FROM stdin;
@@ -388,7 +388,7 @@ COPY ecommerce_db.game (id, name, created_at) FROM stdin;
 --
 -- TOC entry 2936 (class 0 OID 25648)
 -- Dependencies: 201
--- Data for Name: inventory; Type: TABLE DATA; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Data for Name: inventory; Type: TABLE DATA; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 COPY ecommerce_db.inventory (user_id, item_id, quantity) FROM stdin;
@@ -398,7 +398,7 @@ COPY ecommerce_db.inventory (user_id, item_id, quantity) FROM stdin;
 --
 -- TOC entry 2942 (class 0 OID 25678)
 -- Dependencies: 207
--- Data for Name: item; Type: TABLE DATA; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Data for Name: item; Type: TABLE DATA; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 COPY ecommerce_db.item (id, category_id, game_id, inventory_id, discount_id, name, description, path_to_image, price, created_at, modified_at) FROM stdin;
@@ -472,7 +472,7 @@ COPY ecommerce_db.item (id, category_id, game_id, inventory_id, discount_id, nam
 --
 -- TOC entry 2938 (class 0 OID 25656)
 -- Dependencies: 203
--- Data for Name: item_category; Type: TABLE DATA; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Data for Name: item_category; Type: TABLE DATA; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 COPY ecommerce_db.item_category (id, name, description, created_at) FROM stdin;
@@ -490,7 +490,7 @@ COPY ecommerce_db.item_category (id, name, description, created_at) FROM stdin;
 --
 -- TOC entry 2940 (class 0 OID 25668)
 -- Dependencies: 205
--- Data for Name: item_inventory; Type: TABLE DATA; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Data for Name: item_inventory; Type: TABLE DATA; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 COPY ecommerce_db.item_inventory (id, quantity, modified_at) FROM stdin;
@@ -564,7 +564,7 @@ COPY ecommerce_db.item_inventory (id, quantity, modified_at) FROM stdin;
 --
 -- TOC entry 2950 (class 0 OID 25769)
 -- Dependencies: 215
--- Data for Name: order_details; Type: TABLE DATA; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Data for Name: order_details; Type: TABLE DATA; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 COPY ecommerce_db.order_details (id, user_id, total, created_at) FROM stdin;
@@ -574,7 +574,7 @@ COPY ecommerce_db.order_details (id, user_id, total, created_at) FROM stdin;
 --
 -- TOC entry 2952 (class 0 OID 25784)
 -- Dependencies: 217
--- Data for Name: order_items; Type: TABLE DATA; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Data for Name: order_items; Type: TABLE DATA; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 COPY ecommerce_db.order_items (id, quantity, item_id, order_id) FROM stdin;
@@ -584,7 +584,7 @@ COPY ecommerce_db.order_items (id, quantity, item_id, order_id) FROM stdin;
 --
 -- TOC entry 2948 (class 0 OID 25737)
 -- Dependencies: 213
--- Data for Name: user; Type: TABLE DATA; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Data for Name: user; Type: TABLE DATA; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 COPY ecommerce_db."user" (id, email, firstname, lastname, username, pswd, path_to_logo, payment_id, usertype_id, coins, high_score, subscribed, created_at, modified_at) FROM stdin;
@@ -594,7 +594,7 @@ COPY ecommerce_db."user" (id, email, firstname, lastname, username, pswd, path_t
 --
 -- TOC entry 2944 (class 0 OID 25717)
 -- Dependencies: 209
--- Data for Name: user_payment; Type: TABLE DATA; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Data for Name: user_payment; Type: TABLE DATA; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 COPY ecommerce_db.user_payment (id, payment_types, provider, account_number, expiry) FROM stdin;
@@ -604,7 +604,7 @@ COPY ecommerce_db.user_payment (id, payment_types, provider, account_number, exp
 --
 -- TOC entry 2946 (class 0 OID 25728)
 -- Dependencies: 211
--- Data for Name: user_type; Type: TABLE DATA; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Data for Name: user_type; Type: TABLE DATA; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 COPY ecommerce_db.user_type (id, name) FROM stdin;
@@ -617,7 +617,7 @@ COPY ecommerce_db.user_type (id, name) FROM stdin;
 --
 -- TOC entry 2958 (class 0 OID 0)
 -- Dependencies: 197
--- Name: discount_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: discount_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 SELECT pg_catalog.setval('ecommerce_db.discount_seq', 1, false);
@@ -626,7 +626,7 @@ SELECT pg_catalog.setval('ecommerce_db.discount_seq', 1, false);
 --
 -- TOC entry 2959 (class 0 OID 0)
 -- Dependencies: 199
--- Name: game_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: game_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 SELECT pg_catalog.setval('ecommerce_db.game_seq', 1, true);
@@ -635,7 +635,7 @@ SELECT pg_catalog.setval('ecommerce_db.game_seq', 1, true);
 --
 -- TOC entry 2960 (class 0 OID 0)
 -- Dependencies: 202
--- Name: item_category_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item_category_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 SELECT pg_catalog.setval('ecommerce_db.item_category_seq', 8, true);
@@ -644,7 +644,7 @@ SELECT pg_catalog.setval('ecommerce_db.item_category_seq', 8, true);
 --
 -- TOC entry 2961 (class 0 OID 0)
 -- Dependencies: 204
--- Name: item_inventory_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item_inventory_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 SELECT pg_catalog.setval('ecommerce_db.item_inventory_seq', 64, true);
@@ -653,7 +653,7 @@ SELECT pg_catalog.setval('ecommerce_db.item_inventory_seq', 64, true);
 --
 -- TOC entry 2962 (class 0 OID 0)
 -- Dependencies: 206
--- Name: item_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 SELECT pg_catalog.setval('ecommerce_db.item_seq', 64, true);
@@ -662,7 +662,7 @@ SELECT pg_catalog.setval('ecommerce_db.item_seq', 64, true);
 --
 -- TOC entry 2963 (class 0 OID 0)
 -- Dependencies: 214
--- Name: order_details_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: order_details_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 SELECT pg_catalog.setval('ecommerce_db.order_details_seq', 1, false);
@@ -671,7 +671,7 @@ SELECT pg_catalog.setval('ecommerce_db.order_details_seq', 1, false);
 --
 -- TOC entry 2964 (class 0 OID 0)
 -- Dependencies: 216
--- Name: order_items_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: order_items_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 SELECT pg_catalog.setval('ecommerce_db.order_items_seq', 1, false);
@@ -680,7 +680,7 @@ SELECT pg_catalog.setval('ecommerce_db.order_items_seq', 1, false);
 --
 -- TOC entry 2965 (class 0 OID 0)
 -- Dependencies: 208
--- Name: user_payment_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user_payment_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 SELECT pg_catalog.setval('ecommerce_db.user_payment_seq', 1, false);
@@ -689,7 +689,7 @@ SELECT pg_catalog.setval('ecommerce_db.user_payment_seq', 1, false);
 --
 -- TOC entry 2966 (class 0 OID 0)
 -- Dependencies: 212
--- Name: user_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 SELECT pg_catalog.setval('ecommerce_db.user_seq', 1, false);
@@ -698,7 +698,7 @@ SELECT pg_catalog.setval('ecommerce_db.user_seq', 1, false);
 --
 -- TOC entry 2967 (class 0 OID 0)
 -- Dependencies: 210
--- Name: user_type_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user_type_seq; Type: SEQUENCE SET; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 SELECT pg_catalog.setval('ecommerce_db.user_type_seq', 3, true);
@@ -706,7 +706,7 @@ SELECT pg_catalog.setval('ecommerce_db.user_type_seq', 3, true);
 
 --
 -- TOC entry 2767 (class 2606 OID 25638)
--- Name: discount discount_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: discount discount_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.discount
@@ -715,7 +715,7 @@ ALTER TABLE ONLY ecommerce_db.discount
 
 --
 -- TOC entry 2788 (class 2606 OID 25752)
--- Name: user email; Type: CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user email; Type: CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db."user"
@@ -724,7 +724,7 @@ ALTER TABLE ONLY ecommerce_db."user"
 
 --
 -- TOC entry 2769 (class 2606 OID 25647)
--- Name: game game_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: game game_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.game
@@ -733,7 +733,7 @@ ALTER TABLE ONLY ecommerce_db.game
 
 --
 -- TOC entry 2771 (class 2606 OID 25652)
--- Name: inventory inventory_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: inventory inventory_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.inventory
@@ -742,7 +742,7 @@ ALTER TABLE ONLY ecommerce_db.inventory
 
 --
 -- TOC entry 2774 (class 2606 OID 25665)
--- Name: item_category item_category_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item_category item_category_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.item_category
@@ -751,7 +751,7 @@ ALTER TABLE ONLY ecommerce_db.item_category
 
 --
 -- TOC entry 2776 (class 2606 OID 25675)
--- Name: item_inventory item_inventory_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item_inventory item_inventory_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.item_inventory
@@ -760,7 +760,7 @@ ALTER TABLE ONLY ecommerce_db.item_inventory
 
 --
 -- TOC entry 2782 (class 2606 OID 25690)
--- Name: item item_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item item_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.item
@@ -769,7 +769,7 @@ ALTER TABLE ONLY ecommerce_db.item
 
 --
 -- TOC entry 2796 (class 2606 OID 25775)
--- Name: order_details order_details_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: order_details order_details_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.order_details
@@ -778,7 +778,7 @@ ALTER TABLE ONLY ecommerce_db.order_details
 
 --
 -- TOC entry 2801 (class 2606 OID 25789)
--- Name: order_items order_items_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: order_items order_items_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.order_items
@@ -787,7 +787,7 @@ ALTER TABLE ONLY ecommerce_db.order_items
 
 --
 -- TOC entry 2784 (class 2606 OID 25725)
--- Name: user_payment user_payment_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user_payment user_payment_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.user_payment
@@ -796,7 +796,7 @@ ALTER TABLE ONLY ecommerce_db.user_payment
 
 --
 -- TOC entry 2791 (class 2606 OID 25750)
--- Name: user user_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user user_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db."user"
@@ -805,7 +805,7 @@ ALTER TABLE ONLY ecommerce_db."user"
 
 --
 -- TOC entry 2786 (class 2606 OID 25734)
--- Name: user_type user_type_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user_type user_type_pkey; Type: CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.user_type
@@ -814,7 +814,7 @@ ALTER TABLE ONLY ecommerce_db.user_type
 
 --
 -- TOC entry 2793 (class 2606 OID 25754)
--- Name: user username; Type: CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user username; Type: CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db."user"
@@ -823,7 +823,7 @@ ALTER TABLE ONLY ecommerce_db."user"
 
 --
 -- TOC entry 2777 (class 1259 OID 25711)
--- Name: category_id; Type: INDEX; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: category_id; Type: INDEX; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE INDEX category_id ON ecommerce_db.item USING btree (category_id);
@@ -831,7 +831,7 @@ CREATE INDEX category_id ON ecommerce_db.item USING btree (category_id);
 
 --
 -- TOC entry 2778 (class 1259 OID 25714)
--- Name: discount_id; Type: INDEX; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: discount_id; Type: INDEX; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE INDEX discount_id ON ecommerce_db.item USING btree (discount_id);
@@ -839,7 +839,7 @@ CREATE INDEX discount_id ON ecommerce_db.item USING btree (discount_id);
 
 --
 -- TOC entry 2779 (class 1259 OID 25712)
--- Name: game_id; Type: INDEX; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: game_id; Type: INDEX; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE INDEX game_id ON ecommerce_db.item USING btree (game_id);
@@ -847,7 +847,7 @@ CREATE INDEX game_id ON ecommerce_db.item USING btree (game_id);
 
 --
 -- TOC entry 2780 (class 1259 OID 25713)
--- Name: inventory_id; Type: INDEX; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: inventory_id; Type: INDEX; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE INDEX inventory_id ON ecommerce_db.item USING btree (inventory_id);
@@ -855,7 +855,7 @@ CREATE INDEX inventory_id ON ecommerce_db.item USING btree (inventory_id);
 
 --
 -- TOC entry 2772 (class 1259 OID 25653)
--- Name: inventory_user_id_item_id_idx; Type: INDEX; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: inventory_user_id_item_id_idx; Type: INDEX; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE UNIQUE INDEX inventory_user_id_item_id_idx ON ecommerce_db.inventory USING btree (user_id, item_id);
@@ -863,7 +863,7 @@ CREATE UNIQUE INDEX inventory_user_id_item_id_idx ON ecommerce_db.inventory USIN
 
 --
 -- TOC entry 2798 (class 1259 OID 25800)
--- Name: item_id; Type: INDEX; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item_id; Type: INDEX; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE INDEX item_id ON ecommerce_db.order_items USING btree (item_id);
@@ -871,7 +871,7 @@ CREATE INDEX item_id ON ecommerce_db.order_items USING btree (item_id);
 
 --
 -- TOC entry 2799 (class 1259 OID 25801)
--- Name: order_id; Type: INDEX; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: order_id; Type: INDEX; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE INDEX order_id ON ecommerce_db.order_items USING btree (order_id);
@@ -879,7 +879,7 @@ CREATE INDEX order_id ON ecommerce_db.order_items USING btree (order_id);
 
 --
 -- TOC entry 2789 (class 1259 OID 25765)
--- Name: payment_id; Type: INDEX; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: payment_id; Type: INDEX; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE INDEX payment_id ON ecommerce_db."user" USING btree (payment_id);
@@ -887,7 +887,7 @@ CREATE INDEX payment_id ON ecommerce_db."user" USING btree (payment_id);
 
 --
 -- TOC entry 2797 (class 1259 OID 25781)
--- Name: user_id; Type: INDEX; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user_id; Type: INDEX; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE INDEX user_id ON ecommerce_db.order_details USING btree (user_id);
@@ -895,7 +895,7 @@ CREATE INDEX user_id ON ecommerce_db.order_details USING btree (user_id);
 
 --
 -- TOC entry 2794 (class 1259 OID 25766)
--- Name: usertype_id; Type: INDEX; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: usertype_id; Type: INDEX; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 CREATE INDEX usertype_id ON ecommerce_db."user" USING btree (usertype_id);
@@ -903,7 +903,7 @@ CREATE INDEX usertype_id ON ecommerce_db."user" USING btree (usertype_id);
 
 --
 -- TOC entry 2802 (class 2606 OID 25691)
--- Name: item item_ibfk_1; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item item_ibfk_1; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.item
@@ -912,7 +912,7 @@ ALTER TABLE ONLY ecommerce_db.item
 
 --
 -- TOC entry 2803 (class 2606 OID 25696)
--- Name: item item_ibfk_2; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item item_ibfk_2; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.item
@@ -921,7 +921,7 @@ ALTER TABLE ONLY ecommerce_db.item
 
 --
 -- TOC entry 2804 (class 2606 OID 25701)
--- Name: item item_ibfk_3; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item item_ibfk_3; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.item
@@ -930,7 +930,7 @@ ALTER TABLE ONLY ecommerce_db.item
 
 --
 -- TOC entry 2805 (class 2606 OID 25706)
--- Name: item item_ibfk_4; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: item item_ibfk_4; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.item
@@ -939,7 +939,7 @@ ALTER TABLE ONLY ecommerce_db.item
 
 --
 -- TOC entry 2808 (class 2606 OID 25776)
--- Name: order_details order_details_ibfk_1; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: order_details order_details_ibfk_1; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.order_details
@@ -948,7 +948,7 @@ ALTER TABLE ONLY ecommerce_db.order_details
 
 --
 -- TOC entry 2809 (class 2606 OID 25790)
--- Name: order_items order_items_ibfk_1; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: order_items order_items_ibfk_1; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.order_items
@@ -957,7 +957,7 @@ ALTER TABLE ONLY ecommerce_db.order_items
 
 --
 -- TOC entry 2810 (class 2606 OID 25795)
--- Name: order_items order_items_ibfk_2; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: order_items order_items_ibfk_2; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db.order_items
@@ -966,7 +966,7 @@ ALTER TABLE ONLY ecommerce_db.order_items
 
 --
 -- TOC entry 2806 (class 2606 OID 25755)
--- Name: user user_ibfk_1; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user user_ibfk_1; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db."user"
@@ -975,7 +975,7 @@ ALTER TABLE ONLY ecommerce_db."user"
 
 --
 -- TOC entry 2807 (class 2606 OID 25760)
--- Name: user user_ibfk_2; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: xlqqagjclirbnf
+-- Name: user user_ibfk_2; Type: FK CONSTRAINT; Schema: ecommerce_db; Owner: qnkvhvqulqvocv
 --
 
 ALTER TABLE ONLY ecommerce_db."user"
