@@ -93,7 +93,7 @@
 }
 
 .btn-arrow span:after {
-  content: '\00bb';
+  content: "\00bb";
   position: absolute;
   opacity: 0;
   top: 0;
@@ -102,11 +102,11 @@
 }
 
 .btn-arrow:hover span {
-  padding-right: 25px;
+  padding-left: 10px;
 }
 
 .btn-arrow:hover span:after {
-  opacity: 1;
+  /* opacity: 1; */
   right: 0;
 }
 
