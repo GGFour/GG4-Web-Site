@@ -39,7 +39,7 @@
   background-size: 18px 18px;
   background-position: 95% center;
   border-radius: 50px;
-  border: 1px solid var(--ship-grey);
+  border: 1px solid var(--brown);
   transition: all 250ms ease-in-out;
   backface-visibility: hidden;
   transform-style: preserve-3d;
@@ -57,7 +57,7 @@
   padding: 12px 0;
   outline: 0;
   border: 1px solid transparent;
-  border-bottom: 1px solid var(--ship-grey);
+  border-bottom: 1px solid var(--brown);
   border-radius: 0;
   background-position: 100% center;
 }
@@ -124,7 +124,7 @@
   border: 1px solid var(--brown);
   border-radius: 0.75rem;
   max-width: 100%;
-  height: auto;
+  /* height: auto; */
   object-position: center;
   object-fit: cover;
   transition-duration: 0.3s;
