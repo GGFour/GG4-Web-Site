@@ -513,6 +513,7 @@ footer a {
   .signout-btn,
   .inventory-btn {
     height: 2rem;
+    width: 8rem;
     font-size: 13px;
   }
 }
@@ -610,7 +611,8 @@ footer a {
     margin: 1rem 0;
   }
   .user-container {
-    width: 50%;
+    width: 70%;
+    max-width: 20rem;
     font-size: 15px;
   }
   .user-img h1 {
