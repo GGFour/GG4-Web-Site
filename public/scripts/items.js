@@ -1,28 +1,41 @@
 const fs = require("fs");
 const path = require("path");
-let scriptfile = path.join(__dirname, "fillin.sql");
+require("dotenv").config();
+//let scriptfile = path.join(__dirname, "fillin.sql");
+const { Pool } = require('pg');
 
-fs.writeFileSync(scriptfile,"");
+async function shit() {
+const pool = new Pool(); // will use psql environment variables
+console.log("Connected to database");
+
+await pool.query("SET SCHEMA 'ecommerce_db';")
+//fs.writeFileSync(scriptfile,"");
+//fs.appendFileSync(scriptfile, 'SET SCHEMA ecommerce_db;');
+//fs.appendFileSync(scriptfile, 'BEGIN; \n');
 let categories = [
   { id: 1, name: "armor", description: "" },
   { id: 2, name: "weapon", description: "" },
   { id: 3, name: "key", description: "" },
   { id: 4, name: "wand", description: "" },
   { id: 5, name: "potion", description: ""},
-  { id: 6, name: "other", description: ""}
+  { id: 6, name: "rings", description: ""},
+  { id: 7, name: "food", description: "" },
+  { id: 8, name: "other", description: ""}
 ];
 for (let i = 0; i < categories.length; i++) {
   let curr = categories[i];
-  let resultString = `INSERT INTO item_category (name, description) VALUES ("${curr.name}", "${curr.description}");\n`;
-  fs.appendFileSync(scriptfile, resultString);
+  await pool.query(`INSERT INTO item_category (name, description) VALUES ('${curr.name}', '${curr.description}');`);
+  //fs.appendFileSync(scriptfile, resultString);
 }
+//fs.appendFileSync(scriptfile, 'COMMIT; BEGIN; \n');
 
 let games = [{ name: "pixel dungeon" }];
 for (let i = 0; i < games.length; i++) {
   let curr = games[i];
-  let resultString = `INSERT INTO game (name) VALUES ("${curr.name}");\n`;
-  fs.appendFileSync(scriptfile, resultString);
+  await pool.query(`INSERT INTO game (name) VALUES ('${curr.name}');\n`);
+  //fs.appendFileSync(scriptfile, resultString);
 }
+//fs.appendFileSync(scriptfile, 'COMMIT; BEGIN; \n');
 
 let user_types = [
   {name: "user"},
@@ -31,16 +44,17 @@ let user_types = [
 ];
 for (let i = 0; i < user_types.length; i++) {
   let curr = user_types[i];
-  let resultString = `INSERT INTO user_type (name) VALUES ("${curr.name}");\n`;
-  fs.appendFileSync(scriptfile, resultString);
+  await pool.query(`INSERT INTO user_type (name) VALUES ('${curr.name}');\n`);
+  //fs.appendFileSync(scriptfile, resultString);
 }
+//fs.appendFileSync(scriptfile, 'COMMIT; BEGIN; \n');
 
 let items = [
   {
     class: 2,
     name: "battle axe",
     description:
-      "This is a crude and heavy weapon. It's specifically designed to deal devastating blows to your enemies.",
+      "This is a crude and heavy weapon. It''s specifically designed to deal devastating blows to your enemies.",
     imgId: 23,
     tier: 4,
     accuracy: 1.2,
@@ -53,6 +67,7 @@ let items = [
     imgId: 20,
     tier: 1,
     accuracy: 1.2,
+    price:10
   },
   {
     class: 2,
@@ -101,7 +116,7 @@ let items = [
     class: 2,
     name: "shortsword",
     description:
-      "It's indeed quite short, just a few inches longer, than a dagger",
+      "It''s indeed quite short, just a few inches longer, than a dagger",
     imgId: 3,
     tier: 1,
     accuracy: 1,
@@ -266,7 +281,7 @@ let items = [
     class: 4,
     name: "wand of regrowth",
     description:
-      '"When life ceases new life always begins to grow... The eternal cycle always remains!"',
+      "When life ceases new life always begins to grow... The eternal cycle always remains!",
     imgId: 70,
   },
   {
@@ -284,145 +299,207 @@ let items = [
     imgId: 72,
   },
   {
-    class: 2,
+    class: 5,
     name: "potion of experience",
     description: "The storied experiences of multitudes of battles reduced to liquid form, this draught will instantly raise your experience level",
-    imgId: 64
+    imgId: 57
   },
   {
-    class: 2,
+    class: 5,
     name: "potion of liquid flame",
     description: "This flask contains an unstable compound which will burst violently into flame upon exposure to open air",
-    imgId: 65
+    imgId: 58
   },
   {
-    class: 2,
+    class: 5,
     name: "potion of frost",
     description: "Upon exposure to open air, this chemical will evaporate into a freezing cloud, causing any creature that contacts it to be frozen in place",
+    imgId: 59
+  },
+  {
+    class: 5,
+    name: "potion of healing",
+    description: "An elixir that will instantly return you to full health and cure poison",
+    imgId: 60
+  },
+  {
+    class: 5,
+    name: "potion of might",
+    description: "This powerful liquid will course through your muscles, permanently increasing your strenght by one point and health by five",
+    imgId: 61
+  },
+  {
+    class: 5,
+    name: "potion of mind vision",
+    description: "After drinking this, your mind will become attuned to the psychic signature of distant creatures. Enabling you to sense biological presence through walls.",
+    imgId: 62
+  },
+  {
+    class: 5,
+    name: "potion of paralytic gas",
+    description: "Upon exposure to open air, the liquid in this flask will vaporize and instantly paralyze anyone who inhales it. They will be unable to move for sometime.",
     imgId: 66
   },
   {
-    class: 2,
-    name: "potion of healing",
-    description: "An elixir that will instantly return you to full health and cure poison",
-    imgId: 67
+    class: 5,
+    name: "potion of purity",
+    description: "This reagent will quickly neutralize all harmful gases in the area of effect. Drinking it will give you temporary immunity to such gases",
+    imgId: 64
   },
   {
-    class: 3,
-    name: "potion of might",
-    description: "This powerful liquid will course through your muscles, permanently increasing your strenght by one point and health by five",
+    class: 5,
+    name: "potion of strenght",
+    description: "This powerful liquid will course through your muscles, permamently increasing your strength by one point",
+    imgId: 65
+  },
+  {
+    class: 5,
+    name: "potion of toxic gas",
+    description: "Shattering this pressurized glass will cause its contents to explode into a deadly cloud of toxic gas. You might want to be careful with this one...",
+    imgId: 63
+  },
+  {
+    class: 5,
+    name: "potion of invisibility",
+    description: "Drinking this potion will render you temporarily invisible. While invisible, enemies will be unable to see you. Attacking will dispel the effect",
     imgId: 68
   },
   {
-    class: 3,
-    name: "potion of mind vision",
-    description: "After drinking this, your mind will become attuned to the psychic signature of distant creatures. Enabling you to sense biological presence through walls.",
-    imgId: 69
-  },
-  {
-    class: 3,
-    name: "potion of paralytic gas",
-    description: "Upon exposure to open air, the liquid in this flask will vaporize and instantly paralyze anyone who inhales it. They will be unable to move for sometime.",
-    imgId: 70
-  },
-  {
-    class: 3,
-    name: "potion of purity",
-    description: "This reagent will quickly neutralize all harmful gases in the area of effect. Drinking it will give you temporary immunity to such gases",
-    imgId: 71
-  },
-  {
-    class: 2,
-    name: "potion of strenght",
-    description: "This powerful liquid will course through your muscles, permamently increasing your strength by one point",
-    imgId: 72
-  },
-  {
-    class: 3,
-    name: "potion of toxic gas",
-    description: "Shattering this pressurized glass will cause its contents to explode into a deadly cloud of toxic gas. You might want to be careful with this one...",
-    imgId: 73
-  },
-  {
-    class: 3,
-    name: "potion of invisibility",
-    description: "Drinking this potion will render you temporarily invisible. While invisible, enemies will be unable to see you. Attacking will dispel the effect",
-    imgId: 74
-  },
-  {
-    class: 3,
+    class: 5,
     name: "potion of levitation",
     description: "Drinking this curious liquid will cause you to hover in the air, able to drift effortlessly over traps. However, flames and gases fill the air and cannot be bypassed by levitation",
-    imgId: 75
+    imgId: 67
   },
   {
-    class: 2,
+    class: 6,
     name: "ring of haste",
     description: "This ring accelerates the wearers flow of time, allowing one to perform all actions a little faster.",
     imgId: 33
   },
   {
-    class: 2,
+    class: 6,
     name: "ring of detection",
     description: "Wearing this ring will allow the wearer to notice hidden secrets, traps and doors.",
     imgId: 34
   },
   {
-    class: 2,
+    class: 6,
     name: "ring of power",
     description: "Your wands will become more powerful in the energy field that radiates from this ring.",
     imgId: 35
   },
   {
-    class: 2,
+    class: 6,
     name: "ring of satiety",
     description: "Wearing this ring you can go without food longer.",
     imgId: 36
   },
   {
-    class: 2,
+    class: 6,
     name: "ring of evasion",
     description: "This ring increases your chance to dodge enemy attack",
     imgId: 37
   },
   {
-    class: 2,
+    class: 6,
     name: "ring of herbalism",
     description: "This ring increases your chance to gather dew and seeds from trampled grass",
     imgId: 38
   },
   {
-    class: 3,
+    class: 6,
     name: "ring of shadows",
     description: "Enemies will be less likely to notice you if you wear this ring.",
     imgId: 39
   },
   {
-    class: 3,
-    name: "ring of throns",
+    class: 6,
+    name: "ring of thorns",
     description: "Though this ring doesnt provide real thorns, an enemy that attacks you will itself be wounded by a fraction of the damage that it inflicts",
     imgId: 40
   },
   {
-    class: 1,
+    class: 7,
     name: "chargrilled meat",
     description: "It looks like a decent steak",
-    imgId: 143
+    imgId: 122
   },
   {
-    class: 1,
+    class: 7,
     name: "frozen carpaccio",
     description: "Its a piece of frozen raw meat. The only way to eat it is by cutting thin slices of it. This way its surprisingly good!",
-    imgId: 145
+    imgId: 117
+  },
+  {
+    class: 7,
+    name: "Raw meat",
+    description: "Eating is raw wouldnt be a good idea, but cooking it could expose some beneficial effects!",
+    imgId: 114
+  },
+  {
+    class: 7,
+    name: "carbonara",
+    description: "Carbonara is https://en.wikipedia.org/wiki/Carbonara",
+    imgId: "carbonara"
+  },
+  {
+    class: 7,
+    name: "overpriced food ration",
+    description: "It looks exactly like a standard ration of food, but smaller and more expensive",
+    imgId: 116
+  },
+  {
+    class: 7,
+    name: "pastry",
+    description: "This is authentic Cornish pasty with traditional filling of beef and potato.",
+    imgId: 113
+  },
+  {
+    class: 8,
+    name: "torch",
+    description: "Its a stick with a oil-dipped cloth wrapped around at the end. Lighting it will help you to see in the dark, light up braziers and burn stumps that may be blocking a path",
+    imgId: 85
+  },
+  {
+    class: 8,
+    name: "bag of Mysteries",
+    description: "Whats in the bag? Could be anything really!",
+    imgId: 84
+  },
+  {
+    class: 8,
+    name: "the holy book of pasta",
+    description: "In nomine Carbonarus et Bacon et Pastaus sancti.",
+    imgId: 83
+  },
+  {
+    class: 8,
+    name: "bubble",
+    description: "just a bubble",
+    imgId: 82
+  },
+  {
+    class: 8,
+    name: "cloak of Invisibility",
+    description: "Upon wearing this cloak you will vanish from the naked eye, but just by vanishing doesnt mean you can escape your problems.",
+    imgId: 100
+  },
+  {
+    class: 8,
+    name: "chest of microtransactions",
+    description: "Just for the price of 80 coins, win the game. BUY NOW! LIMITED TIME ONLY! EXTRA 100000+ GEMS* ON PURCHASE! ONLY COSMETIC UPGRADES*! GRAB YOUR MOMMAS WALLET NOW AND ORDER!!",
+    imgId: 106
   }
 ];
 
 for (let i = 0; i < items.length; i++) {
   let curr = items[i];
-  var inventoryString = `INSERT INTO item_inventory (quantity) VALUES (100);\n`;
-  let resultString = `INSERT INTO item (name, description, category_id, game_id, inventory_id, path_to_image, price) VALUES ("${curr.name}","${curr.description}", ${curr.class}, 1, ${i+1}, ${curr.imgId}, ${curr.tier*10 || curr.class*10});\n`;
-  fs.appendFileSync(scriptfile, inventoryString);
-  fs.appendFileSync(scriptfile, resultString);
+  await pool.query(`INSERT INTO item_inventory (quantity) VALUES (100);`);
+  await pool.query(`INSERT INTO item (name, description, category_id, game_id, inventory_id, path_to_image, price) VALUES ('${curr.name}','${curr.description}', ${curr.class}, 1, ${i+1}, '${curr.imgId}', ${curr.price || curr.tier*10 || curr.class*10});\n`);
+  //fs.appendFileSync(scriptfile, inventoryString);
+  //fs.appendFileSync(scriptfile, resultString);
 }
-
-module.exports = { items };
+}
+shit();
+//fs.appendFileSync(scriptfile, 'COMMIT; \n');
+// module.exports = { items };
