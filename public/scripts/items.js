@@ -190,6 +190,7 @@ let items = [
     name: "golden key",
     description: "The notches on this golden key are tiny and intricate. Maybe it can open some chest lock?",
     imgId: 11,
+    price: 50
   },
   {
     class: 3,
@@ -428,13 +429,13 @@ let items = [
   },
   {
     class: 1,
-    name: "Raw meat",
+    name: "raw meat",
     description: "Eating is raw wouldnt be a good idea, but cooking it could expose some beneficial effects!",
     imgId: 114
   },
   {
     class: 1,
-    name: "carbonara",
+    name: "ivans carbonara",
     description: "Carbonara is https://en.wikipedia.org/wiki/Carbonara",
     imgId: "carbonara"
   },
@@ -454,37 +455,42 @@ let items = [
     class: 8,
     name: "torch",
     description: "Its a stick with a oil-dipped cloth wrapped around at the end. Lighting it will help you to see in the dark, light up braziers and burn stumps that may be blocking a path",
-    imgId: 85
+    imgId: 85,
+    price: 10
   },
   {
     class: 8,
-    name: "bag of Mysteries",
+    name: "bag of mysteries",
     description: "Whats in the bag? Could be anything really!",
-    imgId: 84
+    imgId: 84,
+    price: 75
   },
   {
     class: 8,
     name: "the holy book of pasta",
     description: "In nomine Carbonarus et Bacon et Pastaus sancti.",
-    imgId: 83
+    imgId: 83,
+    price: 50
   },
   {
     class: 8,
     name: "bubble",
     description: "Its just a regular-ordinary bubble. What? Did you think that our store is only for blades and magical mumbo-jumbo?",
-    imgId: 82
+    imgId: 82,
+    price: 5
   },
   {
     class: 8,
-    name: "cloak of Invisibility",
+    name: "cloak of invisibility",
     description: "Upon wearing this cloak you will vanish from the naked eye, but just by vanishing doesnt mean you can escape your problems.",
     imgId: 100
   },
   {
     class: 8,
     name: "chest of microtransactions",
-    description: "Just for the price of 80 coins, win the game. BUY NOW! LIMITED TIME ONLY! EXTRA 100000+ GEMS* ON PURCHASE! ONLY COSMETIC UPGRADES*! GRAB YOUR MOMMAS WALLET NOW AND ORDER!!",
-    imgId: 106
+    description: "Just for the price of 150 coins, win the game. BUY NOW! LIMITED TIME ONLY! EXTRA 100000+ GEMS* ON PURCHASE! ONLY COSMETIC UPGRADES*! GRAB YOUR MOMMAS WALLET NOW AND ORDER!!",
+    imgId: 106,
+    price: 150
   }
 ];
 
