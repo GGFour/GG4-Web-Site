@@ -1,0 +1,41 @@
+.game-container {
+  display: flex;
+  flex: 50%;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.game-div {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+}
+.game-div img {
+  /* border: 1px solid blue; */
+  max-width: 100%;
+  height: auto;
+  object-position: center;
+  object-fit: cover;
+}
+.samurai,
+.chess {
+  background-color: var(--yellow);
+  border-radius: 0.5rem;
+  width: 60%;
+  line-height: 2.5rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+@media all and (max-width: 760px) {
+  .samurai,
+  .chess {
+    font-size: 0.5rem;
+  }
+}
