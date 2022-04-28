@@ -13,13 +13,13 @@ await pool.query("SET SCHEMA 'ecommerce_db';")
 //fs.appendFileSync(scriptfile, 'SET SCHEMA ecommerce_db;');
 //fs.appendFileSync(scriptfile, 'BEGIN; \n');
 let categories = [
-  { id: 7, name: "armor", description: "" },
-  { id: 6, name: "weapon", description: "" },
+  { id: 1, name: "food", description: "" },
+  { id: 2, name: "rings", description: ""},
   { id: 3, name: "key", description: "" },
   { id: 4, name: "wand", description: "" },
   { id: 5, name: "potion", description: ""},
-  { id: 2, name: "rings", description: ""},
-  { id: 1, name: "food", description: "" },
+  { id: 6, name: "weapon", description: "" },
+  { id: 7, name: "armor", description: "" },
   { id: 8, name: "other", description: ""}
 ];
 for (let i = 0; i < categories.length; i++) {
@@ -186,21 +186,23 @@ let items = [
     imgId: 29,
   },
   {
-    class: 3,
+    class: 8,
     name: "golden key",
+    price: 50,
     description: "The notches on this golden key are tiny and intricate. Maybe it can open some chest lock?",
     imgId: 11,
-    price: 50
   },
   {
-    class: 3,
+    class: 8,
     name: "iron key",
+    price: 30,
     description: "This iron key is small and simple. Maybe it can open some door?",
     imgId: 10,
   },
   {
-    class: 3,
+    class: 8,
     name: "skeleton key",
+    price: 50,
     description: "This key looks serious: its head is shaped like a skull. Probably it can open some serious door.",
     imgId: 9,
   },
@@ -368,49 +370,49 @@ let items = [
     imgId: 67
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of haste",
     description: "This ring accelerates the wearers flow of time, allowing one to perform all actions a little faster.",
     imgId: 33
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of detection",
     description: "Wearing this ring will allow the wearer to notice hidden secrets, traps and doors.",
     imgId: 34
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of power",
     description: "Your wands will become more powerful in the energy field that radiates from this ring.",
     imgId: 35
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of satiety",
     description: "Wearing this ring you can go without food longer.",
     imgId: 36
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of evasion",
     description: "This ring increases your chance to dodge enemy attack",
     imgId: 37
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of herbalism",
     description: "This ring increases your chance to gather dew and seeds from trampled grass",
     imgId: 38
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of shadows",
     description: "Enemies will be less likely to notice you if you wear this ring.",
     imgId: 39
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of thorns",
     description: "Though this ring doesnt provide real thorns, an enemy that attacks you will itself be wounded by a fraction of the damage that it inflicts",
     imgId: 40
