@@ -63,6 +63,7 @@ header {
   display: flex;
   flex-direction: row;
   gap: 40px;
+  height: fit-content;
 }
 .left-nav-btns {
   justify-content: space-between;
@@ -627,7 +628,7 @@ footer a {
     display: none;
   }
   .mobile-home-container {
-    width: 50%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
