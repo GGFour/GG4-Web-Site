@@ -12,7 +12,7 @@ var router = express.Router();
 router.post(
   "/signup",
   body("email", "Bad email format").isEmail().normalizeEmail(),
-  body("username", "Login should be at least 4 alphanumeric characters")
+  body("username", "Username should be at least 4 alphanumeric characters")
     .isString()
     .isAlphanumeric()
     .isLength({ min: 4, max: 16 })
