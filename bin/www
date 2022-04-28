@@ -13,6 +13,13 @@ var http = require('http');
 
 
 /**
+ * Disable logs in production
+ */
+ if (process.env.NODE_ENV !== 'production') {
+    1==1?1:0;
+ }
+
+/**
  * Get port from environment and store in Express.
  */
 
