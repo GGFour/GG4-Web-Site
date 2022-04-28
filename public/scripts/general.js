@@ -212,7 +212,13 @@ function openProfile() {
   document
     .getElementsByClassName("user-profile")[0]
     .classList.add("show-user-profile");
-  window.addEventListener("click", closeProfilePopup);
+  // test
+  let eventsArray = ["click", "touchstart", "touchend"];
+  eventsArray.forEach(function (event) {
+    window.addEventListener(event, closeProfilePopup);
+  });
+  // end of tesr
+  // window.addEventListener("click", closeProfilePopup);
 }
 function closeProfilePopup() {
   // console.log(document.getElementById(detailPopupId));
