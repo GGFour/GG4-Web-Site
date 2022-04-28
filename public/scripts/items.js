@@ -13,13 +13,13 @@ await pool.query("SET SCHEMA 'ecommerce_db';")
 //fs.appendFileSync(scriptfile, 'SET SCHEMA ecommerce_db;');
 //fs.appendFileSync(scriptfile, 'BEGIN; \n');
 let categories = [
-  { id: 7, name: "armor", description: "" },
-  { id: 6, name: "weapon", description: "" },
+  { id: 1, name: "food", description: "" },
+  { id: 2, name: "rings", description: ""},
   { id: 3, name: "key", description: "" },
   { id: 4, name: "wand", description: "" },
   { id: 5, name: "potion", description: ""},
-  { id: 2, name: "rings", description: ""},
-  { id: 1, name: "food", description: "" },
+  { id: 6, name: "weapon", description: "" },
+  { id: 7, name: "armor", description: "" },
   { id: 8, name: "other", description: ""}
 ];
 for (let i = 0; i < categories.length; i++) {
@@ -186,21 +186,23 @@ let items = [
     imgId: 29,
   },
   {
-    class: 3,
+    class: 8,
     name: "golden key",
+    price: 50,
     description: "The notches on this golden key are tiny and intricate. Maybe it can open some chest lock?",
     imgId: 11,
-    price: 50
   },
   {
-    class: 3,
+    class: 8,
     name: "iron key",
+    price: 30,
     description: "This iron key is small and simple. Maybe it can open some door?",
     imgId: 10,
   },
   {
-    class: 3,
+    class: 8,
     name: "skeleton key",
+    price: 50,
     description: "This key looks serious: its head is shaped like a skull. Probably it can open some serious door.",
     imgId: 9,
   },
