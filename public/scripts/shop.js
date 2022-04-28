@@ -47,7 +47,13 @@ fetch("/api/items")
             .querySelector(".detail-popup")
             .classList.toggle("show-detail-popup");
           detailId = itemElement.id;
-          window.addEventListener("click", hideDetailPopup);
+          // test
+          let eventsArray = ["click", "touchstart", "touchend"];
+          eventsArray.forEach(function (event) {
+            window.addEventListener(event, hideDetailPopup);
+          });
+          // end of tesr
+          // window.addEventListener("click", hideDetailPopup);
         }
         //where the hell did you find "show-detail-popup"? it works
       );
@@ -88,7 +94,13 @@ function hideDetailPopup(event) {
         .getElementById(detailId)
         .getElementsByClassName("detail-popup")[0]
         .classList.remove("show-detail-popup");
-      window.removeEventListener("click", hideDetailPopup);
+      // test
+      let eventsArray = ["click", "touchstart", "touchend"];
+      eventsArray.forEach(function (event) {
+        window.addEventListener(event, hideDetailPopup);
+      });
+      // end of tesr
+      // window.removeEventListener("click", hideDetailPopup);
     }
   }
 }
