@@ -2,11 +2,15 @@
 
 const myFormLog = document.getElementById('myForm-log');
 
-myFormLog.addEventListener('submit',async function (e) {
+myFormLog.addEventListener('submit', async function (e) {
   e.preventDefault();
 
   const formData = new FormData(this);
-  const allowCookies = window.localStorage.getItem('allowCookies') ||await confirm('By pressing OK you grant us permission to use functional cookies on your browser');
+  const allowCookies =
+    window.localStorage.getItem('allowCookies') ||
+    (await confirm(
+      'By pressing OK you grant us permission to use functional cookies on your browser'
+    ));
   if (!allowCookies) {
     alert("Can't login without permission to use cookies");
     return;
@@ -34,3 +38,5 @@ myFormLog.addEventListener('submit',async function (e) {
     }
   });
 });
+
+// Double Arrow Button

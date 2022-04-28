@@ -276,19 +276,17 @@ footer a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* max-width: 700px;
-  min-width: 470px; */
   width: 20rem;
+  /* max-width: 100%;
+  max-height: 100%; */
   border-radius: 0.5rem;
   padding: 0.5rem;
   /* extra */
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
   /* border: 1px solid var(--black); */
-  width: 20rem;
-  align-items: center;
-  border-radius: 0.5rem;
   background-color: var(--white);
   /* z-index: 2; */
 }
@@ -297,6 +295,9 @@ footer a {
   opacity: 1;
   visibility: visible;
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.hide {
+  display: none;
 }
 .profile-input {
   display: flex;
@@ -330,6 +331,7 @@ footer a {
   border-bottom: 1px solid var(--light-grey);
   font-size: 1.5rem;
   color: var(--black);
+  text-transform: uppercase;
 }
 .profile-input input {
   padding-left: 5px;
@@ -502,6 +504,19 @@ footer a {
 /* end of it*/
 
 /* BEGINNING OF MOBILE LAYOUT */
+@media all and (max-height: 760px) {
+  .user-container {
+    gap: 0.5rem;
+    /* min-height: 40rem; */
+    font-size: 15px;
+  }
+  .signout-btn,
+  .inventory-btn {
+    height: 2rem;
+    width: 8rem;
+    font-size: 13px;
+  }
+}
 @media all and (max-width: 760px) {
   body {
     display: flex;
@@ -531,7 +546,14 @@ footer a {
     max-width: 100%;
     height: auto;
   }
+  .cart-btn {
+    margin-top: 0.6rem;
+  }
+  .signed-user-icon {
+    margin-top: 0.4rem;
+  }
   .logo-img {
+    width: 50px;
     max-width: 100%;
     height: auto;
     display: unset;
@@ -546,14 +568,17 @@ footer a {
     background-color: var(--black-bg);
     overflow-y: hidden;
     transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .left-nav-btns {
     position: relative;
-    top: 25%;
+    /* top: 25%; */
     width: 100%;
     text-align: center;
-    margin-top: 30px;
+    /* margin-top: 30px; */
   }
 
   .hamburger-icon a {
@@ -585,12 +610,24 @@ footer a {
   .cart-header h1 {
     margin: 1rem 0;
   }
+  .user-container {
+    width: 70%;
+    max-width: 20rem;
+    font-size: 15px;
+  }
+  .user-img h1 {
+    width: 3rem;
+    height: 3rem;
+  }
+  .profile-header {
+    font-size: 20px;
+  }
   /* end of navbar design*/
   .animation {
     display: none;
   }
   .mobile-home-container {
-    height: 100%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -602,6 +639,9 @@ footer a {
     padding: 20px 0;
     gap: 20px;
   }
+  .social-media-icons img {
+    width: 30px;
+  }
   .footer-texts {
     flex-direction: column;
     align-items: center;
@@ -610,7 +650,9 @@ footer a {
     max-width: 100%;
     height: auto;
   }
-
+  .footer-copyright {
+    font-size: 12px;
+  }
   .body-mobile-img {
     display: unset;
     width: 100%;
