@@ -232,7 +232,13 @@ function closeProfilePopup() {
     document
       .getElementsByClassName("user-profile")[0]
       .classList.remove("show-user-profile");
-    window.removeEventListener("click", closeProfilePopup);
+    // test
+    let eventsArray = ["click", "touchstart", "touchend"];
+    eventsArray.forEach(function (event) {
+      window.addEventListener(event, closeProfilePopup);
+    });
+    // end of tesr
+    // window.removeEventListener("click", closeProfilePopup);
   }
 }
 // window.addEventListener("click", function () {
