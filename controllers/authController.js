@@ -20,12 +20,7 @@ const generateAccessToken = (path_to_image, uid, usertype) => {
 
 // Generates normal text to send when bad signup.
 const messageFromError = (errorMessage) => {
-  let value = errorMessage.split(" ")[2].replace(/\'/g, "");
-  let field = errorMessage
-    .split(" ")[5]
-    .replace(/\'/g, "")
-    .replace("user.", "");
-  return `User with the ${field} '${value}' already exists`;
+  return 'User with the ' + errorMessage.split(' ').slice(1).join(' ');
 };
 
 /**
@@ -39,9 +34,10 @@ const messageFromError = (errorMessage) => {
 exports.signUp = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
+    console.log(errors);
     return res
       .status(400)
-      .json({ message: "Registration error", errors: errors.errors });
+      .json({ message: "Registration error:\n  " + errors.errors.map(err => err.msg).join('\n  ') });
   }
 
   let hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -54,10 +50,10 @@ exports.signUp = async (req, res, next) => {
       password: hashedPassword,
     },
     function (err, rows, fields) {
-      if (err && err.code == "ER_DUP_ENTRY") {
+      if (err && err.code == "23505") {
         return res
           .status(400)
-          .json({ message: messageFromError(err.sqlMessage) });
+          .json({ message: messageFromError(err.detail) });
       } else if (err) {
         return res.status(400).json({ message: "Registration error" });
       }
