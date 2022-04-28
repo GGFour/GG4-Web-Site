@@ -16,7 +16,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 // Seitting up middleware.
-app.use(logger("dev"));
+app.use(logger(process.env.NODE_ENV !== 'production' ? "dev" : "tiny"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
