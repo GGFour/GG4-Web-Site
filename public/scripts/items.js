@@ -367,49 +367,49 @@ let items = [
     imgId: 67
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of haste",
     description: "This ring accelerates the wearers flow of time, allowing one to perform all actions a little faster.",
     imgId: 33
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of detection",
     description: "Wearing this ring will allow the wearer to notice hidden secrets, traps and doors.",
     imgId: 34
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of power",
     description: "Your wands will become more powerful in the energy field that radiates from this ring.",
     imgId: 35
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of satiety",
     description: "Wearing this ring you can go without food longer.",
     imgId: 36
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of evasion",
     description: "This ring increases your chance to dodge enemy attack",
     imgId: 37
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of herbalism",
     description: "This ring increases your chance to gather dew and seeds from trampled grass",
     imgId: 38
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of shadows",
     description: "Enemies will be less likely to notice you if you wear this ring.",
     imgId: 39
   },
   {
-    class: 6,
+    class: 2,
     name: "ring of thorns",
     description: "Though this ring doesnt provide real thorns, an enemy that attacks you will itself be wounded by a fraction of the damage that it inflicts",
     imgId: 40
