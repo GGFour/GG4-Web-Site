@@ -35,6 +35,12 @@
 tbody tr {
   color: var(--black);
 }
+.inventory-table img {
+  min-width: 30px;
+  max-width: 30px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
 @media all and (max-width: 760px) {
   .inventory-table {
     width: 70%;
