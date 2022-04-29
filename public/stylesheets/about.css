@@ -17,13 +17,8 @@
   flex-direction: column;
   justify-content: flex-end;
 }
-/* .about-container .left-side,
-.right-side {
-  border: 1px solid yellow;
-} */
 .left-side,
-.ctrators,
-.creator-grid {
+.ctrators {
   padding: 1rem;
 }
 hr {
@@ -32,7 +27,7 @@ hr {
   color: var(--light-grey);
 }
 h1 {
-  color: var(--black);
+  color: var(--brown);
 }
 .creators img {
   width: 100%;
@@ -98,8 +93,7 @@ h1 {
     gap: 0.5em;
   }
   .left-side,
-  .ctrators,
-  .creator-grid {
+  .ctrators {
     padding: 1.5rem;
   }
   .about-us {

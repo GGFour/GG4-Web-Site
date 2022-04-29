@@ -4,7 +4,7 @@ window.onload = function () {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
       let table = document.querySelector(".tbody");
       for (let i = 0; i < data.length; i++) {
         let item = data[i];

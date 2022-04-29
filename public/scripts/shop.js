@@ -72,7 +72,7 @@ fetch("/api/items")
 searchInput.addEventListener("input", (e) => {
   const value = e.target.value.toLowerCase();
   const items = document.querySelectorAll(".shop-item");
-  console.log(items);
+  // console.log(items);
   items.forEach((item) => {
     const isVisible = item
       .getElementsByClassName("name")[0]
@@ -83,7 +83,7 @@ searchInput.addEventListener("input", (e) => {
   });
 });
 function hideDetailPopup(event) {
-  console.log("detail popup hider triggered!");
+  // console.log("detail popup hider triggered!");
   if (
     event.target ==
     document.getElementById(detailId).getElementsByClassName("detail-popup")[0]
@@ -97,7 +97,7 @@ function hideDetailPopup(event) {
       // test
       let eventsArray = ["click", "touchstart", "touchend"];
       eventsArray.forEach(function (event) {
-        window.addEventListener(event, hideDetailPopup);
+        window.removeEventListener(event, hideDetailPopup);
       });
       // end of tesr
       // window.removeEventListener("click", hideDetailPopup);
@@ -121,7 +121,7 @@ function leaveOneCategory(category) {
     //order is putting the elements in order, from 1 to 2 so elements with order 2 are lower and elements with order 1 are higher
   });
   document.querySelectorAll(`.${category}`).forEach(function (el) {
-    console.log(el);
+    // console.log(el);
     el.style.position = "initial";
     el.style.visibility = "visible";
     el.querySelector(`.clickable-img`).style.transitionDuration = "0.3s";
@@ -198,11 +198,11 @@ function bindAddToCart() {
 }
 function addToLocalStorageCart(id) {
   let cart = JSON.parse(localStorage.getItem("cart"));
-  console.log(cart);
+  // console.log(cart);
   if (cart == null) {
     cart = [{ id: `${id}`, quantity: 1 }];
   } else {
-    console.log(cart);
+    // console.log(cart);
     if (cart.find((x) => x.id === `${id}`) === undefined) {
       cart.push({ id: `${id}`, quantity: 1 });
     } else {
@@ -215,7 +215,7 @@ function addToCartClicked(event) {
   // you can add the price and the img src as parameters here
   let button = event.target;
   let shopItem = button.parentElement.parentElement.parentElement.parentElement;
-  console.log(shopItem);
+  // console.log(shopItem);
   updateCartTotal();
   addToLocalStorageCart(shopItem.id);
   addItemToLocalStorage(shopItem);
@@ -226,13 +226,13 @@ function addItemToLocalStorage(item) {
     localStorage.getItem("items") == undefined ||
     localStorage.getItem("items") == null
   ) {
-    console.log("Не туда вставляешь!");
+    // console.log("Не туда вставляешь!");
     let items = [];
     localStorage.setItem("items", JSON.stringify(items));
   }
   let items = JSON.parse(localStorage.getItem("items"));
   if (items[items.findIndex((x) => x.id === item.id)] === undefined) {
-    console.log(items);
+    // console.log(items);
     items.push({
       id: item.id,
       name: item.querySelector(".name").innerText,

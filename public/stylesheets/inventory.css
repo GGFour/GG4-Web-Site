@@ -5,7 +5,6 @@
   font-family: "Roboto Mono", monospace;
 }
 .inventory-table {
-  /* width is changable */
   width: 50%;
   border-collapse: collapse;
   margin: 2rem;
@@ -30,7 +29,6 @@
 .inventory-table tbody tr {
   border-top: 1px solid var(--light-grey);
 }
-
 .inventory-table tbody tr:last-of-type {
   border-bottom: 1px solid var(--yellow);
 }
@@ -40,14 +38,16 @@ tbody tr {
 .inventory-table img {
   min-width: 30px;
   max-width: 30px;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -webkit-crisp-edges;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
-
-/* editable */
-/* .inventory-table tbody tr:active {
-  font-weight: bold;
-  color: var(--yellow);
-} */
+@media all and (max-width: 760px) {
+  .inventory-table {
+    width: 70%;
+  }
+  .body-effect {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}

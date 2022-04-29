@@ -45,11 +45,11 @@
   transform-style: preserve-3d;
 }
 /* Works only for safari */
-@media not all and (min-resolution:.001dpcm) { 
-  @supports (-webkit-appearance:none) {
-      .search-input {
-        background-image: none;
-      }
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    .search-input {
+      background-image: none;
+    }
   }
 }
 
@@ -70,8 +70,8 @@
 }
 
 .search-input::-webkit-search-cancel-button {
-  position:relative;
-  right:20px;
+  position: relative;
+  right: 20px;
 }
 ::placeholder {
   padding-left: 1rem;
@@ -122,9 +122,6 @@
 }
 
 .grid-div {
-  /* border: 1px solid var(--brown);
-  border-radius: 1rem; */
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -132,8 +129,6 @@
   height: fit-content;
 }
 .grid-div .name {
-  /* min-width: 130px;
-  width: 100%; */
   overflow-wrap: break-word;
 }
 .products-grid {
@@ -159,8 +154,6 @@
   object-position: center;
   object-fit: cover;
   transition-duration: 0.3s;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -webkit-crisp-edges;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
@@ -243,7 +236,7 @@
   width: 100%;
 }
 #category-header {
-  color: var(--black);
+  color: var(--brown);
 }
 @media all and (max-width: 1200px) {
   .products-grid {
@@ -274,6 +267,9 @@
   }
   .products-grid div {
     gap: 0.5rem;
+  }
+  #category-header {
+    color: var(--black);
   }
   .products-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

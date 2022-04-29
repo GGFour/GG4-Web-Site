@@ -10,7 +10,7 @@ fetch("api/personalInfo")
     return;
   })
   .then((data) => {
-    console.log(data);
+    // console.log(data);
     document.querySelector(".signed-user-icon h3").innerText = (
       data.firstname.charAt(0) + data.lastname.charAt(0)
     ).toUpperCase();
