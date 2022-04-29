@@ -44,7 +44,35 @@
   backface-visibility: hidden;
   transform-style: preserve-3d;
 }
+/* Works only for safari */
+@media not all and (min-resolution:.001dpcm) { 
+  @supports (-webkit-appearance:none) {
+      .search-input {
+        background-image: none;
+      }
+  }
+}
 
+::placeholder {
+  padding-left: 1rem;
+  color: color(var(--ship-grey) a(0.8));
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.search-input:hover:focus {
+  padding: 12px 0;
+  outline: 0;
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--brown);
+  border-radius: 0;
+  background-position: 100% center;
+}
+
+.search-input::-webkit-search-cancel-button {
+  position:relative;
+  right:20px;
+}
 ::placeholder {
   padding-left: 1rem;
   color: color(var(--ship-grey) a(0.8));
