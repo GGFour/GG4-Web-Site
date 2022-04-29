@@ -29,7 +29,7 @@ function cartStorageFiller() {
   let cartItems = JSON.parse(localStorage.getItem("cart"));
   if (cartItems != null) {
     cartItems.forEach(function (item) {
-      console.log(item);
+      // console.log(item);
       addItemToCart(
         JSON.parse(localStorage.getItem("items")).find(
           (x) => x.id === `${item.id}`
@@ -42,7 +42,7 @@ function cartStorageFiller() {
 function addItemToCart(itemData, quantity) {
   let cartItems = document.getElementsByClassName("all-items")[0];
   if (cartItems.querySelector(`#cart_${itemData.id}`) == undefined) {
-    console.log(cartItems.querySelector(`cart_${itemData.id}`));
+    // console.log(cartItems.querySelector(`cart_${itemData.id}`));
     let name = itemData.name;
     let price = itemData.price;
     let imageSrc = itemData.img;
@@ -222,7 +222,7 @@ function openProfile() {
 }
 function closeProfilePopup() {
   // console.log(document.getElementById(detailPopupId));
-  console.log("event listener triggered");
+  // console.log("event listener triggered");
 
   if (
     event.target == document.getElementsByClassName("user-profile")[0]
@@ -248,7 +248,7 @@ function closeProfilePopup() {
 // });
 const darkModeToggle = document.getElementById("checkbox");
 darkModeToggle.addEventListener("change", () => {
-  console.log("onload listener triggered");
+  // console.log("onload listener triggered");
   if (localStorage.getItem("darkMode") == "true") {
     localStorage.setItem("darkMode", "false");
   } else {
