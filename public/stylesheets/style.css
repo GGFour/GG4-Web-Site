@@ -656,7 +656,6 @@ footer a {
     height: 100%;
   }
 }
-
 @media all and (max-width: 480px) {
   .show-inner-container {
     width: 100%;

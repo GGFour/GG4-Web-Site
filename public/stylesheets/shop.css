@@ -122,9 +122,6 @@
 }
 
 .grid-div {
-  /* border: 1px solid var(--brown);
-  border-radius: 1rem; */
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -132,8 +129,6 @@
   height: fit-content;
 }
 .grid-div .name {
-  /* min-width: 130px;
-  width: 100%; */
   overflow-wrap: break-word;
 }
 .products-grid {
@@ -159,8 +154,6 @@
   object-position: center;
   object-fit: cover;
   transition-duration: 0.3s;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -webkit-crisp-edges;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
