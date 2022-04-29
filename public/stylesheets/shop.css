@@ -232,7 +232,7 @@
 .popup-content {
   min-width: 470px;
 }
-@media all and (min-width: 760px) {
+@media all and (min-width: 761px) {
   .category-side h1 div {
     display: none;
   }

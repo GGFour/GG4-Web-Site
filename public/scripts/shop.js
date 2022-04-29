@@ -118,7 +118,6 @@ function leaveOneCategory(category) {
     el.style.top = "0";
     el.style.left = "0";
     el.style.position = "absolute";
-
     //order is putting the elements in order, from 1 to 2 so elements with order 2 are lower and elements with order 1 are higher
   });
   document.querySelectorAll(`.${category}`).forEach(function (el) {
@@ -127,6 +126,9 @@ function leaveOneCategory(category) {
     el.style.visibility = "visible";
     el.querySelector(`.clickable-img`).style.transitionDuration = "0.3s";
   });
+  if (screen.width <= 760) {
+    $("#all-categories").slideToggle("slow");
+  }
 }
 function showAll() {
   document.querySelectorAll(`.grid-div`).forEach(function (el) {
