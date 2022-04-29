@@ -137,6 +137,9 @@ function showAll() {
     el.style.position = "initial";
     el.querySelector(`.clickable-img`).style.transitionDuration = "0.3s";
   });
+  if (screen.width <= 760) {
+    $("#all-categories").slideToggle("slow");
+  }
   //not sure about that, maybe need to use for loop
 }
 // function addItem(index) {
