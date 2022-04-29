@@ -29,7 +29,6 @@
 .inventory-table tbody tr {
   border-top: 1px solid var(--light-grey);
 }
-
 .inventory-table tbody tr:last-of-type {
   border-bottom: 1px solid var(--yellow);
 }
