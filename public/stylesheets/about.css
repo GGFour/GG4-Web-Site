@@ -22,8 +22,7 @@
   border: 1px solid yellow;
 } */
 .left-side,
-.ctrators,
-.creator-grid {
+.ctrators {
   padding: 1rem;
 }
 hr {
@@ -98,8 +97,7 @@ h1 {
     gap: 0.5em;
   }
   .left-side,
-  .ctrators,
-  .creator-grid {
+  .ctrators {
     padding: 1.5rem;
   }
   .about-us {
