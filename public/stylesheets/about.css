@@ -17,10 +17,6 @@
   flex-direction: column;
   justify-content: flex-end;
 }
-/* .about-container .left-side,
-.right-side {
-  border: 1px solid yellow;
-} */
 .left-side,
 .ctrators {
   padding: 1rem;
@@ -31,7 +27,7 @@ hr {
   color: var(--light-grey);
 }
 h1 {
-  color: var(--black);
+  color: var(--brown);
 }
 .creators img {
   width: 100%;
