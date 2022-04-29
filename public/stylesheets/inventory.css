@@ -46,3 +46,17 @@ tbody tr {
     width: 100%;
   }
 }
+.inventory-table img {
+  min-width: 30px;
+  max-width: 30px;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* editable */
+/* .inventory-table tbody tr:active {
+  font-weight: bold;
+  color: var(--yellow);
+} */

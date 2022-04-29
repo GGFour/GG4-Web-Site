@@ -7,20 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./stylesheets/style.css"> 
-<link rel="stylesheet" href="./stylesheets/about.css">
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-<link rel="manifest" href="/favicon/site.webmanifest">
-<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-<script src="scripts/userInfo.js"></script>
-<script src="scripts/general.js" defer></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./stylesheets/style.css"> 
+    <link rel="stylesheet" href="./stylesheets/about.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <script src="scripts/userInfo.js"></script>
+    <script src="scripts/general.js" defer></script>
     <title>GG4 About us page</title>
   </head>
   <body>
@@ -33,9 +33,9 @@
         localStorage.setItem("darkMode", "false");
       }</script>
       <header class="navbar">
-    <div class="left-navbar">
-      <div><img src="images/logo.png" alt="" class="logo-img" onclick="location.href='/'"/></div>
-      <div class="hamburger-icon" id="myNav">
+      <div class="left-navbar">
+        <div><img src="images/logo.png" alt="" class="logo-img" onclick="location.href='/'"/></div>
+        <div class="hamburger-icon" id="myNav">
         <div class="left-nav-btns">
           <a href="./">HOME</a>
           <a href="./shop">SHOP</a>
@@ -43,47 +43,47 @@
           <a href="./game" class="game">GAME</a>
         </div>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      </div>
-    </div>
-    <div class="right-navbar">
-      <div class="right-nav-btns hide">
-        <div class="signinup-btns">
-          <a href="./signup">SIGN UP</a>
-          <a href="./login">LOG IN</a>
         </div>
       </div>
-      <div class="signed-user-icon" onclick="openProfile()">
-        <h3></h3>
-      </div>
-      <div class="cart-btn"><i class="fa fa-shopping-cart"  onclick="openCart()" ><a href="#"
-            class="shopping-cart-icon"></a> </i></div>
-    <div>
-            </p>
-<span style="font-size:30px;" onclick="openNav()"class="burger-menu-btn">&#9776;</span>
-             <!-- <img src="images/burger-menu.png" alt="" class="burger-menu-btn" onclick="openNav()"></div> -->
+      <div class="right-navbar">
+        <div class="right-nav-btns hide">
+          <div class="signinup-btns">
+            <a href="./signup">SIGN UP</a>
+            <a href="./login">LOG IN</a>
+          </div>
         </div>
-    </div>
-     <!-- beginning of cart -->
- <div class="main-container" id="myCart">
-      <div class="inner-container" >
-        <div class="cart-header">
-        <h1>MY CART</h1>
-      <p onclick="openCart()"style="cursor:pointer">X</p>
+        <div class="signed-user-icon" onclick="openProfile()">
+          <h3></h3>
         </div>
-        <div class="all-items"></div>
-        <div class="total">
-          <p>Total</p>
-          <p class="total-price">0ø</p>
-        </div>
-        <div class="checkout-btn">
-          <button type="submit" onclick="checkoutOrder()">Check Out</button>
+        <div class="cart-btn"><i class="fa fa-shopping-cart"  onclick="openCart()" ><a href="#"
+          class="shopping-cart-icon"></a> </i></div>
+        <div>
+          <span style="font-size:30px;" onclick="openNav()"class="burger-menu-btn">&#9776;</span>
+            <!-- <img src="images/burger-menu.png" alt="" class="burger-menu-btn" onclick="openNav()"></div> -->
         </div>
       </div>
+        <!-- beginning of cart -->
+      <div class="main-container" id="myCart">
+        <div class="inner-container" >
+          <div class="cart-header">
+            <h1>MY CART</h1>
+            <p onclick="openCart()"style="cursor:pointer">X</p>
+          </div>
+          <div class="all-items"></div>
+          <div class="total">
+            <p>Total</p>
+            <p class="total-price">0ø</p>
+          </div>
+          <div class="checkout-btn">
+            <button type="submit" onclick="checkoutOrder()">Check Out</button>
+          </div>
+        </div>
       </div>
-        <!-- end of cart  -->
-    <!-- beginning of user profile -->
+                              <!-- end of cart  -->
+
+                          <!-- beginning of user profile -->
     <div class="user-profile">
-     <div class="user-container">
+      <div class="user-container">
       <h1 class="profile-header">User Profile</h1>
       <div class="user-img">
         <h1></h1>

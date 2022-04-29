@@ -7,31 +7,10 @@ const queries = require("./queries");
  */
 exports.getItems = async (response) => {
   pool.query(
-    `SELECT
-    item.id,
-    item_category.name AS category,
-    item.name, 
-    item.description,
-    item.price,
-    item_inventory.quantity,
-    discount.name AS discount_name,
-    discount.description AS discount_desc,
-    discount.active AS discount_active,
-    game.name AS game_name,
-    item.path_to_image
-    FROM 
-    ((ecommerce_db.item 
-    INNER JOIN ecommerce_db.item_inventory ON item.inventory_id = item_inventory.id)
-    LEFT JOIN ecommerce_db.discount ON item.discount_id = discount.id), 
-    ecommerce_db.item_category,
-    ecommerce_db.game
-    WHERE
-    item.category_id = item_category.id
-    ;
-`,
+    queries.getItems,
     function (err, result) {
       if (err) {
-        console.log(err.message);
+        console.error(err.message);
         return response(err, result);
       }
       response(err, result.rows);
@@ -46,11 +25,11 @@ exports.getItems = async (response) => {
  */
 exports.getPassword = async (email, response) => {
   pool.query(
-    'SELECT "user".id, "user".path_to_logo, "user".pswd, user_type.name AS type FROM ecommerce_db.user, ecommerce_db.user_type WHERE "user".email = $1 AND "user".usertype_id = user_type.id',
+    queries.getPassword,
     [email],
     (err, result) => {
       if (err) {
-        console.log(err);
+        console.error(err);
         return response(err, result);
       }
       response(err, result.rows);
@@ -65,21 +44,7 @@ exports.getPassword = async (email, response) => {
  */
 exports.createUser = async (credentials, response) => {
   pool.query(
-    `
-        INSERT INTO ecommerce_db.user (
-            email,
-            username,
-            firstname,
-            lastname,
-            pswd
-        ) VALUES (
-            $1,
-            $2,
-            $3,
-            $4,
-            $5
-        );
-    `,
+    queries.createUser,
     [
       credentials.email,
       credentials.username,
@@ -89,7 +54,7 @@ exports.createUser = async (credentials, response) => {
     ],
     (err, result) => {
       if (err) {
-        console.log(err);
+        console.error(err);
         return response(err, result);
       }
       response(err, result);
@@ -104,13 +69,11 @@ exports.createUser = async (credentials, response) => {
  */
 exports.getPersonalInfo = async (userId, response) => {
   pool.query(
-    `
-    SELECT id, email, firstname, lastname, username, coins, high_score FROM ecommerce_db.user WHERE id = $1;
-    `,
+    queries.personalInfo,
     [userId],
     (err, result) => {
       if (err) {
-        console.log(err.message);
+        console.error(err.message);
         return response(err, result);
       }
       response(err, result.rows);
@@ -124,11 +87,9 @@ exports.getPersonalInfo = async (userId, response) => {
  * @param {Array} response - array containing objects {id, quantity}, where id - id of item
  */
  exports.getInventory = async (userId, response) => {
-    pool.query(`
-        SELECT item_id as id, name, path_to_image, quantity FROM ecommerce_db.inventory, ecommerce_db.item WHERE user_id = $1 AND inventory.item_id = item.id;
-    `, [userId], (err, result) => {
+    pool.query(queries.getInventory, [userId], (err, result) => {
       if (err) {
-        console.log(err.message);
+        console.error(err.message);
         return response(err, result);
       }
       response(err, result.rows);
@@ -142,23 +103,10 @@ exports.getPersonalInfo = async (userId, response) => {
    */
   exports.getItemsForOrder = async (itemsIds) => {
     try {
-      const result = await pool.query(`
-      SELECT 
-        item.id, 
-        item.price, 
-        item_inventory.quantity 
-      FROM 
-        ecommerce_db.item, 
-        ecommerce_db.item_inventory 
-      WHERE 
-        item.id IN (${itemsIds.join(",")})
-        AND
-        item.inventory_id = item_inventory.id
-      ;
-      `);
+      const result = await pool.query(queries.getItemsByIds(itemsIds));
       return result.rows;
     } catch (err) {
-      console.log(err.message);
+      console.error(err.message);
       return undefined;
     }
   };
@@ -171,20 +119,12 @@ exports.getPersonalInfo = async (userId, response) => {
   exports.getUserBalance = async (userId) => {
     try {
       const result = await pool.query(
-        `
-      SELECT 
-        "user".coins
-      FROM 
-        ecommerce_db.user 
-      WHERE 
-        "user".id = $1
-      ;
-      `,
+        queries.getBalance,
         [userId]
       );
       return result.rows[0].coins;
     } catch (err) {
-      console.log(err.message);
+      console.error(err.message);
       return undefined;
     }
   };
@@ -201,25 +141,21 @@ exports.placeOrder = async (userId, total, itemsInfo) => {
     let client = await pool.connect();
     try {
       await client.query(`SET TRANSACTION ISOLATION LEVEL READ COMMITTED;`);
+      // Start transaction
       await client.query('BEGIN');
       // Locking user money.
       await client.query(
-        `
-          SELECT coins FROM ecommerce_db.user WHERE "user".id = $1 FOR UPDATE;
-        `,
+        queries.lockUser,
         [userId]
       );
       // Decrement user money.
       await client.query(
-        `
-          UPDATE ecommerce_db.user SET coins = coins - $1  WHERE "user".id = $2;`,
+        queries.reduceBalance,
         [total, userId]
       );
       // Creating new order.
       const orderId = (await client.query(
-        `
-          INSERT INTO ecommerce_db.order_details (user_id, total) VALUES ($1, $2) RETURNING id;
-          `,
+        queries.addOrder,
         [
           userId,
           total
@@ -231,46 +167,28 @@ exports.placeOrder = async (userId, total, itemsInfo) => {
         if (item.quantity <=0) return;
         // Adding items to order history.
         await client.query(
-          `
-          INSERT INTO ecommerce_db.order_items (quantity, item_id, order_id) VALUES ($1, $2, $3);
-          `,
+          queries.addOrderItem,
           [item.quantity, item.id, orderId]
         );
         // Locking the user inventory.
         await client.query(
-          `
-            SELECT * FROM ecommerce_db.inventory WHERE user_id = $1 and item_id = $2 FOR UPDATE;`,
+          queries.lockInventory,
           [userId, item.id]
         );
         // Adding item to user inventory.
         await client.query(
-          `
-          INSERT INTO ecommerce_db.inventory (user_id, item_id, quantity)
-          VALUES ($1, $2, $3)
-          ON CONFLICT (user_id, item_id) DO UPDATE 
-            SET quantity = inventory.quantity + $4;`,
-          [userId, item.id, item.quantity, item.quantity]
+          queries.addToInventory,
+          [userId, item.id, item.quantity]
         );
         // Locking quantity of available items.
         await client.query(
-          `
-            SELECT * FROM ecommerce_db.item_inventory WHERE id IN (SELECT inventory_id
-              FROM ecommerce_db.item 
-              WHERE item.id = $1) 
-              FOR UPDATE;`,
+          queries.lockItemInventory,
           [item.id]
         );
   
         // Decreasing quantity of available items.
         await client.query(
-          `
-            UPDATE ecommerce_db.item_inventory 
-              SET quantity = quantity - $1
-              WHERE item_inventory.id IN (
-                SELECT inventory_id
-                  FROM ecommerce_db.item 
-                  WHERE item.id = $2);
-          `,
+          queries.reduceItemInventory,
           [item.quantity, item.id]
         );
       });
@@ -278,7 +196,7 @@ exports.placeOrder = async (userId, total, itemsInfo) => {
   
       status = true;
     } catch (err) {
-      console.log(err.message);
+      console.error(err.message);
       await client.query('ROLLBACK');
       status = false;
     } finally {
