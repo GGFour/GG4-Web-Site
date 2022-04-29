@@ -97,7 +97,7 @@ function hideDetailPopup(event) {
       // test
       let eventsArray = ["click", "touchstart", "touchend"];
       eventsArray.forEach(function (event) {
-        window.addEventListener(event, hideDetailPopup);
+        window.removeEventListener(event, hideDetailPopup);
       });
       // end of tesr
       // window.removeEventListener("click", hideDetailPopup);

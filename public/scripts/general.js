@@ -235,7 +235,7 @@ function closeProfilePopup() {
     // test
     let eventsArray = ["click", "touchstart", "touchend"];
     eventsArray.forEach(function (event) {
-      window.addEventListener(event, closeProfilePopup);
+      window.removeEventListener(event, closeProfilePopup);
     });
     // end of tesr
     // window.removeEventListener("click", closeProfilePopup);
