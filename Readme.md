@@ -31,6 +31,4 @@ Following features were implemented:
 
 5. Execute `npm start` to run an application
 
-GNU AFFERO GENERAL PUBLIC LICENSE
-
 Credits: Rexol, MohHajri, Pochapali, ni9iri, TheZukab
